@@ -1186,9 +1186,9 @@ s<!DOCTYPE html>
             adminPanel.style.width = 'min(560px, calc(100% - 40px))';
             adminPanel.innerHTML = `
                 <h3>Administración CEO de Blogs</h3>
-                <textarea id="ceo-dev-text" rows="4" placeholder="Nueva Bitácora"></textarea>
-                <textarea id="ceo-news-text" rows="4" placeholder="Nueva Noticia"></textarea>
-                <input id="ceo-blog-image" type="file" accept="image/*">
+                <input id="ceo-blog-title" type="text" placeholder="Título de la noticia">
+                <textarea id="ceo-blog-content" rows="5" placeholder="Contenido de la noticia"></textarea>
+                <input id="ceo-blog-image-url" type="url" placeholder="URL de la imagen de portada">
                 <h3>Administración CEO de Manuales</h3>
                 <textarea id="ceo-manual-title" rows="2" placeholder="Título del Manual"></textarea>
                 <textarea id="ceo-manual-content" rows="4" placeholder="Contenido Táctico"></textarea>
@@ -1217,41 +1217,50 @@ s<!DOCTYPE html>
                 adminPanel.style.display = 'none';
             });
 
-            document.getElementById('ceo-publish').addEventListener('click', () => {
-                const devText = document.getElementById('ceo-dev-text').value.trim();
-                const newsText = document.getElementById('ceo-news-text').value.trim();
-                const imageFile = document.getElementById('ceo-blog-image').files[0];
+            document.getElementById('ceo-publish').addEventListener('click', async () => {
+                const valorTitulo = document.getElementById('ceo-blog-title').value.trim();
+                const valorContenido = document.getElementById('ceo-blog-content').value.trim();
+                const valorImagen = document.getElementById('ceo-blog-image-url').value.trim();
                 const message = document.getElementById('ceo-admin-message');
+                const publishButton = document.getElementById('ceo-publish');
 
-                if (!devText && !newsText) {
-                    message.textContent = 'Escribe una bitácora o una noticia antes de publicar.';
+                if (!valorTitulo || !valorContenido) {
+                    message.textContent = 'Completa el título y el contenido antes de publicar.';
                     return;
                 }
 
-                const saveArticles = (imageDataUrl) => {
-                    if (devText) {
-                        articulosBlogs.push({ type: 'development', text: devText, imageDataUrl: imageDataUrl || '' });
-                    }
-                    if (newsText) {
-                        articulosBlogs.push({ type: 'news', text: newsText, imageDataUrl: imageDataUrl || '' });
+                publishButton.disabled = true;
+                publishButton.textContent = 'Publicando...';
+
+                try {
+                    const { error } = await supabaseClient
+                        .from('blogs_noticias')
+                        .insert([{
+                            titulo: valorTitulo,
+                            contenido: valorContenido,
+                            autor: 'Sebastián',
+                            imagen_url: valorImagen
+                        }]);
+
+                    if (error) {
+                        throw error;
                     }
 
-                    localStorage.setItem(BLOG_STORAGE_KEY, JSON.stringify(articulosBlogs));
-                    document.querySelectorAll('.ceo-blog-article').forEach((element) => element.remove());
-                    renderBlogArticles();
-                    document.getElementById('ceo-dev-text').value = '';
-                    document.getElementById('ceo-news-text').value = '';
-                    document.getElementById('ceo-blog-image').value = '';
-                    message.textContent = 'Artículo publicado correctamente como CEO.';
+                    console.log('Supabase aceptó la noticia del Modo CEO.');
+                    alert('La noticia se guardó correctamente en la base de datos.');
+                    message.textContent = 'Noticia guardada correctamente en la nube.';
+                    document.getElementById('ceo-blog-title').value = '';
+                    document.getElementById('ceo-blog-content').value = '';
+                    document.getElementById('ceo-blog-image-url').value = '';
                     showNotificationBadge('blogs');
-                };
-
-                if (imageFile && imageFile.type.startsWith('image/')) {
-                    const reader = new FileReader();
-                    reader.onload = (event) => saveArticles(event.target.result);
-                    reader.readAsDataURL(imageFile);
-                } else {
-                    saveArticles('');
+                    await cargarBlogsDesdeNube();
+                } catch (error) {
+                    console.error('Error de red o de base de datos al guardar la noticia:', error);
+                    alert(`No se pudo guardar la noticia en Supabase: ${error.message || 'error de red'}`);
+                    message.textContent = 'Error al guardar la noticia en la nube.';
+                } finally {
+                    publishButton.disabled = false;
+                    publishButton.textContent = 'Publicar como CEO';
                 }
             });
 
