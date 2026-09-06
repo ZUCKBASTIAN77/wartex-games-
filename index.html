@@ -551,8 +551,11 @@ s<!DOCTYPE html>
             <h2>Foro de la Comunidad (Estilo Red Social)</h2>
             <div class="feed-post" style="margin-bottom: 25px;">
                 <h4>Comparte tu mapa, fotos o ideas</h4>
-                <textarea class="post-input" rows="3" placeholder="¿Qué estás mapeando hoy? Sube capturas o archivos..."></textarea>
-                <input type="file" style="margin-bottom: 10px; display: block;">
+                <textarea class="post-input" rows="3" placeholder="¿Qué estás mapeando hoy? Comparte tus ideas..."></textarea>
+                <label for="forum-image" style="display: block; margin-bottom: 5px;">Imagen:</label>
+                <input id="forum-image" type="file" accept="image/*" style="margin-bottom: 10px; display: block;">
+                <label for="forum-file" style="display: block; margin-bottom: 5px;">Archivo:</label>
+                <input id="forum-file" type="file" style="margin-bottom: 10px; display: block;">
                 <button class="btn">Publicar en el Feed</button>
             </div>
 
@@ -763,6 +766,10 @@ s<!DOCTYPE html>
             const matchingTab = Array.from(tabs).find(tab => tab.getAttribute('onclick') && tab.getAttribute('onclick').includes(`'${tabId}'`));
             if (matchingTab) {
                 matchingTab.classList.add('active');
+            }
+
+            if (tabId === 'foro' && typeof loadForumPosts === 'function') {
+                loadForumPosts();
             }
         }
 
@@ -1203,34 +1210,22 @@ s<!DOCTYPE html>
         }
 
         const forumSection = document.getElementById('foro');
-        const FORUM_STORAGE_KEY = 'myrmidonForumPosts';
 
         if (forumSection) {
-            const forumPosts = forumSection.querySelectorAll('.feed-post');
-            if (forumPosts.length > 1) {
-                forumPosts[1].remove();
-            }
-
+            const composer = forumSection.querySelector('.feed-post');
             const textarea = forumSection.querySelector('textarea');
-            const fileInput = forumSection.querySelector('input[type="file"]');
+            const imageInput = document.getElementById('forum-image');
+            const fileInput = document.getElementById('forum-file');
             const publishButton = forumSection.querySelector('.btn');
+            let isLoadingForum = false;
 
-            const getActiveUser = () => uName.textContent.trim() || 'Guest';
-
-            const getSavedPosts = () => {
-                try {
-                    const storedPosts = JSON.parse(localStorage.getItem(FORUM_STORAGE_KEY));
-                    return Array.isArray(storedPosts) ? storedPosts : [];
-                } catch (error) {
-                    return [];
+            forumSection.querySelectorAll('.feed-post').forEach((post, index) => {
+                if (index > 0) {
+                    post.remove();
                 }
-            };
+            });
 
-            const savePosts = (posts) => {
-                localStorage.setItem(FORUM_STORAGE_KEY, JSON.stringify(posts));
-            };
-
-            const createFeedPost = (userName, message, imageUrl, timeLabel) => {
+            const createFeedPost = (userName, message, createdAt, imageUrl, fileUrl) => {
                 const newPost = document.createElement('div');
                 newPost.className = 'feed-post';
 
@@ -1248,7 +1243,9 @@ s<!DOCTYPE html>
                 const time = document.createElement('span');
                 time.style.color = 'var(--text-muted)';
                 time.style.fontSize = '12px';
-                time.textContent = timeLabel || 'Hace un momento';
+                time.textContent = createdAt
+                    ? new Date(createdAt).toLocaleString('es-ES')
+                    : 'Fecha no disponible';
 
                 headerInfo.appendChild(strong);
                 headerInfo.appendChild(document.createTextNode(' '));
@@ -1263,101 +1260,148 @@ s<!DOCTYPE html>
                 newPost.appendChild(paragraph);
 
                 if (imageUrl) {
-                    const imageWrapper = document.createElement('div');
-                    imageWrapper.style.backgroundColor = '#101822';
-                    imageWrapper.style.padding = '10px';
-                    imageWrapper.style.borderRadius = '4px';
-                    imageWrapper.style.marginTop = '10px';
-                    imageWrapper.style.overflow = 'hidden';
-
                     const image = document.createElement('img');
                     image.src = imageUrl;
-                    image.alt = 'Imagen publicada por el usuario';
+                    image.alt = 'Imagen adjunta por el usuario';
+                    image.loading = 'lazy';
                     image.style.display = 'block';
-                    image.style.maxWidth = '100%';
-                    image.style.borderRadius = '4px';
-                    image.style.margin = '0 auto';
-                    image.style.height = 'auto';
+                    image.style.width = '100%';
+                    image.style.maxHeight = '420px';
+                    image.style.objectFit = 'contain';
+                    image.style.marginTop = '12px';
+                    image.style.borderRadius = '6px';
+                    newPost.appendChild(image);
+                }
 
-                    imageWrapper.appendChild(image);
-                    newPost.appendChild(imageWrapper);
+                if (fileUrl) {
+                    const fileLink = document.createElement('a');
+                    fileLink.href = fileUrl;
+                    fileLink.target = '_blank';
+                    fileLink.rel = 'noopener noreferrer';
+                    fileLink.textContent = 'Abrir archivo adjunto';
+                    fileLink.style.display = 'inline-block';
+                    fileLink.style.marginTop = '12px';
+                    fileLink.style.color = 'var(--accent-cyan)';
+                    newPost.appendChild(fileLink);
                 }
 
                 return newPost;
             };
 
-            const renderStoredPosts = () => {
-                const posts = getSavedPosts();
-                const firstFeed = forumSection.querySelector('.feed-post');
+            const uploadForumFile = async (file, userId) => {
+                const safeFileName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+                const filePath = `${userId}/${Date.now()}-${crypto.randomUUID()}-${safeFileName}`;
+                const { error: uploadError } = await supabaseClient.storage
+                    .from('archivos_foro')
+                    .upload(filePath, file, {
+                        cacheControl: '3600',
+                        upsert: false
+                    });
 
-                posts.forEach((post) => {
-                    const newPost = createFeedPost(post.user || 'Guest', post.text || '', post.imageDataUrl || '', post.time || 'Hace un momento');
-                    if (firstFeed) {
-                        forumSection.insertBefore(newPost, firstFeed);
-                    } else {
-                        forumSection.appendChild(newPost);
-                    }
-                });
+                if (uploadError) {
+                    throw uploadError;
+                }
+
+                const { data } = supabaseClient.storage
+                    .from('archivos_foro')
+                    .getPublicUrl(filePath);
+
+                return data.publicUrl;
             };
 
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', renderStoredPosts, { once: true });
-            } else {
-                renderStoredPosts();
-            }
-
-            publishButton.addEventListener('click', function () {
-                const message = textarea.value.trim();
-                const file = fileInput && fileInput.files ? fileInput.files[0] : null;
-                const firstFeed = forumSection.querySelector('.feed-post');
-
-                if (!message && !file) {
+            const loadForumPosts = async () => {
+                if (isLoadingForum) {
                     return;
                 }
 
-                const addPost = (textValue, imageDataUrl) => {
-                    const posts = getSavedPosts();
-                    const newPostObject = {
-                        user: getActiveUser(),
-                        text: textValue,
-                        imageDataUrl: imageDataUrl || '',
-                        time: 'Hace un momento'
-                    };
+                isLoadingForum = true;
+                forumSection.querySelectorAll('.cloud-forum-post').forEach((post) => post.remove());
 
-                    posts.unshift(newPostObject);
-                    savePosts(posts);
+                try {
+                    const { data: posts, error } = await supabaseClient
+                        .from('mensajes_foro')
+                        .select('id, created_at, usario, contenido, imagen_url, archivo_url')
+                        .order('created_at', { ascending: true });
 
-                    const insertedPost = createFeedPost(newPostObject.user, newPostObject.text, newPostObject.imageDataUrl, newPostObject.time);
-                    if (firstFeed) {
-                        forumSection.insertBefore(insertedPost, firstFeed);
-                    } else {
-                        forumSection.appendChild(insertedPost);
+                    if (error) {
+                        throw error;
                     }
 
-                    addExperience(50);
-                    showNotificationBadge('foro');
+                    posts.forEach((post) => {
+                        const postElement = createFeedPost(
+                            post.usario,
+                            post.contenido,
+                            post.created_at,
+                            post.imagen_url,
+                            post.archivo_url
+                        );
+                        postElement.classList.add('cloud-forum-post');
+                        forumSection.appendChild(postElement);
+                    });
+                } catch (error) {
+                    console.error('Error al cargar las publicaciones del foro:', error);
+                    alert('No se pudieron cargar las publicaciones del foro. Inténtalo de nuevo.');
+                } finally {
+                    isLoadingForum = false;
+                }
+            };
+
+            publishButton.addEventListener('click', async () => {
+                const message = textarea.value.trim();
+                const imageFile = imageInput.files[0] || null;
+                const attachmentFile = fileInput.files[0] || null;
+
+                if ((!message && !imageFile && !attachmentFile) || publishButton.disabled) {
+                    return;
+                }
+
+                publishButton.disabled = true;
+                publishButton.textContent = 'Publicando...';
+
+                try {
+                    const { data: { user }, error: authError } = await supabaseClient.auth.getUser();
+
+                    if (authError || !user) {
+                        alert('Debes iniciar sesión para publicar en el foro.');
+                        return;
+                    }
+
+                    const usario = user.user_metadata?.gamer_tag || user.email;
+                    const imageUrl = imageFile
+                        ? await uploadForumFile(imageFile, user.id)
+                        : '';
+                    const fileUrl = attachmentFile
+                        ? await uploadForumFile(attachmentFile, user.id)
+                        : '';
+                    const { error: insertError } = await supabaseClient
+                        .from('mensajes_foro')
+                        .insert({
+                            usario,
+                            contenido: message,
+                            imagen_url: imageUrl,
+                            archivo_url: fileUrl
+                        });
+
+                    if (insertError) {
+                        throw insertError;
+                    }
 
                     textarea.value = '';
-                    if (fileInput) {
-                        fileInput.value = '';
-                    }
-                };
-
-                if (file) {
-                    if (file.type.startsWith('image/')) {
-                        const reader = new FileReader();
-                        reader.onload = function (event) {
-                            addPost(message || 'Nueva publicación', event.target.result);
-                        };
-                        reader.readAsDataURL(file);
-                    } else {
-                        addPost(message || 'Nueva publicación', '');
-                    }
-                } else {
-                    addPost(message, '');
+                    imageInput.value = '';
+                    fileInput.value = '';
+                    addExperience(50);
+                    showNotificationBadge('foro');
+                    await loadForumPosts();
+                } catch (error) {
+                    console.error('Error al publicar en el foro:', error);
+                    alert('No se pudo publicar el mensaje. Inténtalo de nuevo.');
+                } finally {
+                    publishButton.disabled = false;
+                    publishButton.textContent = 'Publicar en el Feed';
                 }
             });
 
+            loadForumPosts();
         }
     </script>
 </body>
