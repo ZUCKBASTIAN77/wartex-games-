@@ -203,6 +203,51 @@ s<!DOCTYPE html>
             margin-bottom: 15px;
         }
 
+        .cloud-blog-card {
+            display: grid;
+            grid-template-columns: minmax(180px, 0.8fr) minmax(0, 1.6fr);
+            gap: 20px;
+            align-items: start;
+            background: linear-gradient(145deg, rgba(16, 27, 18, 0.98), rgba(25, 43, 28, 0.92));
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 18px;
+        }
+
+        .cloud-blog-card img {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            border-radius: 6px;
+            background-color: #101822;
+        }
+
+        .cloud-blog-card h3 {
+            margin: 0 0 10px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .cloud-blog-card p {
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .cloud-blog-author {
+            display: block;
+            margin-top: 16px;
+            color: var(--accent-cyan);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 700px) {
+            .cloud-blog-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .post-header {
             display: flex;
             align-items: center;
@@ -575,20 +620,12 @@ s<!DOCTYPE html>
         <div id="blogs" class="view-content">
             <h2 style="border-bottom: 2px solid var(--primary-blue); padding-bottom: 5px;">🛠️ Blog de Desarrollo (Solo Sebastián)</h2>
             <div id="devblogFeed">
-                <div class="feed-post">
-                    <span style="color: var(--accent-cyan); font-size: 12px; font-weight: bold;">PUBLICADO POR EL FUNDADOR</span>
-                    <h3>Bitácora #1: Diseño geométrico del mapa de_refinery</h3>
-                    <p>Estamos utilizando herramientas avanzadas para ajustar los ángulos de visión en el punto de bomba A. Queremos balancear los tiempos de llegada tanto para el bando AT como para el bando T...</p>
-                </div>
+                <p class="blog-loading-state">Cargando publicaciones desde la nube...</p>
             </div>
 
             <h2 style="border-bottom: 2px solid #de9b00; padding-bottom: 5px; margin-top: 40px;">📰 Blog de Noticias Oficiales (Solo Sebastián)</h2>
             <div id="skinblogFeed">
-                <div class="feed-post">
-                    <span style="color: var(--accent-cyan); font-size: 12px; font-weight: bold;">NOTICIA OFICIAL</span>
-                    <h3>Actualización del Servidor y Nuevas Alianzas de Pago</h3>
-                    <p>Hemos integrado con éxito las pasarelas locales para el Pase VIP Express. Ahora los jugadores de LATAM pueden usar de manera ágil los sistemas automatizados para evitar colas.</p>
-                </div>
+                <p class="blog-loading-state">Cargando noticias desde la nube...</p>
             </div>
         </div>
 
@@ -1252,10 +1289,90 @@ s<!DOCTYPE html>
             });
         };
 
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initializeBlogAdministration, { once: true });
-        } else {
+        const createCloudBlogCard = (article) => {
+            const card = document.createElement('article');
+            card.className = 'cloud-blog-card';
+
+            if (article.imagen_url) {
+                const image = document.createElement('img');
+                image.src = article.imagen_url;
+                image.alt = `Imagen de portada: ${article.titulo || 'Artículo'}`;
+                image.loading = 'lazy';
+                card.appendChild(image);
+            }
+
+            const details = document.createElement('div');
+            const title = document.createElement('h3');
+            title.textContent = article.titulo || 'Artículo sin título';
+
+            const content = document.createElement('p');
+            content.textContent = article.contenido || '';
+
+            const author = document.createElement('span');
+            author.className = 'cloud-blog-author';
+            author.textContent = `Por ${article.autor || 'Wartex Games'}`;
+
+            details.appendChild(title);
+            details.appendChild(content);
+            details.appendChild(author);
+            card.appendChild(details);
+
+            return card;
+        };
+
+        const loadCloudBlogs = async () => {
+            const developmentFeed = document.getElementById('devblogFeed');
+            const newsFeed = document.getElementById('skinblogFeed');
+
+            if (!developmentFeed || !newsFeed) {
+                return;
+            }
+
+            try {
+                const { data: articles, error } = await supabaseClient
+                    .from('blogs_noticias')
+                    .select('id, titulo, contenido, imagen_url, autor')
+                    .order('id', { ascending: false });
+
+                if (error) {
+                    throw error;
+                }
+
+                developmentFeed.replaceChildren();
+                newsFeed.replaceChildren();
+
+                if (!articles || articles.length === 0) {
+                    const emptyState = document.createElement('p');
+                    emptyState.textContent = 'Todavía no hay publicaciones disponibles.';
+                    developmentFeed.appendChild(emptyState.cloneNode(true));
+                    newsFeed.appendChild(emptyState);
+                    return;
+                }
+
+                articles.forEach((article) => {
+                    newsFeed.appendChild(createCloudBlogCard(article));
+                });
+            } catch (error) {
+                console.error('Error al cargar blogs y noticias desde Supabase:', error);
+                developmentFeed.replaceChildren();
+                newsFeed.replaceChildren();
+
+                const errorState = document.createElement('p');
+                errorState.textContent = 'No se pudieron cargar las noticias. Inténtalo de nuevo más tarde.';
+                developmentFeed.appendChild(errorState.cloneNode(true));
+                newsFeed.appendChild(errorState);
+            }
+        };
+
+        const initializePublicBlogs = () => {
             initializeBlogAdministration();
+            loadCloudBlogs();
+        };
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializePublicBlogs, { once: true });
+        } else {
+            initializePublicBlogs();
         }
 
         const forumSection = document.getElementById('foro');
