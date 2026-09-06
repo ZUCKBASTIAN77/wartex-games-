@@ -1320,7 +1320,7 @@ s<!DOCTYPE html>
             return card;
         };
 
-        const loadCloudBlogs = async () => {
+        const cargarBlogsDesdeNube = async () => {
             const developmentFeed = document.getElementById('devblogFeed');
             const newsFeed = document.getElementById('skinblogFeed');
 
@@ -1366,14 +1366,10 @@ s<!DOCTYPE html>
 
         const initializePublicBlogs = () => {
             initializeBlogAdministration();
-            loadCloudBlogs();
+            cargarBlogsDesdeNube();
         };
 
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initializePublicBlogs, { once: true });
-        } else {
-            initializePublicBlogs();
-        }
+        window.addEventListener('DOMContentLoaded', initializePublicBlogs, { once: true });
 
         const forumSection = document.getElementById('foro');
 
