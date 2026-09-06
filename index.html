@@ -692,7 +692,13 @@ s<!DOCTYPE html>
     <script>
         const SUPABASE_URL = 'https://eggzhkawkagtktawqcam.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_iV7VzBtijDEv1NrC1WoPzA_4EL22M7j';
-        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+            auth: {
+                persistSession: true,
+                autoRefreshToken: true,
+                detectSessionInUrl: true
+            }
+        });
 
         const registerForm = document.getElementById('registerForm');
         const uBadge = document.getElementById('uBadge');
@@ -738,17 +744,60 @@ s<!DOCTYPE html>
                 return;
             }
 
-            showAuthenticatedUser(data.user);
+            let activeSession = data.session;
+
+            if (!activeSession) {
+                const { data: loginData, error: loginError } = await supabaseClient.auth.signInWithPassword({
+                    email,
+                    password: pass
+                });
+
+                if (loginError) {
+                    alert(`Registro creado, pero debes confirmar tu correo antes de iniciar sesión: ${loginError.message}`);
+                    return;
+                }
+
+                activeSession = loginData.session;
+            }
+
+            if (!activeSession) {
+                alert('Registro creado, pero no se pudo iniciar la sesión automáticamente.');
+                return;
+            }
+
+            const { data: userData, error: userError } = await supabaseClient.auth.getUser();
+            if (userError || !userData.user) {
+                alert('La sesión se creó, pero no se pudo cargar el usuario. Recarga la página e inténtalo de nuevo.');
+                return;
+            }
+
+            showAuthenticatedUser(userData.user);
             document.getElementById('regMod').style.display = 'none';
             registerForm.reset();
-            alert(data.session
-                ? 'Registro completado correctamente.'
-                : 'Registro creado. Revisa tu correo para confirmar la cuenta.');
+            alert('Registro completado y sesión iniciada correctamente.');
         });
 
-        supabaseClient.auth.getSession().then(({ data: { session } }) => {
-            showAuthenticatedUser(session?.user);
-        });
+        const restoreAuthenticatedUser = async () => {
+            try {
+                const { data: { session } } = await supabaseClient.auth.getSession();
+                if (!session) {
+                    showAuthenticatedUser(null);
+                    return;
+                }
+
+                const { data, error } = await supabaseClient.auth.getUser();
+                if (error) {
+                    throw error;
+                }
+
+                showAuthenticatedUser(data.user);
+            } catch (error) {
+                console.error('No se pudo restaurar la sesión:', error);
+                showAuthenticatedUser(null);
+            }
+        };
+
+        restoreAuthenticatedUser();
 
         supabaseClient.auth.onAuthStateChange((_event, session) => {
             showAuthenticatedUser(session?.user);
