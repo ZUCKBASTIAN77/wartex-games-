@@ -1,0 +1,1365 @@
+s<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KKC4M4ML');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wartex games</title>
+    <style>
+        :root {
+            --bg-dark: #1a2a1d;
+            --bg-card: #101b12;
+            --primary-blue: #4d7a52;
+            --accent-cyan: #89b58b;
+            --text-light: #dfeadf;
+            --text-muted: #8ea28c;
+            --border-color: #2f4a33;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--bg-card);
+            border-bottom: 2px solid var(--border-color);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            background-color: #0d120d;
+            border: 3px solid var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* SVG del casco espartano simplificado */
+        .helmet-svg {
+            width: 35px;
+            height: 35px;
+            fill: var(--accent-cyan);
+        }
+
+        .brand-title {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .founder-box {
+            background: linear-gradient(135deg, rgba(77,122,82,0.2) 0%, rgba(16,27,18,0.8) 100%);
+            border-left: 4px solid var(--primary-blue);
+            padding: 15px;
+            margin: 20px;
+            border-radius: 4px;
+        }
+
+        .founder-name {
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            background-color: #101822;
+            padding: 10px 20px 0 20px;
+            border-bottom: 1px solid var(--border-color);
+            gap: 5px;
+            overflow-x: auto;
+        }
+
+        .tab {
+            background-color: rgba(42, 71, 94, 0.4);
+            padding: 10px 20px;
+            border-radius: 4px 4px 0 0;
+            cursor: pointer;
+            color: var(--text-light);
+            font-weight: bold;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+
+        .nav-links a,
+        .tab {
+            position: relative;
+        }
+
+        .notif-badge {
+            position: absolute;
+            top: 6px;
+            right: 7px;
+            width: 8px;
+            height: 8px;
+            background-color: #66c0f4;
+            border-radius: 50%;
+            box-shadow: 0 0 6px #66c0f4;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .tab.active {
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--bg-dark);
+            color: var(--accent-cyan);
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .view-content {
+            display: none;
+        }
+
+        .view-content.active {
+            display: block;
+        }
+
+        .grid-store {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 160px;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
+            color: #888;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            margin: 0 0 10px 0;
+            color: #fff;
+        }
+
+        .price-tag {
+            background-color: #000;
+            color: #a3cf06;
+            padding: 5px 10px;
+            font-weight: bold;
+            float: right;
+            border-radius: 2px;
+        }
+
+        /* Red Social / Foro */
+        .feed-post {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .feed-post img {
+            max-height: 400px;
+            width: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            background-color: #101822;
+            border-radius: 6px !important;
+            margin-top: 12px !important;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+        }
+
+        .post-input {
+            width: 100%;
+            background-color: #101822;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            resize: none;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        /* Herramientas CS */
+        .tool-box {
+            background-color: var(--bg-card);
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        input[type="number"], input[type="text"], select, textarea {
+            background-color: #101822;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 8px;
+            border-radius: 4px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #005cb8;
+        }
+
+        /* QR Modal ficticio o sección */
+        .qr-section {
+            background-color: #111923;
+            border: 2px dashed var(--accent-cyan);
+            padding: 20px;
+            text-align: center;
+            border-radius: 6px;
+            margin-bottom: 25px;
+        }
+
+        .qr-placeholder {
+            width: 150px;
+            height: 150px;
+            background-color: white;
+            margin: 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: bold;
+        }
+
+        /* Diccionario */
+        .dict-item {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #203042;
+        }
+        .dict-term {
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        .auth-zone {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .auth-zone button,
+        .modal-content button,
+        .box button {
+            background: var(--primary-blue);
+            color: #fff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .auth-zone button:hover,
+        .modal-content button:hover,
+        .box button:hover {
+            background: #005cb8;
+        }
+
+        #regMod {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 8px;
+            width: min(90%, 420px);
+        }
+
+        .box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 25px;
+        }
+
+        .box form {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .box label,
+        .modal-content label {
+            color: var(--text-light);
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .modal-content input,
+        .box input,
+        .box textarea,
+        .modal-content textarea {
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KKC4M4ML"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <header>
+        <div class="logo-container">
+            <div class="logo-circle">
+                <!-- Casco espartano minimalista vectorizado -->
+                <svg class="helmet-svg" viewBox="0 0 100 100">
+                    <path d="M14,54 L28,48 L42,32 L50,18 L58,32 L72,48 L86,54 L72,60 L64,74 L50,68 L36,74 L28,60 Z M32,51 L18,62 L24,66 L42,59 L50,58 L58,59 L76,66 L82,62 L68,51 L50,55 Z M50,28 L55,40 L50,52 L45,40 Z M34,76 L50,64 L66,76 L58,84 L42,84 Z"/>
+                </svg>
+            </div>
+            <div class="brand-title">WARTEX GAMES</div>
+        </div>
+        <div class="auth-zone">
+            <span id="uBadge" style="display: none; color: var(--accent-cyan); font-weight: bold;">¡Hola, <span id="uName"></span>!</span>
+            <button type="button" id="authBtn" onclick="document.getElementById('regMod').style.display='flex'">Registrarse / Entrar</button>
+        </div>
+    </header>
+
+    <div class="founder-box">
+        <div class="founder-name">Sebastián — Fundador de wartex games</div>
+        <div>"Bienvenidos a wartex games. Nos dedicamos a diseñar la próxima generación de mapas tácticos y competitivos para Halo y Counter Strike. Aquí encontrarás nuestros proyectos oficiales, herramientas de optimización y un espacio comunitario transparente para compartir tu pasión por el 'mapping'."</div>
+    </div>
+
+    <div id="regMod" style="display: flex;">
+        <div class="modal-content">
+            <h3>Unirse a Myrmidon Games</h3>
+            <p>Regístrate para formar parte de la comunidad oficial.</p>
+
+            <form id="registerForm">
+                <label for="rUser">GamerTag / Usuario:</label>
+                <input type="text" id="rUser" required placeholder="Ej. MasterChief">
+
+                <label for="rEmail">Correo Electrónico:</label>
+                <input type="email" id="rEmail" required placeholder="tu@correo.com">
+
+                <label for="rPass">Contraseña:</label>
+                <input type="password" id="rPass" required placeholder="••••••••">
+
+                <div style="margin-top: 15px; display: flex; gap: 10px;">
+                    <button type="submit">Completar Registro</button>
+                    <button type="button" onclick="document.getElementById('regMod').style.display='none'">Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="nav-tabs">
+        <div class="tab active" onclick="switchTab('tienda')">Hub General</div>
+        <div class="tab" data-notification-target="foro" onclick="switchTab('foro')">Foro Comunidad <span class="notif-badge hidden" aria-label="Nueva notificación"></span></div>
+        <div class="tab" data-notification-target="blogs" onclick="switchTab('blogs')">Blogs (Desarrollo y Noticias) <span class="notif-badge hidden" aria-label="Nueva notificación"></span></div>
+        <div class="tab" onclick="switchTab('herramientas')">Herramientas CS</div>
+        <div class="tab" data-notification-target="tacticas" onclick="switchTab('tacticas')">Manuales Tácticos <span class="notif-badge hidden" aria-label="Nueva notificación"></span></div>
+        <div class="tab" onclick="switchTab('diccionario')">Diccionario Gamer</div>
+        <div class="tab" onclick="switchTab('propuestas')">Contacto / Propuestas</div>
+    </div>
+
+    <div class="container">
+
+        <!-- HUB GENERAL -->
+        <div id="tienda" class="view-content active">
+            <section id="hub-general" aria-labelledby="hub-title">
+                <h2 id="hub-title">HUB GENERAL</h2>
+
+                <!-- BLOQUE 1 Y 2: CATALOGO + PASE -->
+                <div style="display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr); gap: 20px; align-items: start;">
+                    <section aria-labelledby="catalog-title">
+                        <h3 id="catalog-title">Catálogo de Mapas Exclusivos</h3>
+                        <div class="grid-store">
+                            <article class="card">
+                                <div class="card-img" style="background: #253341;">[ IMAGEN MAPA HALO / AIRFORCE ]</div>
+                                <div class="card-body">
+                                    <span class="price-tag">$4.99</span>
+                                    <h4 class="card-title">Halo: Myrmidon Canyon</h4>
+                                    <p style="font-size: 14px; color: var(--text-light);">Un mapa optimizado para capturar la bandera en entornos abiertos y verticales estilo Spartan.</p>
+                                </div>
+                            </article>
+                            <article class="card">
+                                <div class="card-img" style="background: #2c251e;">[ IMAGEN MAPA CS ]</div>
+                                <div class="card-body">
+                                    <span class="price-tag">$3.50</span>
+                                    <h4 class="card-title">de_myrmidon_refinery</h4>
+                                    <p style="font-size: 14px; color: var(--text-light);">Estructura clásica de 3 carriles de Counter Strike orientada al juego competitivo y humos tácticos.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section class="qr-section" aria-labelledby="pass-title" style="margin-bottom: 0;">
+                        <h3 id="pass-title">⚡ Adquiere el Pase Express de Servidores</h3>
+                        <p>Paga $2 USD usando <strong>Ubii</strong> o <strong>Zinli</strong> para saltarte la cola de espera de los servidores de juego de Myrmidon.</p>
+                        <div class="qr-placeholder">[ QR CODE EN LÍNEA ]</div>
+                        <p style="font-size: 12px; color: var(--text-muted);">Escanea con tu App, transfiere $2 e introduce tu ID de usuario en el servidor.</p>
+                    </section>
+                </div>
+
+                <!-- BLOQUE 3: NAVEGADOR DE SERVIDORES -->
+                <section aria-labelledby="server-browser-title" style="margin-top: 35px;">
+                    <h3 id="server-browser-title" style="border-bottom: 2px solid var(--primary-blue); padding-bottom: 8px;">🌐 CROSS-GAME SERVER BROWSER / IPS DE LA COMUNIDAD</h3>
+                    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: start;">
+                        <section class="tool-box" aria-labelledby="halo-servers-title" style="margin-bottom: 0;">
+                            <h4 id="halo-servers-title" style="color: var(--accent-cyan);">🇺🇸 HALO / SALAS TÁCTICAS</h4>
+                            <article style="border-bottom: 1px solid var(--border-color); padding: 12px 0;">
+                                <strong>🟢 [LATAM] Halo Hub Division - Custom Forge</strong>
+                                <p style="margin: 8px 0; font-family: monospace; color: var(--text-light);">Lobby ID: HALOLATAM-4412</p>
+                                <a href="https://discord.com/servers?query=halo%20latam" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); margin-right: 12px;">Discord Halo LATAM</a>
+                                <a href="https://www.facebook.com/search/pages/?q=Halo%20LATAM" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); margin-right: 12px;">Facebook Halo LATAM</a>
+                                <button class="btn" type="button" onclick="navigator.clipboard.writeText('HALOLATAM-4412'); alert('¡ID de sala copiado al portapapeles!');" style="padding: 7px 12px;">Copiar IP</button>
+                            </article>
+                            <article style="padding: 12px 0;">
+                                <strong>🟢 [MX/CS] Halo HCS Latino Arena - Competitivo</strong>
+                                <p style="margin: 8px 0; font-family: monospace; color: var(--text-light);">Lobby ID: HCSLATAM-9981</p>
+                                <a href="https://www.halowaypoint.com/es-es/esports" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); margin-right: 12px;">Halo HCS en español</a>
+                                <a href="https://www.facebook.com/search/pages/?q=Halo%20HCS%20Latino" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); margin-right: 12px;">Redes HCS Latino</a>
+                                <button class="btn" type="button" onclick="navigator.clipboard.writeText('HCSLATAM-9981'); alert('¡ID de sala copiado al portapapeles!');" style="padding: 7px 12px;">Copiar IP</button>
+                            </article>
+                        </section>
+
+                        <section class="tool-box" aria-labelledby="cs2-servers-title" style="margin-bottom: 0;">
+                            <h4 id="cs2-servers-title" style="color: var(--accent-cyan);">🌎 COUNTER-STRIKE 2 / COMUNIDAD LATAM</h4>
+                            <article style="border-bottom: 1px solid var(--border-color); padding: 12px 0;">
+                                <strong>🇦🇷 [AR] Comunidad Rioplatense Masters</strong>
+                                <p style="margin: 8px 0; font-family: monospace; color: var(--text-light);">190.210.180.42:27015</p>
+                                <a href="https://discord.com/servers?query=cs2%20argentina" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); margin-right: 12px;">Discord CS2 Argentina</a>
+                                <a href="https://www.facebook.com/search/groups/?q=Argentina%20CS" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); margin-right: 12px;">Facebook Argentina CS</a>
+                                <button class="btn" type="button" onclick="navigator.clipboard.writeText('connect 190.210.180.42:27015'); alert('¡IP copiada al portapapeles!');" style="padding: 7px 12px;">Copiar IP</button>
+                            </article>
+                            <article style="padding: 12px 0;">
+                                <strong>🇻🇪 [VE] Maracaibo Táctico Deathmatch</strong>
+                                <p style="margin: 8px 0; font-family: monospace; color: var(--text-light);">200.44.32.18:27015</p>
+                                <a href="https://discord.com/servers?query=cs2%20latino" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); margin-right: 12px;">Discord CS2 Latino</a>
+                                <a href="https://www.facebook.com/search/groups/?q=CS2%20Venezuela" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); margin-right: 12px;">Facebook CS2 Venezuela</a>
+                                <button class="btn" type="button" onclick="navigator.clipboard.writeText('connect 200.44.32.18:27015'); alert('¡IP copiada al portapapeles!');" style="padding: 7px 12px;">Copiar IP</button>
+                            </article>
+                        </section>
+                    </div>
+                </section>
+
+                <!-- CENTRAL TACTICA -->
+                <section id="herramientas-precision" class="tool-box" aria-labelledby="precision-title">
+                    <h2 id="precision-title">CENTRAL TÁCTICA / HERRAMIENTAS DE PRECISIÓN</h2>
+                    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: start;">
+                        <section aria-labelledby="ruleta-title">
+                            <h3 id="ruleta-title">🎰 La Ruleta Diaria</h3>
+                            <button id="spin-reward" type="button" style="background-color: #a3cf06; color: #101822; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;">🎰 Girar Caja de Recompensas</button>
+                            <div id="reward-result" style="margin-top: 12px; color: var(--text-light);">[ Gira para reclamar tu Drop diario ]</div>
+                        </section>
+
+                        <section aria-labelledby="gamertag-title">
+                            <h3 id="gamertag-title">⚡ Generador de Gamertags</h3>
+                            <input type="text" id="gamertag-input" placeholder="Ingresa tu Nick común...">
+                            <button id="generate-gamertag" class="btn" type="button">Generar Tag Mirmidón</button>
+                            <div id="gamertag-result" style="margin-top: 12px; color: var(--accent-cyan); font-family: monospace;"></div>
+                        </section>
+
+                        <section aria-labelledby="rank-title">
+                            <h3 id="rank-title">🎖️ Marcador de Rango y XP</h3>
+                            <div id="precision-status">🎖️ RANGO: [Cargando...] | 📊 XP: [Cargando...] | 💼 INVENTARIO EQUIPADO: [Cargando...]</div>
+                        </section>
+                    </div>
+                </section>
+            </section>
+        </div>
+
+        <!-- FORO -->
+        <div id="foro" class="view-content">
+            <h2>Foro de la Comunidad (Estilo Red Social)</h2>
+            <div class="feed-post" style="margin-bottom: 25px;">
+                <h4>Comparte tu mapa, fotos o ideas</h4>
+                <textarea class="post-input" rows="3" placeholder="¿Qué estás mapeando hoy? Sube capturas o archivos..."></textarea>
+                <input type="file" style="margin-bottom: 10px; display: block;">
+                <button class="btn">Publicar en el Feed</button>
+            </div>
+
+            <div class="feed-post">
+                <div class="post-header">
+                    <div class="user-avatar" style="background-color: #e8a000;"></div>
+                    <div>
+                        <strong>MasterChief_99</strong> <span style="color: var(--text-muted); font-size: 12px;">Hace 2 horas</span>
+                    </div>
+                </div>
+                <p>¡Acabo de probar el mapa de Halo Canyon y las zonas de respawn están perfectas! Dejo una foto de un glitch que encontré en la zona texturizada azul.</p>
+                <div style="background-color: #101822; padding: 10px; border-radius: 4px; font-style: italic; color: #888;">[ Foto adjunta por el usuario ]</div>
+            </div>
+        </div>
+
+        <!-- BLOGS -->
+        <div id="blogs" class="view-content">
+            <h2 style="border-bottom: 2px solid var(--primary-blue); padding-bottom: 5px;">🛠️ Blog de Desarrollo (Solo Sebastián)</h2>
+            <div id="devblogFeed">
+                <div class="feed-post">
+                    <span style="color: var(--accent-cyan); font-size: 12px; font-weight: bold;">PUBLICADO POR EL FUNDADOR</span>
+                    <h3>Bitácora #1: Diseño geométrico del mapa de_refinery</h3>
+                    <p>Estamos utilizando herramientas avanzadas para ajustar los ángulos de visión en el punto de bomba A. Queremos balancear los tiempos de llegada tanto para el bando AT como para el bando T...</p>
+                </div>
+            </div>
+
+            <h2 style="border-bottom: 2px solid #de9b00; padding-bottom: 5px; margin-top: 40px;">📰 Blog de Noticias Oficiales (Solo Sebastián)</h2>
+            <div id="skinblogFeed">
+                <div class="feed-post">
+                    <span style="color: var(--accent-cyan); font-size: 12px; font-weight: bold;">NOTICIA OFICIAL</span>
+                    <h3>Actualización del Servidor y Nuevas Alianzas de Pago</h3>
+                    <p>Hemos integrado con éxito las pasarelas locales para el Pase VIP Express. Ahora los jugadores de LATAM pueden usar de manera ágil los sistemas automatizados para evitar colas.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- HERRAMIENTAS -->
+        <div id="herramientas" class="view-content">
+            <h2>Herramientas de Configuración Counter Strike</h2>
+            
+            <div class="tool-box">
+                <h3>🎛️ Generador de Binds Rápido</h3>
+                <label>Selecciona la Tecla:</label>
+                <select id="bind-key">
+                    <option value="f">F</option>
+                    <option value="q">Q</option>
+                    <option value="mouse4">MOUSE4</option>
+                    <option value="v">V</option>
+                </select>
+                <label>Acción / Comando:</label>
+                <select id="bind-action">
+                    <option value="use weapon_flashbang">Lanzar Flashbang</option>
+                    <option value="+jump; -attack; -jump">Jumpthrow (Granadas)</option>
+                    <option value="drop">Tirar Arma Activa</option>
+                </select>
+                <button class="btn" onclick="generateBind()">Generar Comando</button>
+                <div id="bind-result" style="margin-top: 15px; color: #a3cf06; font-family: monospace; font-size: 16px;"></div>
+            </div>
+
+            <div class="tool-box">
+                <h3>📊 Analizador de eDPI (Sensibilidad Efectiva)</h3>
+                <div style="display: flex; gap: 15px;">
+                    <div style="flex: 1;">
+                        <label>DPI de tu Mouse:</label>
+                        <input type="number" id="mouse-dpi" value="800">
+                    </div>
+                    <div style="flex: 1;">
+                        <label>Sensibilidad In-Game:</label>
+                        <input type="number" id="game-sens" value="1.5" step="0.1">
+                    </div>
+                </div>
+                <button class="btn" onclick="calculateEdpi()">Analizar Sensibilidad</button>
+                <div id="edpi-result" style="margin-top: 15px; font-weight: bold;"></div>
+            </div>
+        </div>
+
+        <!-- MANUALES -->
+        <div id="tacticas" class="view-content">
+            <h2>Manuales Tácticos y de Combate</h2>
+            <div id="manualesTacticosFeed">
+                <div class="tool-box">
+                    <h3 style="color: var(--accent-cyan);">Guía de Control de Mapa: de_myrmidon_refinery</h3>
+                    <p><strong>1. Posición de Humo Medio:</strong> Lanza la granada desde base T alineando la retícula con la antena del fondo para cegar por completo el nido del Sniper defensor.</p>
+                    <p><strong>2. Retoma de Bomba B:</strong> Es indispensable coordinar un flash elevado mientras los dos jugadores de apoyo entran en simultáneo por la rampa trasera.</p>
+                </div>
+                <div class="tool-box">
+                    <h3 style="color: var(--accent-cyan);">Guía de Enfrentamiento: Halo Canyon</h3>
+                    <p><strong>Control del Rifle de Precisión:</strong> El rifle aparece cada 2-3 minutos en la torre central. Domina las plataformas inferiores usando el propulsor para adelantarte al equipo enemigo.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- DICCIONARIO -->
+        <div id="diccionario" class="view-content">
+            <h2>Diccionario de Términos Gamer</h2>
+            
+            <h3>Counter Strike</h3>
+            <div class="dict-item"><span class="dict-term">Alta (Llamada de posición):</span> Se refiere a zonas elevadas del mapa o andamios (Ej: "Está en alta de A").</div>
+            <div class="dict-item"><span class="dict-term">Baja:</span> Sectores hundidos, túneles o fosas a nivel de suelo inferior.</div>
+            <div class="dict-item"><span class="dict-term">Medio:</span> El eje central del mapa que usualmente conecta ambos sitios de bomba y define el control del juego.</div>
+            <div class="dict-item"><span class="dict-term">eDPI:</span> Multiplicación del DPI físico del ratón por la sensibilidad dentro del juego para obtener el valor real comparable.</div>
+
+            <h3>Halo</h3>
+            <div class="dict-item"><span class="dict-term">Pre-fire:</span> Disparar a una esquina antes de ver al enemigo sabiendo de antemano su posición por el radar.</div>
+            <div class="dict-item"><span class="dict-term">Shield Pop:</span> Romper los escudos de energía del Spartan enemigo, indicando que está a un solo tiro limpio a la cabeza.</div>
+            <div class="dict-item"><span class="dict-term">Power Weapons:</span> Armas pesadas de reaparición cronometrada que controlan el flujo de la partida (Espada, Lanzacohetes, Sniper).</div>
+        </div>
+
+        <!-- PROPUESTAS -->
+        <div id="propuestas" class="view-content">
+            <section class="box">
+                <h3>Buzón Comercial (Propuestas a Sebastián)</h3>
+                <p>Envía tus ideas de diseño o alianzas directamente a mi correo corporativo.</p>
+
+                <form action="mailto:sramosebas2308@gmail.com" method="post" enctype="text/plain">
+                    <label for="pName">Nombre Completo:</label>
+                    <input type="text" id="pName" name="Nombre" required placeholder="Tu Nombre">
+
+                    <label for="pEmail">Tu Correo Electrónico:</label>
+                    <input type="email" id="pEmail" name="Correo_Contacto" required placeholder="nombre@correo.com">
+
+                    <label for="pMsg">Detalles de la propuesta:</label>
+                    <textarea id="pMsg" name="Mensaje" rows="4" required placeholder="Describe tu propuesta de mapa o negocio..."></textarea>
+
+                    <br><br>
+                    <button type="submit">Enviar Propuesta Directa</button>
+                </form>
+            </section>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://eggzhkawkagtktawqcam.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_iV7VzBtijDEv1NrC1WoPzA_4EL22M7j';
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        const registerForm = document.getElementById('registerForm');
+        const uBadge = document.getElementById('uBadge');
+        const uName = document.getElementById('uName');
+
+        const showAuthenticatedUser = (user) => {
+            const gamerTag = user?.user_metadata?.gamer_tag || user?.email || '';
+            uName.textContent = gamerTag;
+            uBadge.style.display = gamerTag ? 'inline' : 'none';
+        };
+
+        registerForm.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const user = document.getElementById('rUser').value.trim();
+            const email = document.getElementById('rEmail').value.trim();
+            const pass = document.getElementById('rPass').value;
+
+            if (!user || !email || !pass) {
+                alert('Completa todos los campos para registrarte.');
+                return;
+            }
+
+            const submitButton = registerForm.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Registrando...';
+
+            const { data, error } = await supabaseClient.auth.signUp({
+                email,
+                password: pass,
+                options: {
+                    data: {
+                        gamer_tag: user
+                    }
+                }
+            });
+
+            submitButton.disabled = false;
+            submitButton.textContent = 'Completar Registro';
+
+            if (error) {
+                alert(`No se pudo completar el registro: ${error.message}`);
+                return;
+            }
+
+            showAuthenticatedUser(data.user);
+            document.getElementById('regMod').style.display = 'none';
+            registerForm.reset();
+            alert(data.session
+                ? 'Registro completado correctamente.'
+                : 'Registro creado. Revisa tu correo para confirmar la cuenta.');
+        });
+
+        supabaseClient.auth.getSession().then(({ data: { session } }) => {
+            showAuthenticatedUser(session?.user);
+        });
+
+        supabaseClient.auth.onAuthStateChange((_event, session) => {
+            showAuthenticatedUser(session?.user);
+        });
+
+        function switchTab(tabId) {
+            const contents = document.querySelectorAll('.view-content');
+            contents.forEach(c => c.classList.remove('active'));
+
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+
+            const matchingTab = Array.from(tabs).find(tab => tab.getAttribute('onclick') && tab.getAttribute('onclick').includes(`'${tabId}'`));
+            if (matchingTab) {
+                matchingTab.classList.add('active');
+            }
+        }
+
+        function generateBind() {
+            const key = document.getElementById('bind-key').value;
+            const action = document.getElementById('bind-action').value;
+            document.getElementById('bind-result').innerText = `bind "${key}" "${action}"`;
+        }
+
+        function calculateEdpi() {
+            const dpi = parseFloat(document.getElementById('mouse-dpi').value);
+            const sens = parseFloat(document.getElementById('game-sens').value);
+            if(isNaN(dpi) || isNaN(sens)) {
+                document.getElementById('edpi-result').innerText = "Por favor introduce valores válidos.";
+                document.getElementById('edpi-result').style.color = "red";
+                return;
+            }
+            const edpi = dpi * sens;
+            let feedback = "";
+            
+            if(edpi < 600) feedback = " (Sensibilidad Baja - Excelente para precisión a larga distancia)";
+            else if(edpi <= 1200) feedback = " (Sensibilidad Media - El estándar balanceado de los profesionales)";
+            else feedback = " (Sensibilidad Alta - Giros rápidos pero requiere excelente control de micromovimientos)";
+
+            document.getElementById('edpi-result').innerText = `Tu eDPI es: ${edpi}${feedback}`;
+            document.getElementById('edpi-result').style.color = "#66c0f4";
+        }
+
+        const XP_STORAGE_KEY = 'mirmidonXP';
+        const RANK_STORAGE_KEY = 'mirmidonRango';
+        const INVENTORY_STORAGE_KEY = 'inventarioMirmidon';
+        const DAILY_SPINS_KEY = 'girosHoy';
+        const LAST_SPIN_DATE_KEY = 'fechaUltimoGiro';
+
+        const getRankForXp = (xp) => {
+            if (xp >= 500) return 'Spartan Tier-1';
+            if (xp >= 200) return 'Operador Táctico';
+            return 'Mirmidón Recluta';
+        };
+
+        const updatePrecisionStatus = () => {
+            const status = document.getElementById('precision-status');
+            const xp = Number(localStorage.getItem(XP_STORAGE_KEY)) || 0;
+            const rank = getRankForXp(xp);
+            let inventory = [];
+
+            try {
+                const storedInventory = JSON.parse(localStorage.getItem(INVENTORY_STORAGE_KEY));
+                inventory = Array.isArray(storedInventory) ? storedInventory : [];
+            } catch (error) {
+                inventory = [];
+            }
+
+            localStorage.setItem(XP_STORAGE_KEY, String(xp));
+            localStorage.setItem(RANK_STORAGE_KEY, rank);
+
+            if (status) {
+                const equippedItems = inventory.length ? inventory.join(', ') : 'Vacío';
+                status.textContent = `🎖️ RANGO: ${rank} | 📊 XP: ${xp} | 💼 INVENTARIO EQUIPADO: ${equippedItems}`;
+            }
+        };
+
+        const addExperience = (amount) => {
+            const currentXp = Number(localStorage.getItem(XP_STORAGE_KEY)) || 0;
+            localStorage.setItem(XP_STORAGE_KEY, String(currentXp + amount));
+            updatePrecisionStatus();
+        };
+
+        const getToday = () => new Date().toISOString().slice(0, 10);
+
+        const getInventory = () => {
+            try {
+                const storedInventory = JSON.parse(localStorage.getItem(INVENTORY_STORAGE_KEY));
+                return Array.isArray(storedInventory) ? storedInventory : [];
+            } catch (error) {
+                return [];
+            }
+        };
+
+        const updateDailySpinState = (spinButton, rewardResult, showLimitMessage = true) => {
+            const today = getToday();
+            const lastSpinDate = localStorage.getItem(LAST_SPIN_DATE_KEY);
+            let spinsToday = Number(localStorage.getItem(DAILY_SPINS_KEY)) || 0;
+
+            if (lastSpinDate !== today) {
+                spinsToday = 0;
+                localStorage.setItem(DAILY_SPINS_KEY, '0');
+                localStorage.setItem(LAST_SPIN_DATE_KEY, today);
+            }
+
+            if (spinsToday >= 2) {
+                spinButton.disabled = true;
+                spinButton.style.backgroundColor = '#626366';
+                spinButton.style.color = '#c7d5e0';
+                if (showLimitMessage) {
+                    rewardResult.textContent = '⚠️ Límite diario alcanzado. Regresa mañana al búnker por más drops';
+                }
+                return false;
+            }
+
+            spinButton.disabled = false;
+            spinButton.style.backgroundColor = '#a3cf06';
+            spinButton.style.color = '#101822';
+            return true;
+        };
+
+        const initializePrecisionTools = () => {
+            if (localStorage.getItem(XP_STORAGE_KEY) === null) {
+                localStorage.setItem(XP_STORAGE_KEY, '0');
+            }
+            if (localStorage.getItem(RANK_STORAGE_KEY) === null) {
+                localStorage.setItem(RANK_STORAGE_KEY, 'Mirmidón Recluta');
+            }
+            if (localStorage.getItem(INVENTORY_STORAGE_KEY) === null) {
+                localStorage.setItem(INVENTORY_STORAGE_KEY, '[]');
+            }
+            if (localStorage.getItem(DAILY_SPINS_KEY) === null) {
+                localStorage.setItem(DAILY_SPINS_KEY, '0');
+            }
+            if (localStorage.getItem(LAST_SPIN_DATE_KEY) === null) {
+                localStorage.setItem(LAST_SPIN_DATE_KEY, getToday());
+            }
+            updatePrecisionStatus();
+
+            const spinButton = document.getElementById('spin-reward');
+            const rewardResult = document.getElementById('reward-result');
+            const rewards = [
+                { name: '💎 PASE VIP EXPRESS (Servidor Futuro)', weight: 5 },
+                { name: '🥇 Medalla de Oro Mirmidón', weight: 20 },
+                { name: '🥈 Medalla de Plata Elite', weight: 30 },
+                { name: '📊 Multiplicador de XP x2', weight: 45 }
+            ];
+
+            if (spinButton && rewardResult) {
+                updateDailySpinState(spinButton, rewardResult);
+                spinButton.addEventListener('click', () => {
+                    if (!updateDailySpinState(spinButton, rewardResult)) {
+                        return;
+                    }
+
+                    const roll = Math.random() * 100;
+                    let threshold = 0;
+                    let reward = rewards[rewards.length - 1].name;
+
+                    for (const rewardOption of rewards) {
+                        threshold += rewardOption.weight;
+                        if (roll < threshold) {
+                            reward = rewardOption.name;
+                            break;
+                        }
+                    }
+
+                    const spinsToday = (Number(localStorage.getItem(DAILY_SPINS_KEY)) || 0) + 1;
+                    localStorage.setItem(DAILY_SPINS_KEY, String(spinsToday));
+                    localStorage.setItem(LAST_SPIN_DATE_KEY, getToday());
+                    rewardResult.textContent = `🎁 Premio obtenido: ${reward}`;
+
+                    if (reward.includes('Medalla') || reward.includes('PASE VIP')) {
+                        const inventory = getInventory();
+                        if (!inventory.includes(reward)) {
+                            inventory.push(reward);
+                            localStorage.setItem(INVENTORY_STORAGE_KEY, JSON.stringify(inventory));
+                        }
+                    }
+
+                    addExperience(25);
+                    updateDailySpinState(spinButton, rewardResult, false);
+                });
+            }
+
+            const gamertagInput = document.getElementById('gamertag-input');
+            const gamertagButton = document.getElementById('generate-gamertag');
+            const gamertagResult = document.getElementById('gamertag-result');
+
+            if (gamertagInput && gamertagButton && gamertagResult) {
+                gamertagButton.addEventListener('click', () => {
+                    const nick = gamertagInput.value.trim();
+                    gamertagResult.textContent = nick
+                        ? `⚡ 𝖬𝖸𝖱 | 𝖪𝗂𝗅𝗅𝖾𝗋_${nick} ☠`
+                        : 'Ingresa un nick para generar tu Tag Mirmidón.';
+                });
+            }
+        };
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializePrecisionTools, { once: true });
+        } else {
+            initializePrecisionTools();
+        }
+
+        const showNotificationBadge = (tabId) => {
+            const badge = document.querySelector(`[data-notification-target="${tabId}"] .notif-badge`);
+            if (badge) {
+                badge.classList.remove('hidden');
+            }
+        };
+
+        const hideNotificationBadge = (tabId) => {
+            const badge = document.querySelector(`[data-notification-target="${tabId}"] .notif-badge`);
+            if (badge) {
+                badge.classList.add('hidden');
+            }
+        };
+
+        document.querySelectorAll('[data-notification-target]').forEach((tab) => {
+            tab.addEventListener('click', () => {
+                hideNotificationBadge(tab.dataset.notificationTarget);
+            });
+        });
+
+        let articulosBlogs = [];
+        const BLOG_STORAGE_KEY = 'articulosBlogs';
+        let manualesTacticosCEO = [];
+        const MANUALS_STORAGE_KEY = 'manualesTacticosCEO';
+
+        const getSavedBlogArticles = () => {
+            try {
+                const storedArticles = JSON.parse(localStorage.getItem(BLOG_STORAGE_KEY));
+                return Array.isArray(storedArticles) ? storedArticles : [];
+            } catch (error) {
+                return [];
+            }
+        };
+
+        const createBlogArticle = (article) => {
+            const articleElement = document.createElement('article');
+            articleElement.className = 'feed-post ceo-blog-article';
+
+            const publisher = document.createElement('span');
+            publisher.style.color = 'var(--accent-cyan)';
+            publisher.style.fontSize = '12px';
+            publisher.style.fontWeight = 'bold';
+            publisher.textContent = article.type === 'development' ? 'NUEVA BITÁCORA DEL CEO' : 'NOTICIA OFICIAL DEL CEO';
+
+            const title = document.createElement('h3');
+            title.textContent = article.type === 'development' ? 'Nueva Bitácora' : 'Nueva Noticia';
+
+            const content = document.createElement('p');
+            content.textContent = article.text;
+
+            articleElement.appendChild(publisher);
+            articleElement.appendChild(title);
+            articleElement.appendChild(content);
+
+            if (article.imageDataUrl) {
+                const image = document.createElement('img');
+                image.src = article.imageDataUrl;
+                image.alt = article.type === 'development' ? 'Imagen de la bitácora' : 'Imagen de la noticia';
+                articleElement.appendChild(image);
+            }
+
+            return articleElement;
+        };
+
+        const renderBlogArticles = () => {
+            const developmentFeed = document.getElementById('devblogFeed');
+            const newsFeed = document.getElementById('skinblogFeed');
+
+            articulosBlogs.slice().reverse().forEach((article) => {
+                const targetFeed = article.type === 'development' ? developmentFeed : newsFeed;
+                if (targetFeed) {
+                    targetFeed.appendChild(createBlogArticle(article));
+                }
+            });
+        };
+
+        const getSavedManuals = () => {
+            try {
+                const storedManuals = JSON.parse(localStorage.getItem(MANUALS_STORAGE_KEY));
+                return Array.isArray(storedManuals) ? storedManuals : [];
+            } catch (error) {
+                return [];
+            }
+        };
+
+        const createTacticalManual = (manual) => {
+            const manualElement = document.createElement('article');
+            manualElement.className = 'tool-box ceo-manual-article';
+
+            const title = document.createElement('h3');
+            title.style.color = 'var(--accent-cyan)';
+            title.textContent = manual.title;
+
+            const content = document.createElement('p');
+            content.textContent = manual.content;
+
+            manualElement.appendChild(title);
+            manualElement.appendChild(content);
+
+            if (manual.imageDataUrl) {
+                const image = document.createElement('img');
+                image.src = manual.imageDataUrl;
+                image.alt = `Plano táctico: ${manual.title}`;
+                image.style.display = 'block';
+                image.style.maxWidth = '100%';
+                image.style.height = 'auto';
+                image.style.marginTop = '10px';
+                manualElement.appendChild(image);
+            }
+
+            return manualElement;
+        };
+
+        const renderTacticalManuals = () => {
+            const manualsFeed = document.getElementById('manualesTacticosFeed');
+            if (!manualsFeed) return;
+
+            manualesTacticosCEO.slice().reverse().forEach((manual) => {
+                manualsFeed.appendChild(createTacticalManual(manual));
+            });
+        };
+
+        const initializeBlogAdministration = () => {
+            articulosBlogs = getSavedBlogArticles();
+            manualesTacticosCEO = getSavedManuals();
+            renderBlogArticles();
+            renderTacticalManuals();
+
+            const adminPanel = document.createElement('section');
+            adminPanel.id = 'ceo-blog-admin';
+            adminPanel.className = 'tool-box';
+            adminPanel.style.display = 'none';
+            adminPanel.style.position = 'fixed';
+            adminPanel.style.zIndex = '1000';
+            adminPanel.style.top = '50%';
+            adminPanel.style.left = '50%';
+            adminPanel.style.transform = 'translate(-50%, -50%)';
+            adminPanel.style.width = 'min(560px, calc(100% - 40px))';
+            adminPanel.innerHTML = `
+                <h3>Administración CEO de Blogs</h3>
+                <textarea id="ceo-dev-text" rows="4" placeholder="Nueva Bitácora"></textarea>
+                <textarea id="ceo-news-text" rows="4" placeholder="Nueva Noticia"></textarea>
+                <input id="ceo-blog-image" type="file" accept="image/*">
+                <h3>Administración CEO de Manuales</h3>
+                <textarea id="ceo-manual-title" rows="2" placeholder="Título del Manual"></textarea>
+                <textarea id="ceo-manual-content" rows="4" placeholder="Contenido Táctico"></textarea>
+                <input id="ceo-manual-image" type="file" accept="image/*">
+                <div style="margin-top: 15px; display: flex; gap: 10px;">
+                    <button id="ceo-publish" class="btn" type="button">Publicar como CEO</button>
+                    <button id="ceo-publish-manual" class="btn" type="button">Publicar Manual como CEO</button>
+                    <button id="ceo-close" type="button">Cerrar</button>
+                </div>
+                <div id="ceo-admin-message" style="margin-top: 12px; color: var(--accent-cyan);"></div>
+            `;
+            document.body.appendChild(adminPanel);
+
+            const toggleAdminPanel = () => {
+                adminPanel.style.display = adminPanel.style.display === 'none' ? 'block' : 'none';
+            };
+
+            document.addEventListener('keydown', (event) => {
+                if (event.ctrlKey && event.shiftKey && event.key.toLowerCase() === 'a') {
+                    event.preventDefault();
+                    toggleAdminPanel();
+                }
+            });
+
+            document.getElementById('ceo-close').addEventListener('click', () => {
+                adminPanel.style.display = 'none';
+            });
+
+            document.getElementById('ceo-publish').addEventListener('click', () => {
+                const devText = document.getElementById('ceo-dev-text').value.trim();
+                const newsText = document.getElementById('ceo-news-text').value.trim();
+                const imageFile = document.getElementById('ceo-blog-image').files[0];
+                const message = document.getElementById('ceo-admin-message');
+
+                if (!devText && !newsText) {
+                    message.textContent = 'Escribe una bitácora o una noticia antes de publicar.';
+                    return;
+                }
+
+                const saveArticles = (imageDataUrl) => {
+                    if (devText) {
+                        articulosBlogs.push({ type: 'development', text: devText, imageDataUrl: imageDataUrl || '' });
+                    }
+                    if (newsText) {
+                        articulosBlogs.push({ type: 'news', text: newsText, imageDataUrl: imageDataUrl || '' });
+                    }
+
+                    localStorage.setItem(BLOG_STORAGE_KEY, JSON.stringify(articulosBlogs));
+                    document.querySelectorAll('.ceo-blog-article').forEach((element) => element.remove());
+                    renderBlogArticles();
+                    document.getElementById('ceo-dev-text').value = '';
+                    document.getElementById('ceo-news-text').value = '';
+                    document.getElementById('ceo-blog-image').value = '';
+                    message.textContent = 'Artículo publicado correctamente como CEO.';
+                    showNotificationBadge('blogs');
+                };
+
+                if (imageFile && imageFile.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => saveArticles(event.target.result);
+                    reader.readAsDataURL(imageFile);
+                } else {
+                    saveArticles('');
+                }
+            });
+
+            document.getElementById('ceo-publish-manual').addEventListener('click', () => {
+                const title = document.getElementById('ceo-manual-title').value.trim();
+                const content = document.getElementById('ceo-manual-content').value.trim();
+                const imageFile = document.getElementById('ceo-manual-image').files[0];
+                const message = document.getElementById('ceo-admin-message');
+
+                if (!title || !content) {
+                    message.textContent = 'Completa el título y el contenido táctico antes de publicar.';
+                    return;
+                }
+
+                const saveManual = (imageDataUrl) => {
+                    const newManual = { title, content, imageDataUrl: imageDataUrl || '' };
+                    manualesTacticosCEO.push(newManual);
+                    localStorage.setItem(MANUALS_STORAGE_KEY, JSON.stringify(manualesTacticosCEO));
+                    document.querySelectorAll('.ceo-manual-article').forEach((element) => element.remove());
+                    renderTacticalManuals();
+                    document.getElementById('ceo-manual-title').value = '';
+                    document.getElementById('ceo-manual-content').value = '';
+                    document.getElementById('ceo-manual-image').value = '';
+                    message.textContent = 'Manual publicado correctamente como CEO.';
+                    showNotificationBadge('tacticas');
+                };
+
+                if (imageFile && imageFile.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => saveManual(event.target.result);
+                    reader.readAsDataURL(imageFile);
+                } else {
+                    saveManual('');
+                }
+            });
+        };
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeBlogAdministration, { once: true });
+        } else {
+            initializeBlogAdministration();
+        }
+
+        const forumSection = document.getElementById('foro');
+        const FORUM_STORAGE_KEY = 'myrmidonForumPosts';
+
+        if (forumSection) {
+            const forumPosts = forumSection.querySelectorAll('.feed-post');
+            if (forumPosts.length > 1) {
+                forumPosts[1].remove();
+            }
+
+            const textarea = forumSection.querySelector('textarea');
+            const fileInput = forumSection.querySelector('input[type="file"]');
+            const publishButton = forumSection.querySelector('.btn');
+
+            const getActiveUser = () => uName.textContent.trim() || 'Guest';
+
+            const getSavedPosts = () => {
+                try {
+                    const storedPosts = JSON.parse(localStorage.getItem(FORUM_STORAGE_KEY));
+                    return Array.isArray(storedPosts) ? storedPosts : [];
+                } catch (error) {
+                    return [];
+                }
+            };
+
+            const savePosts = (posts) => {
+                localStorage.setItem(FORUM_STORAGE_KEY, JSON.stringify(posts));
+            };
+
+            const createFeedPost = (userName, message, imageUrl, timeLabel) => {
+                const newPost = document.createElement('div');
+                newPost.className = 'feed-post';
+
+                const header = document.createElement('div');
+                header.className = 'post-header';
+
+                const avatar = document.createElement('div');
+                avatar.className = 'user-avatar';
+                avatar.style.backgroundColor = '#66c0f4';
+
+                const headerInfo = document.createElement('div');
+                const strong = document.createElement('strong');
+                strong.textContent = userName || 'Guest';
+
+                const time = document.createElement('span');
+                time.style.color = 'var(--text-muted)';
+                time.style.fontSize = '12px';
+                time.textContent = timeLabel || 'Hace un momento';
+
+                headerInfo.appendChild(strong);
+                headerInfo.appendChild(document.createTextNode(' '));
+                headerInfo.appendChild(time);
+                header.appendChild(avatar);
+                header.appendChild(headerInfo);
+
+                const paragraph = document.createElement('p');
+                paragraph.textContent = message;
+
+                newPost.appendChild(header);
+                newPost.appendChild(paragraph);
+
+                if (imageUrl) {
+                    const imageWrapper = document.createElement('div');
+                    imageWrapper.style.backgroundColor = '#101822';
+                    imageWrapper.style.padding = '10px';
+                    imageWrapper.style.borderRadius = '4px';
+                    imageWrapper.style.marginTop = '10px';
+                    imageWrapper.style.overflow = 'hidden';
+
+                    const image = document.createElement('img');
+                    image.src = imageUrl;
+                    image.alt = 'Imagen publicada por el usuario';
+                    image.style.display = 'block';
+                    image.style.maxWidth = '100%';
+                    image.style.borderRadius = '4px';
+                    image.style.margin = '0 auto';
+                    image.style.height = 'auto';
+
+                    imageWrapper.appendChild(image);
+                    newPost.appendChild(imageWrapper);
+                }
+
+                return newPost;
+            };
+
+            const renderStoredPosts = () => {
+                const posts = getSavedPosts();
+                const firstFeed = forumSection.querySelector('.feed-post');
+
+                posts.forEach((post) => {
+                    const newPost = createFeedPost(post.user || 'Guest', post.text || '', post.imageDataUrl || '', post.time || 'Hace un momento');
+                    if (firstFeed) {
+                        forumSection.insertBefore(newPost, firstFeed);
+                    } else {
+                        forumSection.appendChild(newPost);
+                    }
+                });
+            };
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', renderStoredPosts, { once: true });
+            } else {
+                renderStoredPosts();
+            }
+
+            publishButton.addEventListener('click', function () {
+                const message = textarea.value.trim();
+                const file = fileInput && fileInput.files ? fileInput.files[0] : null;
+                const firstFeed = forumSection.querySelector('.feed-post');
+
+                if (!message && !file) {
+                    return;
+                }
+
+                const addPost = (textValue, imageDataUrl) => {
+                    const posts = getSavedPosts();
+                    const newPostObject = {
+                        user: getActiveUser(),
+                        text: textValue,
+                        imageDataUrl: imageDataUrl || '',
+                        time: 'Hace un momento'
+                    };
+
+                    posts.unshift(newPostObject);
+                    savePosts(posts);
+
+                    const insertedPost = createFeedPost(newPostObject.user, newPostObject.text, newPostObject.imageDataUrl, newPostObject.time);
+                    if (firstFeed) {
+                        forumSection.insertBefore(insertedPost, firstFeed);
+                    } else {
+                        forumSection.appendChild(insertedPost);
+                    }
+
+                    addExperience(50);
+                    showNotificationBadge('foro');
+
+                    textarea.value = '';
+                    if (fileInput) {
+                        fileInput.value = '';
+                    }
+                };
+
+                if (file) {
+                    if (file.type.startsWith('image/')) {
+                        const reader = new FileReader();
+                        reader.onload = function (event) {
+                            addPost(message || 'Nueva publicación', event.target.result);
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        addPost(message || 'Nueva publicación', '');
+                    }
+                } else {
+                    addPost(message, '');
+                }
+            });
+
+        }
+    </script>
+</body>
+</html>
+
