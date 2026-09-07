@@ -297,20 +297,38 @@ s<!DOCTYPE html>
             gap: 12px;
         }
 
-        .hub-social-link {
-            display: block;
-            padding: 13px 14px;
-            border: 1px solid var(--accent-cyan);
-            border-radius: 5px;
-            background: #172719;
-            color: var(--text-light);
-            font-weight: 700;
-            text-decoration: none;
+        .hub-directory {
+            display: grid;
+            gap: 8px;
         }
 
-        .hub-social-link:hover {
-            background: var(--accent-cyan);
-            color: #101b12;
+        .hub-directory-entry {
+            padding: 10px 12px;
+            border: 1px solid var(--accent-cyan);
+            border-radius: 4px;
+            background: #172719;
+            color: var(--text-light);
+            font-family: monospace;
+            font-size: 12px;
+            line-height: 1.55;
+            overflow-wrap: anywhere;
+        }
+
+        .hub-directory-entry strong {
+            display: block;
+            color: #ffffff;
+            font-size: 13px;
+            margin-bottom: 3px;
+        }
+
+        .hub-directory-entry a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            user-select: all;
+        }
+
+        .hub-directory-entry a:hover {
+            text-decoration: underline;
         }
 
         .hub-plain-link,
@@ -760,10 +778,29 @@ s<!DOCTYPE html>
                             </div>
                         </section>
                         <aside class="hub-social-panel" aria-labelledby="social-title">
-                            <h3 id="social-title">🤝 Redes de la comunidad</h3>
-                            <a class="hub-plain-link" href="https://discord.com/servers?query=halo%20latam" target="_blank" rel="noopener noreferrer">Discord Halo LATAM</a>
-                            <a class="hub-plain-link" href="https://discord.com/servers?query=cs2%20latino" target="_blank" rel="noopener noreferrer">Discord CS2 Latino</a>
-                            <a class="hub-plain-link" href="https://www.facebook.com/search/groups/?q=CS2%20LATAM" target="_blank" rel="noopener noreferrer">Comunidades LATAM</a>
+                            <h3 id="social-title">📡 Directorio de Conectividad CS2 LATAM</h3>
+                            <div class="hub-directory">
+                                <div class="hub-directory-entry">
+                                    <strong>🌐 LATAM GENERAL (Hub de Reclutamiento Latino)</strong>
+                                    Facebook: <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">https://facebook.com</a><br>
+                                    Discord: <a href="https://discord.com" target="_blank" rel="noopener noreferrer">https://discord.com</a>
+                                </div>
+                                <div class="hub-directory-entry">
+                                    <strong>🇻🇪 VENEZUELA (Comunidad MRO / VnzlaGo)</strong>
+                                    Facebook: <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">https://facebook.com</a><br>
+                                    Discord: <a href="https://discord.gg" target="_blank" rel="noopener noreferrer">https://discord.gg</a>
+                                </div>
+                                <div class="hub-directory-entry">
+                                    <strong>🇲🇽 MÉXICO (Central CS2MX)</strong>
+                                    Facebook: <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">https://facebook.com</a><br>
+                                    Discord: <a href="https://discord.gg" target="_blank" rel="noopener noreferrer">https://discord.gg</a>
+                                </div>
+                                <div class="hub-directory-entry">
+                                    <strong>🇦🇷 ARGENTINA (Búnker Argentina CS)</strong>
+                                    Facebook: <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">https://facebook.com</a><br>
+                                    Discord: <a href="https://discord.com" target="_blank" rel="noopener noreferrer">https://discord.com</a>
+                                </div>
+                            </div>
                         </aside>
                     </div>
                 </section>
