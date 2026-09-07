@@ -242,6 +242,24 @@ s<!DOCTYPE html>
             font-weight: 700;
         }
 
+        .user-count-card {
+            margin: 20px 0;
+            padding: 18px 20px;
+            background: linear-gradient(135deg, #172719, #243d26);
+            border: 1px solid var(--accent-cyan);
+            border-left: 5px solid var(--accent-cyan);
+            border-radius: 6px;
+            color: var(--text-light);
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+        }
+
+        #contador-usuarios {
+            color: #ffffff;
+            font-size: 1.2rem;
+        }
+
         @media (max-width: 700px) {
             .cloud-blog-card {
                 grid-template-columns: 1fr;
@@ -490,6 +508,10 @@ s<!DOCTYPE html>
         <div id="tienda" class="view-content active">
             <section id="hub-general" aria-labelledby="hub-title">
                 <h2 id="hub-title">HUB GENERAL</h2>
+
+                <div class="user-count-card" aria-live="polite">
+                    👥 OPERATIVOS REGISTRADOS EN LA NUBE: <span id="contador-usuarios">Cargando...</span>
+                </div>
 
                 <!-- BLOQUE 1 Y 2: CATALOGO + PASE -->
                 <div style="display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr); gap: 20px; align-items: start;">
@@ -746,6 +768,33 @@ s<!DOCTYPE html>
             uName.textContent = gamerTag;
             uBadge.style.display = gamerTag ? 'inline' : 'none';
         };
+
+        const obtenerTotalUsuarios = async () => {
+            const counterElement = document.getElementById('contador-usuarios');
+            if (!counterElement) {
+                return;
+            }
+
+            try {
+                const { data, error } = await supabaseClient.rpc('obtener_total_usuarios');
+
+                if (error) {
+                    throw error;
+                }
+
+                const totalUsuarios = Number(data);
+                if (!Number.isInteger(totalUsuarios) || totalUsuarios < 0) {
+                    throw new Error('La respuesta del contador no es válida.');
+                }
+
+                counterElement.textContent = totalUsuarios.toLocaleString('es-ES');
+            } catch (error) {
+                console.error('No se pudo obtener el total de usuarios:', error);
+                counterElement.textContent = 'No disponible';
+            }
+        };
+
+        window.addEventListener('DOMContentLoaded', obtenerTotalUsuarios, { once: true });
 
         registerForm.addEventListener('submit', async function (event) {
             event.preventDefault();
