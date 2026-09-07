@@ -457,21 +457,12 @@ s<!DOCTYPE html>
             font-weight: 800;
         }
 
-        .grenade-preview {
+        .grenade-command-panel {
             margin-top: 14px;
             padding: 18px;
             border-top: 1px solid var(--border-color);
             background: #172719;
             border-radius: 6px;
-        }
-
-        .grenade-preview img {
-            display: block;
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            border-radius: 4px;
-            margin-bottom: 10px;
         }
 
         .bind-command-row {
@@ -495,12 +486,6 @@ s<!DOCTYPE html>
 
             .grenade-list {
                 grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 700px) {
-            .grenade-preview img {
-                height: 220px;
             }
         }
 
@@ -915,8 +900,7 @@ s<!DOCTYPE html>
                         <option value="de_dust2">de_dust2</option>
                     </select>
                     <div id="grenade-list" class="grenade-list" role="group" aria-label="Granadas esenciales"></div>
-                    <div id="grenade-preview" class="grenade-preview" hidden>
-                        <img id="grenade-image" src="https://unsplash.com" alt="Vista previa de la granada seleccionada">
+                    <div id="grenade-command-panel" class="grenade-command-panel" hidden>
                         <strong id="grenade-name"></strong>
                         <div class="bind-command-row" style="margin-top: 10px;">
                             <input id="grenade-command" type="text" readonly aria-label="Comando de bind">
@@ -1229,11 +1213,11 @@ s<!DOCTYPE html>
 
         const renderStrategyGrenades = (mapName) => {
             const grenadeList = document.getElementById('grenade-list');
-            const grenadePreview = document.getElementById('grenade-preview');
-            if (!grenadeList || !grenadePreview) return;
+            const grenadeCommandPanel = document.getElementById('grenade-command-panel');
+            if (!grenadeList || !grenadeCommandPanel) return;
 
             grenadeList.replaceChildren();
-            grenadePreview.hidden = true;
+            grenadeCommandPanel.hidden = true;
 
             strategyCatalog[mapName].forEach((grenade) => {
                 const button = document.createElement('button');
@@ -1241,11 +1225,10 @@ s<!DOCTYPE html>
                 button.className = 'grenade-button';
                 button.textContent = grenade.name;
                 button.addEventListener('click', () => {
-                    document.getElementById('grenade-image').src = grenade.image;
                     document.getElementById('grenade-name').textContent = grenade.name;
                     document.getElementById('grenade-command').value = grenade.command;
                     document.getElementById('copy-command-status').textContent = '';
-                    grenadePreview.hidden = false;
+                    grenadeCommandPanel.hidden = false;
                 });
                 grenadeList.appendChild(button);
             });
