@@ -260,6 +260,121 @@ s<!DOCTYPE html>
             font-size: 1.2rem;
         }
 
+        .hub-block {
+            margin-top: 24px;
+            padding: 20px;
+            background: linear-gradient(145deg, rgba(16, 27, 18, 0.98), rgba(25, 43, 28, 0.92));
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .hub-block-title {
+            margin: 0 0 18px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--accent-cyan);
+            color: #ffffff;
+        }
+
+        .hub-connectivity-grid,
+        .hub-commercial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+            align-items: start;
+        }
+
+        .hub-server-panel,
+        .hub-social-panel,
+        .hub-pass-panel {
+            min-width: 0;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .hub-social-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .hub-social-link {
+            display: block;
+            padding: 13px 14px;
+            border: 1px solid var(--accent-cyan);
+            border-radius: 5px;
+            background: #172719;
+            color: var(--text-light);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .hub-social-link:hover {
+            background: var(--accent-cyan);
+            color: #101b12;
+        }
+
+        .hub-plain-link,
+        .hub-copy-value {
+            color: var(--accent-cyan);
+            font-family: monospace;
+            overflow-wrap: anywhere;
+        }
+
+        .hub-copy-value {
+            user-select: all;
+            cursor: text;
+        }
+
+        .hub-server-panel .tool-box,
+        .hub-pass-panel.qr-section {
+            margin-bottom: 0;
+        }
+
+        .hub-commercial-grid {
+            grid-template-columns: minmax(0, 1.45fr) minmax(220px, 0.8fr) minmax(220px, 0.8fr);
+        }
+
+        .hub-commercial-grid .card-img {
+            height: 130px;
+        }
+
+        .hub-loyalty-card {
+            min-width: 0;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 16px;
+            background: #101b12;
+            border: 1px solid var(--accent-cyan);
+            border-radius: 6px;
+        }
+
+        .hub-loyalty-card #gamertag-input {
+            margin-bottom: 10px;
+        }
+
+        .hub-loyalty-card #spin-reward,
+        .hub-loyalty-card #generate-gamertag {
+            width: 100%;
+            min-height: 42px;
+        }
+
+        @media (max-width: 800px) {
+            .hub-connectivity-grid,
+            .hub-commercial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 801px) and (max-width: 1050px) {
+            .hub-commercial-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .hub-commercial-grid > section:first-child {
+                grid-column: 1 / -1;
+            }
+        }
+
         .overlay-tools-grid {
             display: flex;
             flex-direction: column;
@@ -624,102 +739,79 @@ s<!DOCTYPE html>
                     👥 OPERATIVOS REGISTRADOS EN LA NUBE: <span id="contador-usuarios">Cargando...</span>
                 </div>
 
-                <!-- BLOQUE 1 Y 2: CATALOGO + PASE -->
-                <div style="display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr); gap: 20px; align-items: start;">
-                    <section aria-labelledby="catalog-title">
-                        <h3 id="catalog-title">Catálogo de Mapas Exclusivos</h3>
-                        <div class="grid-store">
-                            <article class="card">
-                                <div class="card-img" style="background: #253341;">[ IMAGEN MAPA HALO / AIRFORCE ]</div>
-                                <div class="card-body">
-                                    <span class="price-tag">$4.99</span>
-                                    <h4 class="card-title">Halo: Myrmidon Canyon</h4>
-                                    <p style="font-size: 14px; color: var(--text-light);">Un mapa optimizado para capturar la bandera en entornos abiertos y verticales estilo Spartan.</p>
-                                </div>
-                            </article>
-                            <article class="card">
-                                <div class="card-img" style="background: #2c251e;">[ IMAGEN MAPA CS ]</div>
-                                <div class="card-body">
-                                    <span class="price-tag">$3.50</span>
-                                    <h4 class="card-title">de_myrmidon_refinery</h4>
-                                    <p style="font-size: 14px; color: var(--text-light);">Estructura clásica de 3 carriles de Counter Strike orientada al juego competitivo y humos tácticos.</p>
-                                </div>
-                            </article>
-                        </div>
-                    </section>
-
-                    <section class="qr-section" aria-labelledby="pass-title" style="margin-bottom: 0;">
-                        <h3 id="pass-title">⚡ Adquiere el Pase Express de Servidores</h3>
-                        <p>Paga $2 USD usando <strong>Ubii</strong> o <strong>Zinli</strong> para saltarte la cola de espera de los servidores de juego de Myrmidon.</p>
-                        <div class="qr-placeholder">[ QR CODE EN LÍNEA ]</div>
-                        <p style="font-size: 12px; color: var(--text-muted);">Escanea con tu App, transfiere $2 e introduce tu ID de usuario en el servidor.</p>
-                    </section>
-                </div>
-
-                <!-- BLOQUE 3: NAVEGADOR DE SERVIDORES -->
-                <section aria-labelledby="server-browser-title" style="margin-top: 35px;">
-                    <h3 id="server-browser-title" style="border-bottom: 2px solid var(--primary-blue); padding-bottom: 8px;">🌐 CROSS-GAME SERVER BROWSER / IPS DE LA COMUNIDAD</h3>
-                    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: start;">
-                        <section class="tool-box" aria-labelledby="halo-servers-title" style="margin-bottom: 0;">
-                            <h4 id="halo-servers-title" style="color: var(--accent-cyan);">🇺🇸 HALO / SALAS TÁCTICAS</h4>
-                            <article style="border-bottom: 1px solid var(--border-color); padding: 12px 0;">
-                                <strong>🟢 [LATAM] Halo Hub Division - Custom Forge</strong>
-                                <p style="margin: 8px 0; font-family: monospace; color: var(--text-light);">Lobby ID: HALOLATAM-4412</p>
-                                <a href="https://discord.com/servers?query=halo%20latam" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); margin-right: 12px;">Discord Halo LATAM</a>
-                                <a href="https://www.facebook.com/search/pages/?q=Halo%20LATAM" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); margin-right: 12px;">Facebook Halo LATAM</a>
-                                <button class="btn" type="button" onclick="navigator.clipboard.writeText('HALOLATAM-4412'); alert('¡ID de sala copiado al portapapeles!');" style="padding: 7px 12px;">Copiar IP</button>
-                            </article>
-                            <article style="padding: 12px 0;">
-                                <strong>🟢 [MX/CS] Halo HCS Latino Arena - Competitivo</strong>
-                                <p style="margin: 8px 0; font-family: monospace; color: var(--text-light);">Lobby ID: HCSLATAM-9981</p>
-                                <a href="https://www.halowaypoint.com/es-es/esports" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); margin-right: 12px;">Halo HCS en español</a>
-                                <a href="https://www.facebook.com/search/pages/?q=Halo%20HCS%20Latino" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); margin-right: 12px;">Redes HCS Latino</a>
-                                <button class="btn" type="button" onclick="navigator.clipboard.writeText('HCSLATAM-9981'); alert('¡ID de sala copiado al portapapeles!');" style="padding: 7px 12px;">Copiar IP</button>
-                            </article>
+                <section class="hub-block" aria-labelledby="connectivity-title">
+                    <h3 id="connectivity-title" class="hub-block-title">ACCESO RÁPIDO Y CONECTIVIDAD · LATAM &amp; HALO</h3>
+                    <div class="hub-connectivity-grid">
+                        <section class="hub-server-panel" aria-labelledby="server-browser-title">
+                            <h3 id="server-browser-title">🌐 CROSS-GAME SERVER BROWSER / IPS DE LA COMUNIDAD</h3>
+                            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: start;">
+                                <section class="tool-box" aria-labelledby="halo-servers-title">
+                                    <h4 id="halo-servers-title" style="color: var(--accent-cyan);">🇺🇸 HALO / SALAS TÁCTICAS</h4>
+                                    <p><strong>🟢 [LATAM] Halo Hub Division - Custom Forge</strong></p>
+                                    <span class="hub-copy-value">Lobby ID: HALOLATAM-4412</span>
+                                    <a class="hub-plain-link" href="https://discord.com/servers?query=halo%20latam" target="_blank" rel="noopener noreferrer">Discord Halo LATAM</a>
+                                </section>
+                                <section class="tool-box" aria-labelledby="cs2-servers-title">
+                                    <h4 id="cs2-servers-title" style="color: var(--accent-cyan);">🌎 COUNTER-STRIKE 2 / LATAM</h4>
+                                    <p><strong>🟢 Comunidad competitiva LATAM</strong></p>
+                                    <span class="hub-copy-value">IP: 190.210.180.42:27015</span>
+                                    <a class="hub-plain-link" href="https://discord.com/servers?query=cs2%20latino" target="_blank" rel="noopener noreferrer">Discord CS2 Latino</a>
+                                </section>
+                            </div>
                         </section>
+                        <aside class="hub-social-panel" aria-labelledby="social-title">
+                            <h3 id="social-title">🤝 Redes de la comunidad</h3>
+                            <a class="hub-plain-link" href="https://discord.com/servers?query=halo%20latam" target="_blank" rel="noopener noreferrer">Discord Halo LATAM</a>
+                            <a class="hub-plain-link" href="https://discord.com/servers?query=cs2%20latino" target="_blank" rel="noopener noreferrer">Discord CS2 Latino</a>
+                            <a class="hub-plain-link" href="https://www.facebook.com/search/groups/?q=CS2%20LATAM" target="_blank" rel="noopener noreferrer">Comunidades LATAM</a>
+                        </aside>
+                    </div>
+                </section>
 
-                        <section class="tool-box" aria-labelledby="cs2-servers-title" style="margin-bottom: 0;">
-                            <h4 id="cs2-servers-title" style="color: var(--accent-cyan);">🌎 COUNTER-STRIKE 2 / COMUNIDAD LATAM</h4>
-                            <article style="border-bottom: 1px solid var(--border-color); padding: 12px 0;">
-                                <strong>🇦🇷 [AR] Comunidad Rioplatense Masters</strong>
-                                <p style="margin: 8px 0; font-family: monospace; color: var(--text-light);">190.210.180.42:27015</p>
-                                <a href="https://discord.com/servers?query=cs2%20argentina" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); margin-right: 12px;">Discord CS2 Argentina</a>
-                                <a href="https://www.facebook.com/search/groups/?q=Argentina%20CS" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); margin-right: 12px;">Facebook Argentina CS</a>
-                                <button class="btn" type="button" onclick="navigator.clipboard.writeText('connect 190.210.180.42:27015'); alert('¡IP copiada al portapapeles!');" style="padding: 7px 12px;">Copiar IP</button>
-                            </article>
-                            <article style="padding: 12px 0;">
-                                <strong>🇻🇪 [VE] Maracaibo Táctico Deathmatch</strong>
-                                <p style="margin: 8px 0; font-family: monospace; color: var(--text-light);">200.44.32.18:27015</p>
-                                <a href="https://discord.com/servers?query=cs2%20latino" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); margin-right: 12px;">Discord CS2 Latino</a>
-                                <a href="https://www.facebook.com/search/groups/?q=CS2%20Venezuela" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); margin-right: 12px;">Facebook CS2 Venezuela</a>
-                                <button class="btn" type="button" onclick="navigator.clipboard.writeText('connect 200.44.32.18:27015'); alert('¡IP copiada al portapapeles!');" style="padding: 7px 12px;">Copiar IP</button>
-                            </article>
+                <section class="hub-block" aria-labelledby="commercial-title">
+                    <h3 id="commercial-title" class="hub-block-title">CATÁLOGO COMERCIAL DE MYRMIDON · MAPAS &amp; MONETIZACIÓN</h3>
+                    <div class="hub-commercial-grid">
+                        <section aria-labelledby="catalog-title">
+                            <h3 id="catalog-title">Catálogo de Mapas Exclusivos</h3>
+                            <div class="grid-store">
+                                <article class="card">
+                                    <div class="card-img" style="background: #253341;">[ IMAGEN HD MAPA HALO / AIRFORCE ]</div>
+                                    <div class="card-body">
+                                        <span class="price-tag">$4.99</span>
+                                        <h4 class="card-title">Halo: Myrmidon Canyon</h4>
+                                        <p style="font-size: 14px; color: var(--text-light);">Un mapa optimizado para capturar la bandera en entornos abiertos y verticales estilo Spartan.</p>
+                                    </div>
+                                </article>
+                                <article class="card">
+                                    <div class="card-img" style="background: #2c251e;">[ IMAGEN HD MAPA CS ]</div>
+                                    <div class="card-body">
+                                        <span class="price-tag">$3.50</span>
+                                        <h4 class="card-title">de_myrmidon_refinery</h4>
+                                        <p style="font-size: 14px; color: var(--text-light);">Estructura clásica de 3 carriles de Counter Strike orientada al juego competitivo y humos tácticos.</p>
+                                    </div>
+                                </article>
+                            </div>
+                        </section>
+                        <section class="qr-section hub-pass-panel" aria-labelledby="pass-title">
+                            <h3 id="pass-title">⚡ Adquiere el Pase Express de Servidores</h3>
+                            <p>Paga $2 USD usando <strong>Ubii</strong> o <strong>Zinli</strong> para saltarte la cola de espera de los servidores de juego de Myrmidon.</p>
+                            <div class="qr-placeholder">[ QR CODE EN LÍNEA ]</div>
+                            <p style="font-size: 12px; color: var(--text-muted);">Escanea con tu App, transfiere $2 e introduce tu ID de usuario en el servidor.</p>
+                        </section>
+                        <section class="hub-loyalty-card" aria-labelledby="loyalty-title">
+                            <h3 id="loyalty-title">🎖️ Fidelización del Operativo</h3>
+                            <input type="text" id="gamertag-input" placeholder="Ingresa tu Nick común...">
+                            <button id="generate-gamertag" class="btn" type="button">Generar Tag Mirmidón</button>
+                            <div id="gamertag-result" style="margin-top: 12px; color: var(--accent-cyan); font-family: monospace;"></div>
+                            <button id="spin-reward" type="button" style="margin-top: 14px; background-color: #a3cf06; color: #101822; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;">🎰 Girar Caja de Recompensas</button>
+                            <div id="reward-result" style="margin-top: 12px; color: var(--text-light);">[ Gira para reclamar tu Drop diario ]</div>
                         </section>
                     </div>
                 </section>
 
-                <!-- CENTRAL TACTICA -->
-                <section id="herramientas-precision" class="tool-box" aria-labelledby="precision-title">
-                    <h2 id="precision-title">CENTRAL TÁCTICA / HERRAMIENTAS DE PRECISIÓN</h2>
-                    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: start;">
-                        <section aria-labelledby="ruleta-title">
-                            <h3 id="ruleta-title">🎰 La Ruleta Diaria</h3>
-                            <button id="spin-reward" type="button" style="background-color: #a3cf06; color: #101822; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;">🎰 Girar Caja de Recompensas</button>
-                            <div id="reward-result" style="margin-top: 12px; color: var(--text-light);">[ Gira para reclamar tu Drop diario ]</div>
-                        </section>
-
-                        <section aria-labelledby="gamertag-title">
-                            <h3 id="gamertag-title">⚡ Generador de Gamertags</h3>
-                            <input type="text" id="gamertag-input" placeholder="Ingresa tu Nick común...">
-                            <button id="generate-gamertag" class="btn" type="button">Generar Tag Mirmidón</button>
-                            <div id="gamertag-result" style="margin-top: 12px; color: var(--accent-cyan); font-family: monospace;"></div>
-                        </section>
-
-                        <section aria-labelledby="rank-title">
-                            <h3 id="rank-title">🎖️ Marcador de Rango y XP</h3>
-                            <div id="precision-status">🎖️ RANGO: [Cargando...] | 📊 XP: [Cargando...] | 💼 INVENTARIO EQUIPADO: [Cargando...]</div>
-                        </section>
-                    </div>
+                <section class="tool-box" aria-labelledby="rank-title" style="margin-top: 16px;">
+                    <h3 id="rank-title">🎖️ Marcador de Rango y XP</h3>
+                    <div id="precision-status">🎖️ RANGO: [Cargando...] | 📊 XP: [Cargando...] | 💼 INVENTARIO EQUIPADO: [Cargando...]</div>
                 </section>
             </section>
         </div>
