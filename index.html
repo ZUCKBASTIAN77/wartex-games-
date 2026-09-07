@@ -260,6 +260,118 @@ s<!DOCTYPE html>
             font-size: 1.2rem;
         }
 
+        .overlay-tools-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .overlay-tool {
+            min-width: 0;
+            background: #101b12;
+            border: 1px solid var(--accent-cyan);
+            border-radius: 6px;
+            padding: 14px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+        }
+
+        .overlay-tool h3 {
+            margin-top: 0;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .overlay-tool .btn {
+            width: 100%;
+            min-height: 44px;
+        }
+
+        .loss-bonus-grid,
+        .grenade-list {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 8px;
+        }
+
+        .loss-bonus-button,
+        .grenade-button,
+        .copy-command-button {
+            min-height: 44px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: #243d26;
+            color: var(--text-light);
+            cursor: pointer;
+            font-weight: 700;
+            padding: 8px;
+        }
+
+        .loss-bonus-button:hover,
+        .loss-bonus-button.active,
+        .grenade-button:hover,
+        .grenade-button.active,
+        .copy-command-button:hover {
+            background: var(--accent-cyan);
+            color: #101b12;
+        }
+
+        .economy-result {
+            margin-top: 14px;
+            color: #a3cf06;
+            font-size: 1.05rem;
+            font-weight: 800;
+        }
+
+        .grenade-preview {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .grenade-preview img {
+            display: block;
+            width: 100%;
+            max-height: 180px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .bind-command-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .bind-command-row input {
+            margin: 0;
+            min-width: 0;
+        }
+
+        .copy-command-button {
+            flex: 0 0 auto;
+        }
+
+        @media (max-width: 700px) {
+            .overlay-tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .loss-bonus-grid {
+                grid-template-columns: repeat(5, minmax(42px, 1fr));
+            }
+
+            .grenade-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 701px) and (max-width: 1100px) {
+            .overlay-tools-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
         @media (max-width: 700px) {
             .cloud-blog-card {
                 grid-template-columns: 1fr;
@@ -494,9 +606,9 @@ s<!DOCTYPE html>
 
     <div class="nav-tabs">
         <div class="tab active" onclick="switchTab('tienda')">Hub General</div>
+        <div class="tab" onclick="switchTab('herramientas')">Herramientas CS</div>
         <div class="tab" data-notification-target="foro" onclick="switchTab('foro')">Foro Comunidad <span class="notif-badge hidden" aria-label="Nueva notificación"></span></div>
         <div class="tab" data-notification-target="blogs" onclick="switchTab('blogs')">Blogs (Desarrollo y Noticias) <span class="notif-badge hidden" aria-label="Nueva notificación"></span></div>
-        <div class="tab" onclick="switchTab('herramientas')">Herramientas CS</div>
         <div class="tab" data-notification-target="tacticas" onclick="switchTab('tacticas')">Manuales Tácticos <span class="notif-badge hidden" aria-label="Nueva notificación"></span></div>
         <div class="tab" onclick="switchTab('diccionario')">Diccionario Gamer</div>
         <div class="tab" onclick="switchTab('propuestas')">Contacto / Propuestas</div>
@@ -613,6 +725,81 @@ s<!DOCTYPE html>
             </section>
         </div>
 
+        <!-- HERRAMIENTAS -->
+        <div id="herramientas" class="view-content">
+            <h2>Herramientas de Configuración Counter Strike</h2>
+
+            <div class="overlay-tools-grid">
+                <section class="overlay-tool" aria-labelledby="bind-tool-title">
+                    <h3 id="bind-tool-title">🎛️ Generador de Binds Rápido</h3>
+                    <label>Selecciona la Tecla:</label>
+                    <select id="bind-key">
+                        <option value="f">F</option>
+                        <option value="q">Q</option>
+                        <option value="mouse4">MOUSE4</option>
+                        <option value="v">V</option>
+                    </select>
+                    <label>Acción / Comando:</label>
+                    <select id="bind-action">
+                        <option value="use weapon_flashbang">Lanzar Flashbang</option>
+                        <option value="+jump; -attack; -jump">Jumpthrow (Granadas)</option>
+                        <option value="drop">Tirar Arma Activa</option>
+                    </select>
+                    <button class="btn" onclick="generateBind()">Generar Comando</button>
+                    <div id="bind-result" style="margin-top: 15px; color: #a3cf06; font-family: monospace; font-size: 16px;"></div>
+                </section>
+
+                <section class="overlay-tool" aria-labelledby="edpi-tool-title">
+                    <h3 id="edpi-tool-title">📊 Analizador de eDPI (Sensibilidad Efectiva)</h3>
+                    <div style="display: flex; gap: 15px;">
+                        <div style="flex: 1;">
+                            <label>DPI de tu Mouse:</label>
+                            <input type="number" id="mouse-dpi" value="800">
+                        </div>
+                        <div style="flex: 1;">
+                            <label>Sensibilidad In-Game:</label>
+                            <input type="number" id="game-sens" value="1.5" step="0.1">
+                        </div>
+                    </div>
+                    <button class="btn" onclick="calculateEdpi()">Analizar Sensibilidad</button>
+                    <div id="edpi-result" style="margin-top: 15px; font-weight: bold;"></div>
+                </section>
+
+                <section class="overlay-tool" aria-labelledby="economy-tool-title">
+                    <h3 id="economy-tool-title">💰 Gestor de Economía de Ronda</h3>
+                    <p>Marca las rondas perdidas consecutivas para calcular el dinero garantizado.</p>
+                    <div class="loss-bonus-grid" role="group" aria-label="Bono de derrota">
+                        <button class="loss-bonus-button" type="button" data-losses="0">0</button>
+                        <button class="loss-bonus-button" type="button" data-losses="1">1</button>
+                        <button class="loss-bonus-button" type="button" data-losses="2">2</button>
+                        <button class="loss-bonus-button" type="button" data-losses="3">3</button>
+                        <button class="loss-bonus-button" type="button" data-losses="4">4+</button>
+                    </div>
+                    <div id="economy-result" class="economy-result" aria-live="polite">Selecciona el bono actual.</div>
+                </section>
+
+                <section class="overlay-tool" aria-labelledby="strategy-tool-title">
+                    <h3 id="strategy-tool-title">🧠 Almacén de Estrategias por Mapa</h3>
+                    <label for="strategy-map">Mapa competitivo:</label>
+                    <select id="strategy-map">
+                        <option value="de_mirage">de_mirage</option>
+                        <option value="de_inferno">de_inferno</option>
+                        <option value="de_dust2">de_dust2</option>
+                    </select>
+                    <div id="grenade-list" class="grenade-list" role="group" aria-label="Granadas esenciales"></div>
+                    <div id="grenade-preview" class="grenade-preview" hidden>
+                        <img id="grenade-image" src="" alt="Vista previa de la granada seleccionada">
+                        <strong id="grenade-name"></strong>
+                        <div class="bind-command-row" style="margin-top: 10px;">
+                            <input id="grenade-command" type="text" readonly aria-label="Comando de bind">
+                            <button id="copy-command-button" class="copy-command-button" type="button">📋 Copiar comando</button>
+                        </div>
+                        <div id="copy-command-status" style="margin-top: 8px; color: var(--accent-cyan);" aria-live="polite"></div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
         <!-- FORO -->
         <div id="foro" class="view-content">
             <h2>Foro de la Comunidad (Estilo Red Social)</h2>
@@ -648,46 +835,6 @@ s<!DOCTYPE html>
             <h2 style="border-bottom: 2px solid #de9b00; padding-bottom: 5px; margin-top: 40px;">📰 Blog de Noticias Oficiales (Solo Sebastián)</h2>
             <div id="skinblogFeed">
                 <p class="blog-loading-state">Cargando noticias desde la nube...</p>
-            </div>
-        </div>
-
-        <!-- HERRAMIENTAS -->
-        <div id="herramientas" class="view-content">
-            <h2>Herramientas de Configuración Counter Strike</h2>
-            
-            <div class="tool-box">
-                <h3>🎛️ Generador de Binds Rápido</h3>
-                <label>Selecciona la Tecla:</label>
-                <select id="bind-key">
-                    <option value="f">F</option>
-                    <option value="q">Q</option>
-                    <option value="mouse4">MOUSE4</option>
-                    <option value="v">V</option>
-                </select>
-                <label>Acción / Comando:</label>
-                <select id="bind-action">
-                    <option value="use weapon_flashbang">Lanzar Flashbang</option>
-                    <option value="+jump; -attack; -jump">Jumpthrow (Granadas)</option>
-                    <option value="drop">Tirar Arma Activa</option>
-                </select>
-                <button class="btn" onclick="generateBind()">Generar Comando</button>
-                <div id="bind-result" style="margin-top: 15px; color: #a3cf06; font-family: monospace; font-size: 16px;"></div>
-            </div>
-
-            <div class="tool-box">
-                <h3>📊 Analizador de eDPI (Sensibilidad Efectiva)</h3>
-                <div style="display: flex; gap: 15px;">
-                    <div style="flex: 1;">
-                        <label>DPI de tu Mouse:</label>
-                        <input type="number" id="mouse-dpi" value="800">
-                    </div>
-                    <div style="flex: 1;">
-                        <label>Sensibilidad In-Game:</label>
-                        <input type="number" id="game-sens" value="1.5" step="0.1">
-                    </div>
-                </div>
-                <button class="btn" onclick="calculateEdpi()">Analizar Sensibilidad</button>
-                <div id="edpi-result" style="margin-top: 15px; font-weight: bold;"></div>
             </div>
         </div>
 
@@ -932,6 +1079,79 @@ s<!DOCTYPE html>
             document.getElementById('edpi-result').innerText = `Tu eDPI es: ${edpi}${feedback}`;
             document.getElementById('edpi-result').style.color = "#66c0f4";
         }
+
+        const lossBonusValues = [1400, 1900, 2400, 2900, 3400];
+        const strategyCatalog = {
+            de_mirage: [
+                { name: 'Humo Ventana desde Base T', command: 'bind "mouse5" "use weapon_smokegrenade"', image: 'https://placeholder.com/640x360?text=Mirage+Ventana' },
+                { name: 'Humo Conector', command: 'bind "x" "use weapon_smokegrenade"', image: 'https://placeholder.com/640x360?text=Mirage+Conector' },
+                { name: 'Flash para Sitio de A', command: 'bind "c" "use weapon_flashbang"', image: 'https://placeholder.com/640x360?text=Mirage+Flash+A' }
+            ],
+            de_inferno: [
+                { name: 'Humo CT desde Banana', command: 'bind "mouse5" "use weapon_smokegrenade"', image: 'https://placeholder.com/640x360?text=Inferno+CT' },
+                { name: 'Humo Coffins', command: 'bind "x" "use weapon_smokegrenade"', image: 'https://placeholder.com/640x360?text=Inferno+Coffins' },
+                { name: 'Flash para Entrada B', command: 'bind "c" "use weapon_flashbang"', image: 'https://placeholder.com/640x360?text=Inferno+Flash+B' }
+            ],
+            de_dust2: [
+                { name: 'Humo Xbox desde Medio', command: 'bind "mouse5" "use weapon_smokegrenade"', image: 'https://placeholder.com/640x360?text=Dust2+Xbox' },
+                { name: 'Humo CT desde Túnel', command: 'bind "x" "use weapon_smokegrenade"', image: 'https://placeholder.com/640x360?text=Dust2+CT' },
+                { name: 'Flash para Entrada B', command: 'bind "c" "use weapon_flashbang"', image: 'https://placeholder.com/640x360?text=Dust2+Flash+B' }
+            ]
+        };
+
+        const renderStrategyGrenades = (mapName) => {
+            const grenadeList = document.getElementById('grenade-list');
+            const grenadePreview = document.getElementById('grenade-preview');
+            if (!grenadeList || !grenadePreview) return;
+
+            grenadeList.replaceChildren();
+            grenadePreview.hidden = true;
+
+            strategyCatalog[mapName].forEach((grenade) => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'grenade-button';
+                button.textContent = grenade.name;
+                button.addEventListener('click', () => {
+                    document.getElementById('grenade-image').src = grenade.image;
+                    document.getElementById('grenade-name').textContent = grenade.name;
+                    document.getElementById('grenade-command').value = grenade.command;
+                    document.getElementById('copy-command-status').textContent = '';
+                    grenadePreview.hidden = false;
+                });
+                grenadeList.appendChild(button);
+            });
+        };
+
+        document.querySelectorAll('.loss-bonus-button').forEach((button) => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.loss-bonus-button').forEach((item) => item.classList.remove('active'));
+                button.classList.add('active');
+                const losses = Number(button.dataset.losses);
+                const money = lossBonusValues[Math.min(losses, 4)];
+                const advice = losses < 2 ? 'Ronda de Ahorro (Eco)' : losses >= 3 ? 'Compra Completa (Full Buy)' : 'Compra ligera / Fuerza';
+                document.getElementById('economy-result').textContent = `Siguiente ronda: $${money.toLocaleString('en-US')} garantizados | ${advice}`;
+            });
+        });
+
+        const strategyMap = document.getElementById('strategy-map');
+        if (strategyMap) {
+            strategyMap.addEventListener('change', () => renderStrategyGrenades(strategyMap.value));
+            renderStrategyGrenades(strategyMap.value);
+        }
+
+        document.getElementById('copy-command-button')?.addEventListener('click', async () => {
+            const commandInput = document.getElementById('grenade-command');
+            const status = document.getElementById('copy-command-status');
+            try {
+                await navigator.clipboard.writeText(commandInput.value);
+                status.textContent = 'Comando copiado.';
+            } catch (error) {
+                commandInput.select();
+                document.execCommand('copy');
+                status.textContent = 'Comando copiado.';
+            }
+        });
 
         const XP_STORAGE_KEY = 'mirmidonXP';
         const RANK_STORAGE_KEY = 'mirmidonRango';
