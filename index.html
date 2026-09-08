@@ -2729,9 +2729,25 @@ s<!DOCTYPE html>
         };
 
         const loadProfileAvatar = async () => {
-            const { data: { user }, error } = await supabaseClient.auth.getUser();
-            if (!error) {
-                setProfileAvatar(user?.user_metadata?.avatar_url);
+            try {
+                const { data: { user }, error: userError } = await supabaseClient.auth.getUser();
+                if (userError || !user) {
+                    return;
+                }
+
+                const { data: profile, error: profileError } = await supabaseClient
+                    .from('perfiles')
+                    .select('avatar_url')
+                    .eq('id', user.id)
+                    .maybeSingle();
+
+                if (profileError) {
+                    throw profileError;
+                }
+
+                setProfileAvatar(profile?.avatar_url);
+            } catch (error) {
+                console.error('No se pudo cargar el avatar del perfil:', error);
             }
         };
 
@@ -2763,12 +2779,15 @@ s<!DOCTYPE html>
                     .from('archivos_foro')
                     .getPublicUrl(avatarPath);
                 const avatarUrl = publicUrlData.publicUrl;
-                const { error: updateError } = await supabaseClient.auth.updateUser({
-                    data: { avatar_url: avatarUrl }
-                });
+                const { error: profileError } = await supabaseClient
+                    .from('perfiles')
+                    .upsert({
+                        id: user.id,
+                        avatar_url: avatarUrl
+                    }, { onConflict: 'id' });
 
-                if (updateError) {
-                    throw updateError;
+                if (profileError) {
+                    throw profileError;
                 }
 
                 setProfileAvatar(avatarUrl);
