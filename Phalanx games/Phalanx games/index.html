@@ -1,0 +1,3732 @@
+s<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KKC4M4ML');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strahub.net</title>
+    <style>
+        :root {
+            --bg-dark: #1a2a1d;
+            --bg-card: #101b12;
+            --primary-blue: #4d7a52;
+            --accent-cyan: #89b58b;
+            --text-light: #dfeadf;
+            --text-muted: #8ea28c;
+            --border-color: #2f4a33;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--bg-card);
+            border-bottom: 2px solid var(--border-color);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            background-color: #0d120d;
+            border: 3px solid var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* SVG del casco espartano simplificado */
+        .helmet-svg {
+            width: 35px;
+            height: 35px;
+            fill: var(--accent-cyan);
+        }
+
+        .brand-title {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .founder-box {
+            background: linear-gradient(135deg, rgba(77,122,82,0.2) 0%, rgba(16,27,18,0.8) 100%);
+            border-left: 4px solid var(--primary-blue);
+            padding: 15px;
+            margin: 20px;
+            border-radius: 4px;
+        }
+
+        .founder-name {
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 0 0 190px;
+            max-width: 250px;
+            padding: 12px 0;
+            background-color: #101822;
+            border-right: 1px solid var(--accent-cyan);
+            border-radius: 0;
+            box-sizing: border-box;
+            margin: 0;
+            align-self: stretch;
+        }
+
+        .tab {
+            background-color: transparent;
+            padding: 13px 18px;
+            border-radius: 0;
+            cursor: pointer;
+            color: var(--text-light);
+            font-weight: bold;
+            border: 0;
+            border-bottom: 1px solid var(--border-color);
+            white-space: normal;
+        }
+
+        .nav-links a,
+        .tab {
+            position: relative;
+        }
+
+        .notif-badge {
+            position: absolute;
+            top: 6px;
+            right: 7px;
+            width: 8px;
+            height: 8px;
+            background-color: #66c0f4;
+            border-radius: 50%;
+            box-shadow: 0 0 6px #66c0f4;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .tab.active {
+            background-color: var(--bg-dark);
+            border-bottom: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            box-shadow: inset 3px 0 0 var(--accent-cyan);
+        }
+
+        .founder-box {
+            display: none;
+        }
+
+        .container {
+            flex: 1 1 auto;
+            min-width: 0;
+            padding: 28px 40px;
+            max-width: none;
+            margin: 0;
+            min-height: 620px;
+        }
+
+        .main-layout {
+            display: flex;
+            align-items: stretch;
+            width: 100%;
+            min-height: calc(100vh - 170px);
+            background-color: #0d160e;
+        }
+
+        .hub-welcome-panel {
+            background: #101b12;
+            border: 1px solid var(--accent-cyan);
+            border-left: 4px solid var(--accent-cyan);
+            border-radius: 6px;
+            padding: 30px;
+            margin: 20px 0;
+            line-height: 1.8;
+            font-size: 1.08rem;
+            max-width: 900px;
+        }
+
+        .hub-welcome-panel h3 {
+            margin-top: 0;
+            color: var(--accent-cyan);
+        }
+
+        .hub-founder-signature {
+            display: block;
+            margin-bottom: 12px;
+            color: var(--accent-cyan);
+            font-size: 1.05rem;
+        }
+
+        .hub-mode-hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 760px) {
+            .main-layout {
+                display: block;
+            }
+
+            .nav-tabs {
+                width: auto;
+                margin: 0 20px 10px;
+                padding: 8px;
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                border-right: 0;
+                border-bottom: 1px solid var(--accent-cyan);
+            }
+
+            .container {
+                margin: 0;
+            }
+        }
+
+        .view-content {
+            display: none;
+        }
+
+        .view-content.active {
+            display: block;
+        }
+
+        .grid-store {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 160px;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
+            color: #888;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            margin: 0 0 10px 0;
+            color: #fff;
+        }
+
+        .price-tag {
+            background-color: #000;
+            color: #a3cf06;
+            padding: 5px 10px;
+            font-weight: bold;
+            float: right;
+            border-radius: 2px;
+        }
+
+        /* Red Social / Foro */
+        .feed-post {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .cloud-blog-card {
+            display: grid;
+            grid-template-columns: minmax(180px, 0.8fr) minmax(0, 1.6fr);
+            gap: 20px;
+            align-items: start;
+            background: linear-gradient(145deg, rgba(16, 27, 18, 0.98), rgba(25, 43, 28, 0.92));
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 18px;
+        }
+
+        .cloud-blog-card img {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            border-radius: 6px;
+            background-color: #101822;
+        }
+
+        .cloud-blog-card h3 {
+            margin: 0 0 10px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .cloud-blog-card p {
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .cloud-blog-author {
+            display: block;
+            margin-top: 16px;
+            color: var(--accent-cyan);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .user-count-card {
+            margin: 20px 0;
+            padding: 18px 20px;
+            background: linear-gradient(135deg, #172719, #243d26);
+            border: 1px solid var(--accent-cyan);
+            border-left: 5px solid var(--accent-cyan);
+            border-radius: 6px;
+            color: var(--text-light);
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+        }
+
+        #contador-usuarios {
+            color: #ffffff;
+            font-size: 1.2rem;
+        }
+
+        .hub-block {
+            margin-top: 24px;
+            padding: 20px;
+            background: linear-gradient(145deg, rgba(16, 27, 18, 0.98), rgba(25, 43, 28, 0.92));
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .hub-block-title {
+            margin: 0 0 18px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--accent-cyan);
+            color: #ffffff;
+        }
+
+        .hub-connectivity-grid,
+        .hub-commercial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+            align-items: start;
+        }
+
+        .hub-server-panel,
+        .hub-social-panel,
+        .hub-pass-panel {
+            min-width: 0;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .hub-social-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .hub-directory {
+            display: grid;
+            gap: 8px;
+        }
+
+        .hub-directory-entry {
+            padding: 10px 12px;
+            border: 1px solid var(--accent-cyan);
+            border-radius: 4px;
+            background: #172719;
+            color: var(--text-light);
+            font-family: monospace;
+            font-size: 12px;
+            line-height: 1.55;
+            overflow-wrap: anywhere;
+        }
+
+        .hub-directory-entry strong {
+            display: block;
+            color: #ffffff;
+            font-size: 13px;
+            margin-bottom: 3px;
+        }
+
+        .hub-directory-entry a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            user-select: all;
+        }
+
+        .hub-directory-entry a:hover {
+            text-decoration: underline;
+        }
+
+        .hub-plain-link,
+        .hub-copy-value {
+            color: var(--accent-cyan);
+            font-family: monospace;
+            overflow-wrap: anywhere;
+        }
+
+        .hub-copy-value {
+            user-select: all;
+            cursor: text;
+        }
+
+        .hub-server-panel .tool-box,
+        .hub-pass-panel.qr-section {
+            margin-bottom: 0;
+        }
+
+        .hub-commercial-grid {
+            grid-template-columns: minmax(0, 1.45fr) minmax(220px, 0.8fr) minmax(220px, 0.8fr);
+        }
+
+        .hub-commercial-grid .card-img {
+            height: 130px;
+        }
+
+        .hub-loyalty-card {
+            min-width: 0;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 16px;
+            background: #101b12;
+            border: 1px solid var(--accent-cyan);
+            border-radius: 6px;
+        }
+
+        .hub-loyalty-card #gamertag-input {
+            margin-bottom: 10px;
+        }
+
+        .hub-loyalty-card #spin-reward,
+        .hub-loyalty-card #generate-gamertag {
+            width: 100%;
+            min-height: 42px;
+        }
+
+        @media (max-width: 800px) {
+            .hub-connectivity-grid,
+            .hub-commercial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 801px) and (max-width: 1050px) {
+            .hub-commercial-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .hub-commercial-grid > section:first-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        .overlay-tools-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .overlay-tool {
+            width: 100%;
+            box-sizing: border-box;
+            background: #101b12;
+            border: 1px solid var(--accent-cyan);
+            border-radius: 6px;
+            padding: 14px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+        }
+
+        .overlay-tool h3 {
+            margin-top: 0;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .overlay-tool .btn {
+            width: 100%;
+            min-height: 44px;
+        }
+
+        .crosshair-tool {
+            grid-column: 1 / -1;
+        }
+
+        .crosshair-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 180px;
+            gap: 16px;
+            align-items: stretch;
+        }
+
+        .crosshair-player-list {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 8px;
+        }
+
+        .crosshair-player-button {
+            min-height: 42px;
+            border: 1px solid #1e40af;
+            border-radius: 3px;
+            background: #1e293b;
+            color: #f8fafc;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .crosshair-player-button:hover,
+        .crosshair-player-button.active {
+            background: #38bdf8;
+            color: #0a0f1d;
+        }
+
+        .crosshair-preview {
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #0a0f1d;
+            border: 1px solid #00b4d8;
+            border-radius: 3px;
+        }
+
+        .crosshair-preview::before,
+        .crosshair-preview::after {
+            content: '';
+            position: absolute;
+            background: #38bdf8;
+        }
+
+        .crosshair-preview {
+            position: relative;
+        }
+
+        .crosshair-preview::before {
+            width: 46px;
+            height: 2px;
+        }
+
+        .crosshair-preview::after {
+            width: 2px;
+            height: 46px;
+        }
+
+        .crosshair-code-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .crosshair-code-row input {
+            flex: 1;
+            min-width: 0;
+            margin: 0;
+            font-family: monospace;
+        }
+
+        .crosshair-copy-button {
+            width: 100%;
+            min-height: 42px;
+            margin-top: 10px;
+            border: 1px solid #00b4d8;
+            border-radius: 3px;
+            background: #1e40af;
+            color: #f8fafc;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .crosshair-copy-button:hover {
+            background: #38bdf8;
+            color: #0a0f1d;
+        }
+
+        .crosshair-copy-status {
+            min-height: 18px;
+            margin-top: 8px;
+            color: #7dd3fc;
+            font-size: 12px;
+        }
+
+        @media (max-width: 760px) {
+            .crosshair-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .crosshair-player-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        .loss-bonus-grid,
+        .grenade-list {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 8px;
+        }
+
+        .loss-bonus-button,
+        .grenade-button,
+        .copy-command-button {
+            min-height: 44px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: #243d26;
+            color: var(--text-light);
+            cursor: pointer;
+            font-weight: 700;
+            padding: 8px;
+        }
+
+        .loss-bonus-button:hover,
+        .loss-bonus-button.active,
+        .grenade-button:hover,
+        .grenade-button.active,
+        .copy-command-button:hover {
+            background: var(--accent-cyan);
+            color: #101b12;
+        }
+
+        .economy-result {
+            margin-top: 14px;
+            color: #a3cf06;
+            font-size: 1.05rem;
+            font-weight: 800;
+        }
+
+        .grenade-command-panel {
+            margin-top: 14px;
+            padding: 18px;
+            border-top: 1px solid var(--border-color);
+            background: #172719;
+            border-radius: 6px;
+        }
+
+        .bind-command-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .bind-command-row input {
+            margin: 0;
+            min-width: 0;
+        }
+
+        .copy-command-button {
+            flex: 0 0 auto;
+        }
+
+        @media (max-width: 700px) {
+            .loss-bonus-grid {
+                grid-template-columns: repeat(5, minmax(42px, 1fr));
+            }
+
+            .grenade-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .cloud-blog-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .feed-post img {
+            max-height: 400px;
+            width: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            background-color: #101822;
+            border-radius: 6px !important;
+            margin-top: 12px !important;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+        }
+
+        .post-input {
+            width: 100%;
+            background-color: #101822;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            resize: none;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        /* Herramientas CS */
+        .tool-box {
+            background-color: var(--bg-card);
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        input[type="number"], input[type="text"], select, textarea {
+            background-color: #101822;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 8px;
+            border-radius: 4px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #005cb8;
+        }
+
+        /* QR Modal ficticio o sección */
+        .qr-section {
+            background-color: #111923;
+            border: 2px dashed var(--accent-cyan);
+            padding: 20px;
+            text-align: center;
+            border-radius: 6px;
+            margin-bottom: 25px;
+        }
+
+        .qr-placeholder {
+            width: 150px;
+            height: 150px;
+            background-color: white;
+            margin: 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: bold;
+        }
+
+        /* Diccionario */
+        .dict-item {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #203042;
+        }
+        .dict-term {
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        .auth-zone {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .auth-zone button,
+        .modal-content button,
+        .box button {
+            background: var(--primary-blue);
+            color: #fff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .auth-zone button:hover,
+        .modal-content button:hover,
+        .box button:hover {
+            background: #005cb8;
+        }
+
+        #regMod {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 8px;
+            width: min(90%, 420px);
+        }
+
+        .box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 25px;
+        }
+
+        .box form {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .box label,
+        .modal-content label {
+            color: var(--text-light);
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .modal-content input,
+        .box input,
+        .box textarea,
+        .modal-content textarea {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Classic social layout: visual-only theme layer. */
+        :root {
+            --bg-dark: #e9ebee;
+            --bg-card: #ffffff;
+            --primary-blue: #3b5998;
+            --accent-cyan: #294f91;
+            --text-light: #1c1e21;
+            --text-muted: #606770;
+            --border-color: #d3d6db;
+        }
+
+        body {
+            background: #e9ebee;
+            color: #1c1e21;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header {
+            min-height: 42px;
+            padding: 0 14px;
+            background: #3b5998;
+            border-bottom: 1px solid #29487d;
+            box-sizing: border-box;
+        }
+
+        .logo-container {
+            gap: 8px;
+        }
+
+        .logo-circle {
+            width: 25px;
+            height: 25px;
+            background: transparent;
+            border: 0;
+            border-radius: 0;
+        }
+
+        .helmet-svg {
+            display: none;
+        }
+
+        .brand-title {
+            font-size: 17px;
+            letter-spacing: 0;
+            color: #ffffff;
+        }
+
+        .auth-zone {
+            gap: 8px;
+        }
+
+        .auth-zone button,
+        .modal-content button,
+        .box button,
+        .btn {
+            background: #4267b2;
+            border: 1px solid #29487d;
+            border-radius: 2px;
+            color: #ffffff;
+            padding: 6px 10px;
+            font-size: 12px;
+        }
+
+        .auth-zone button:hover,
+        .modal-content button:hover,
+        .box button:hover,
+        .btn:hover {
+            background: #29487d;
+        }
+
+        .main-layout {
+            min-height: calc(100vh - 42px);
+            background: #ffffff;
+        }
+
+        .nav-tabs {
+            flex-basis: 180px;
+            max-width: 250px;
+            padding: 8px 0;
+            background: #f5f6f7;
+            border-right: 1px solid #cbd0d6;
+            gap: 0;
+        }
+
+        .tab {
+            padding: 10px 14px;
+            color: #3b5998;
+            font-size: 13px;
+            border-bottom: 1px solid #e1e4e8;
+        }
+
+        .tab:hover,
+        .tab.active {
+            background: #d8e4f2;
+            color: #1c3f7a;
+            border-bottom-color: #b7c9df;
+            box-shadow: inset 3px 0 0 #3b5998;
+        }
+
+        .container {
+            padding: 18px 24px;
+            background: #ffffff;
+        }
+
+        .hub-welcome-panel,
+        .user-count-card,
+        .hub-block,
+        .tool-box,
+        .overlay-tool,
+        .hub-loyalty-card,
+        .feed-post,
+        .box,
+        .qr-section,
+        .card {
+            background: #ffffff;
+            border: 1px solid #d3d6db;
+            border-radius: 2px;
+            box-shadow: none;
+            color: #1c1e21;
+        }
+
+        .hub-welcome-panel {
+            max-width: none;
+            margin: 12px 0;
+            padding: 20px;
+            border-left: 3px solid #3b5998;
+            line-height: 1.55;
+            font-size: 14px;
+        }
+
+        .hub-founder-signature,
+        .hub-block-title,
+        .hub-welcome-panel h3,
+        .hub-block h3,
+        .tool-box h3,
+        .overlay-tool h3,
+        .card-title {
+            color: #3b5998;
+        }
+
+        .user-count-card {
+            margin: 12px 0;
+            padding: 10px 14px;
+            border-left: 3px solid #3b5998;
+            background: #eef3fa;
+            color: #1c1e21;
+            font-size: 13px;
+        }
+
+        #contador-usuarios {
+            color: #1c3f7a;
+            font-size: 1rem;
+        }
+
+        .hub-block {
+            margin-top: 16px;
+            padding: 14px;
+        }
+
+        .hub-block-title {
+            margin-bottom: 12px;
+            border-bottom: 1px solid #d3d6db;
+            font-size: 15px;
+        }
+
+        .hub-directory-entry,
+        .grenade-command-panel {
+            background: #f5f6f7;
+            border: 1px solid #d3d6db;
+            border-radius: 2px;
+            color: #1c1e21;
+        }
+
+        .hub-directory-entry strong,
+        .hub-directory-entry a,
+        .hub-plain-link,
+        .hub-copy-value {
+            color: #3b5998;
+        }
+
+        .card-img {
+            height: 110px;
+            background: #edf0f5 !important;
+            color: #606770;
+        }
+
+        .card-body {
+            padding: 12px;
+        }
+
+        .card-title {
+            font-size: 15px;
+        }
+
+        .price-tag {
+            background: #eef3fa;
+            color: #3b5998;
+            padding: 4px 7px;
+            border-radius: 2px;
+        }
+
+        .overlay-tools-grid {
+            gap: 10px;
+        }
+
+        .overlay-tool {
+            padding: 14px;
+        }
+
+        .loss-bonus-button,
+        .grenade-button,
+        .copy-command-button {
+            min-height: 38px;
+            background: #eef3fa;
+            border: 1px solid #b7c9df;
+            border-radius: 2px;
+            color: #294f91;
+            font-size: 12px;
+        }
+
+        .loss-bonus-button:hover,
+        .loss-bonus-button.active,
+        .grenade-button:hover,
+        .grenade-button.active,
+        .copy-command-button:hover {
+            background: #3b5998;
+            color: #ffffff;
+        }
+
+        input,
+        select,
+        textarea {
+            border-color: #ccd0d5;
+            border-radius: 2px;
+            color: #1c1e21;
+            background: #ffffff;
+        }
+
+        @media (max-width: 760px) {
+            .container {
+                padding: 12px;
+            }
+        }
+
+        /* Wartex green variation of the classic reference layout. */
+        :root {
+            --primary-blue: #376b3f;
+            --accent-cyan: #65b86b;
+            --border-color: #c9d8ca;
+            --text-muted: #68756a;
+        }
+
+        header {
+            min-height: 34px;
+            height: 34px;
+            padding: 0 12px;
+            background: #315f38;
+            border-bottom: 1px solid #244a2b;
+        }
+
+        .logo-circle {
+            width: 27px;
+            height: 27px;
+        }
+
+        .helmet-svg {
+            display: block;
+            width: 28px;
+            height: 28px;
+            fill: #ffffff;
+        }
+
+        .brand-title {
+            font-size: 16px;
+        }
+
+        .main-layout {
+            min-height: calc(100vh - 34px);
+            background: #f1f5f1;
+        }
+
+        .nav-tabs {
+            flex-basis: 178px;
+            background: #e8f0e9;
+            border-right: 1px solid #8eb394;
+        }
+
+        .tab {
+            color: #315f38;
+            border-bottom-color: #d0dfd1;
+        }
+
+        .tab:hover,
+        .tab.active {
+            background: #d6e7d8;
+            color: #234b2b;
+            border-bottom-color: #8eb394;
+            box-shadow: inset 3px 0 0 #4b9954;
+        }
+
+        .container {
+            position: relative;
+            padding: 18px 28px 32px;
+            background: #ffffff;
+        }
+
+        .hub-welcome-panel {
+            margin-top: 38px;
+            border-left-color: #4b9954;
+        }
+
+        .hub-founder-signature,
+        .hub-block-title,
+        .hub-welcome-panel h3,
+        .hub-block h3,
+        .tool-box h3,
+        .overlay-tool h3,
+        .card-title {
+            color: #376b3f;
+        }
+
+        .user-count-card {
+            position: absolute;
+            top: 14px;
+            right: 28px;
+            z-index: 2;
+            margin: 0;
+            padding: 7px 11px;
+            border-left: 3px solid #4b9954;
+            background: #eef6ef;
+            color: #315f38;
+            font-size: 12px;
+        }
+
+        #contador-usuarios {
+            color: #234b2b;
+            font-size: 1rem;
+        }
+
+        .hub-block,
+        .tool-box,
+        .overlay-tool,
+        .hub-loyalty-card,
+        .feed-post,
+        .box,
+        .qr-section,
+        .card {
+            border-color: #c9d8ca;
+        }
+
+        .hub-directory-entry,
+        .grenade-command-panel {
+            background: #f1f7f2;
+            border-color: #b9cfbb;
+        }
+
+        .hub-directory-entry strong,
+        .hub-directory-entry a,
+        .hub-plain-link,
+        .hub-copy-value {
+            color: #376b3f;
+        }
+
+        .auth-zone button,
+        .modal-content button,
+        .box button,
+        .btn {
+            background: #4b9954;
+            border-color: #376b3f;
+        }
+
+        .auth-zone button:hover,
+        .modal-content button:hover,
+        .box button:hover,
+        .btn:hover {
+            background: #376b3f;
+        }
+
+        .loss-bonus-button,
+        .grenade-button,
+        .copy-command-button {
+            background: #edf6ee;
+            border-color: #a7c4aa;
+            color: #376b3f;
+        }
+
+        .loss-bonus-button:hover,
+        .loss-bonus-button.active,
+        .grenade-button:hover,
+        .grenade-button.active,
+        .copy-command-button:hover {
+            background: #4b9954;
+            color: #ffffff;
+        }
+
+        @media (max-width: 760px) {
+            .user-count-card {
+                position: static;
+                margin: 10px 0;
+            }
+
+            .hub-welcome-panel {
+                margin-top: 12px;
+            }
+        }
+
+        /* Final tactical two-column structure. */
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --primary-blue: #1f6f2a;
+            --accent-cyan: #00ff00;
+            --text-light: #d7e8d7;
+            --text-muted: #8da58d;
+            --border-color: #29452d;
+        }
+
+        body {
+            background: #0d1117;
+            color: #d7e8d7;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header {
+            height: 38px;
+            min-height: 38px;
+            padding: 0 14px;
+            background: #17231a;
+            border-bottom: 1px solid #00ff00;
+        }
+
+        .brand-title {
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .logo-circle {
+            width: 28px;
+            height: 28px;
+        }
+
+        .helmet-svg {
+            display: block;
+            width: 28px;
+            height: 28px;
+            fill: #00ff00;
+        }
+
+        .contenedor-principal {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            min-height: 100vh;
+            width: 100%;
+            background-color: #0d1117;
+        }
+
+        .nav-tabs {
+            flex: 0 0 250px;
+            width: 250px;
+            max-width: 250px;
+            min-height: 100vh;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            padding: 12px 0;
+            margin: 0;
+            background: #171d24;
+            border: 0;
+            border-right: 1px solid #00ff00;
+            border-radius: 0;
+        }
+
+        .tab {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px 20px;
+            background: transparent;
+            border: 0;
+            border-bottom: 1px solid #26392a;
+            border-radius: 0;
+            color: #c8ddc8;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .tab:hover,
+        .tab.active {
+            background: #203126;
+            border-bottom-color: #00ff00;
+            box-shadow: inset 3px 0 0 #00ff00;
+            color: #00ff00;
+        }
+
+        .nav-tabs .user-count-card {
+            position: static;
+            width: calc(100% - 24px);
+            box-sizing: border-box;
+            margin: auto 12px 0;
+            padding: 12px;
+            background: #101720;
+            border: 1px solid #00ff00;
+            border-radius: 2px;
+            color: #9fbd9f;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        .nav-tabs #contador-usuarios {
+            display: block;
+            margin-top: 4px;
+            color: #00ff00;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .container {
+            flex: 1 1 auto;
+            min-width: 0;
+            max-width: none;
+            min-height: 100vh;
+            margin: 0;
+            padding: 28px 36px;
+            box-sizing: border-box;
+            background: #0d1117;
+        }
+
+        .view-content {
+            width: 100%;
+        }
+
+        .hub-welcome-panel,
+        .user-count-card,
+        .hub-block,
+        .tool-box,
+        .overlay-tool,
+        .hub-loyalty-card,
+        .feed-post,
+        .box,
+        .qr-section,
+        .card {
+            background: #161b22;
+            border-color: #29452d;
+            border-radius: 3px;
+            box-shadow: none;
+            color: #d7e8d7;
+        }
+
+        .hub-welcome-panel {
+            max-width: 1000px;
+            margin: 22px 0;
+            padding: 28px;
+            border: 1px solid #00ff00;
+            border-left: 4px solid #00ff00;
+            line-height: 1.75;
+            font-size: 1.08rem;
+        }
+
+        .hub-founder-signature,
+        .hub-block-title,
+        .hub-welcome-panel h3,
+        .hub-block h3,
+        .tool-box h3,
+        .overlay-tool h3,
+        .card-title {
+            color: #00ff00;
+        }
+
+        .user-count-card {
+            position: static;
+        }
+
+        .hub-directory-entry,
+        .grenade-command-panel {
+            background: #101720;
+            border-color: #315d37;
+            color: #d7e8d7;
+        }
+
+        .hub-directory-entry strong,
+        .hub-directory-entry a,
+        .hub-plain-link,
+        .hub-copy-value {
+            color: #00ff00;
+        }
+
+        .hub-block-title {
+            border-bottom-color: #00ff00;
+        }
+
+        .card-img {
+            background: #202a23 !important;
+            color: #7e997f;
+        }
+
+        .loss-bonus-button,
+        .grenade-button,
+        .copy-command-button {
+            background: #203126;
+            border-color: #315d37;
+            color: #d7e8d7;
+        }
+
+        .loss-bonus-button:hover,
+        .loss-bonus-button.active,
+        .grenade-button:hover,
+        .grenade-button.active,
+        .copy-command-button:hover {
+            background: #00ff00;
+            color: #0d1117;
+        }
+
+        input,
+        select,
+        textarea {
+            background: #101720;
+            border-color: #315d37;
+            color: #d7e8d7;
+        }
+
+        .btn,
+        .auth-zone button,
+        .modal-content button,
+        .box button {
+            background: #1f6f2a;
+            border-color: #00ff00;
+        }
+
+        .btn:hover,
+        .auth-zone button:hover,
+        .modal-content button:hover,
+        .box button:hover {
+            background: #00ff00;
+            color: #0d1117;
+        }
+
+        @media (max-width: 760px) {
+            .contenedor-principal {
+                display: block;
+            }
+
+            .nav-tabs {
+                width: 100%;
+                max-width: none;
+                min-height: auto;
+                border-right: 0;
+                border-bottom: 1px solid #00ff00;
+            }
+
+            .nav-tabs .user-count-card {
+                margin: 16px 12px 0;
+            }
+
+            .container {
+                min-height: auto;
+                padding: 20px 16px;
+            }
+        }
+
+        /* Blue military tactical palette. */
+        :root {
+            --bg-dark: #0a0f1d;
+            --bg-card: #161f33;
+            --primary-blue: #1e40af;
+            --accent-cyan: #38bdf8;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #1e40af;
+        }
+
+        body,
+        .contenedor-principal,
+        .container {
+            background: #0a0f1d;
+            color: #f8fafc;
+        }
+
+        header {
+            background: #111827;
+            border-bottom-color: #1e40af;
+        }
+
+        .nav-tabs {
+            background: #111827;
+            border-right-color: #38bdf8;
+        }
+
+        .tab {
+            color: #cbd5e1;
+            border-bottom-color: #263552;
+        }
+
+        .tab:hover,
+        .tab.active {
+            background: #172554;
+            border-bottom-color: #38bdf8;
+            box-shadow: inset 3px 0 0 #38bdf8;
+            color: #38bdf8;
+        }
+
+        .nav-tabs .user-count-card {
+            background: #0f172a;
+            border-color: #38bdf8;
+            color: #94a3b8;
+        }
+
+        .nav-tabs #contador-usuarios {
+            color: #38bdf8;
+        }
+
+        .hub-welcome-panel,
+        .user-count-card,
+        .hub-block,
+        .tool-box,
+        .overlay-tool,
+        .hub-loyalty-card,
+        .feed-post,
+        .box,
+        .qr-section,
+        .card {
+            background: #161f33;
+            border-color: #1e40af;
+            color: #f8fafc;
+        }
+
+        .hub-welcome-panel {
+            border-color: #38bdf8;
+            border-left-color: #38bdf8;
+        }
+
+        .hub-founder-signature,
+        .hub-block-title,
+        .hub-welcome-panel h3,
+        .hub-block h3,
+        .tool-box h3,
+        .overlay-tool h3,
+        .card-title {
+            color: #f8fafc;
+        }
+
+        .hub-block-title {
+            border-bottom-color: #38bdf8;
+        }
+
+        .hub-directory-entry,
+        .grenade-command-panel {
+            background: #0f172a;
+            border-color: #1e40af;
+            color: #f8fafc;
+        }
+
+        .hub-directory-entry strong,
+        .hub-directory-entry a,
+        .hub-plain-link,
+        .hub-copy-value,
+        .hub-founder-signature {
+            color: #38bdf8;
+        }
+
+        .card-img {
+            background: #1e293b !important;
+            color: #94a3b8;
+        }
+
+        .loss-bonus-button,
+        .grenade-button,
+        .copy-command-button {
+            background: #1e293b;
+            border-color: #1e40af;
+            color: #f8fafc;
+        }
+
+        .loss-bonus-button:hover,
+        .loss-bonus-button.active,
+        .grenade-button:hover,
+        .grenade-button.active,
+        .copy-command-button:hover {
+            background: #38bdf8;
+            color: #0a0f1d;
+        }
+
+        input,
+        select,
+        textarea {
+            background: #0f172a;
+            border-color: #1e40af;
+            color: #f8fafc;
+        }
+
+        .btn,
+        .auth-zone button,
+        .modal-content button,
+        .box button {
+            background: #1e40af;
+            border-color: #38bdf8;
+        }
+
+        .btn:hover,
+        .auth-zone button:hover,
+        .modal-content button:hover,
+        .box button:hover {
+            background: #38bdf8;
+            color: #0a0f1d;
+        }
+
+        /* Blue camouflage bunker theme. */
+        body {
+            background: linear-gradient(135deg, #0b132b 0%, #1c2541 25%, #3a506b 50%, #1c2541 75%, #0b132b 100%);
+            background-attachment: fixed;
+            color: #f8fafc;
+        }
+
+        .contenedor-principal,
+        .container {
+            background: transparent;
+        }
+
+        .nav-tabs,
+        .hub-welcome-panel,
+        .user-count-card,
+        .hub-block,
+        .tool-box,
+        .overlay-tool,
+        .hub-loyalty-card,
+        .feed-post,
+        .box,
+        .qr-section,
+        .card,
+        .modal-content {
+            background-color: rgba(22, 31, 51, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid #00b4d8;
+        }
+
+        .nav-tabs {
+            border-right: 1px solid #00b4d8;
+        }
+
+        .tab {
+            color: #dbeafe;
+            border-bottom-color: rgba(0, 180, 216, 0.35);
+        }
+
+        .tab:hover,
+        .tab.active {
+            background-color: rgba(0, 180, 216, 0.18);
+            border-bottom-color: #00b4d8;
+            box-shadow: inset 3px 0 0 #00b4d8;
+            color: #ffffff;
+        }
+
+        .hub-founder-signature,
+        .hub-block-title,
+        .hub-welcome-panel h3,
+        .hub-block h3,
+        .tool-box h3,
+        .overlay-tool h3,
+        .card-title,
+        .hub-directory-entry strong {
+            color: #f8fafc;
+        }
+
+        .hub-plain-link,
+        .hub-copy-value,
+        .hub-directory-entry a,
+        .hub-founder-signature {
+            color: #7dd3fc;
+        }
+
+        .hub-directory-entry,
+        .grenade-command-panel,
+        input,
+        select,
+        textarea {
+            background-color: rgba(11, 19, 43, 0.88);
+            border-color: #00b4d8;
+            color: #f8fafc;
+        }
+
+        .nav-tabs .user-count-card {
+            background-color: rgba(11, 19, 43, 0.92);
+            border-color: #00b4d8;
+            color: #94a3b8;
+        }
+
+        .nav-tabs #contador-usuarios {
+            color: #7dd3fc;
+        }
+
+        .server-monitor-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .server-monitor-card {
+            min-width: 0;
+            padding: 16px;
+            background: #161f33;
+            border: 1px solid #00b4d8;
+            border-radius: 3px;
+        }
+
+        .server-monitor-card h4 {
+            margin: 0 0 10px;
+            color: #f8fafc;
+        }
+
+        .server-mode {
+            color: #94a3b8;
+            font-size: 12px;
+            font-family: monospace;
+        }
+
+        .server-address {
+            display: block;
+            margin-top: 14px;
+            color: #f8fafc;
+            font-family: monospace;
+            font-weight: 700;
+            user-select: all;
+        }
+
+        .server-status {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 14px;
+            color: #a7f3d0;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .server-status-dot {
+            width: 9px;
+            height: 9px;
+            display: inline-block;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #22c55e;
+            animation: server-pulse 1.5s ease-in-out infinite;
+        }
+
+        #hub-general {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #hub-general > h2 {
+            order: 0;
+        }
+
+        #hub-general > .hub-welcome-panel {
+            order: 1;
+        }
+
+        #hub-general > [aria-labelledby="server-monitor-title"] {
+            order: 2;
+        }
+
+        #hub-general > [aria-labelledby="connectivity-title"] {
+            order: 3;
+        }
+
+        #hub-general > [aria-labelledby="rank-title"] {
+            order: 4;
+        }
+
+        .server-players {
+            margin-top: 8px;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        @keyframes server-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.35; }
+        }
+
+        @media (max-width: 760px) {
+            .server-monitor-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Muted blue-grey camouflage palette. */
+        :root {
+            --bg-dark: #101a2d;
+            --bg-card: #253653;
+            --primary-blue: #405a7b;
+            --accent-cyan: #8da2bd;
+            --text-light: #e5edf6;
+            --text-muted: #a9b9cc;
+            --border-color: #5d789b;
+        }
+
+        body,
+        .contenedor-principal {
+            background: linear-gradient(135deg, #101a2d 0%, #263b5d 28%, #526b8a 50%, #263b5d 72%, #101a2d 100%);
+            background-attachment: fixed;
+        }
+
+        header {
+            background: #17243b;
+            border-bottom-color: #5d789b;
+        }
+
+        .nav-tabs {
+            background: rgba(20, 32, 53, 0.96);
+            border-right-color: #8da2bd;
+        }
+
+        .tab {
+            color: #cbd8e7;
+            border-bottom-color: #344b6c;
+        }
+
+        .tab:hover,
+        .tab.active {
+            background: rgba(82, 107, 138, 0.42);
+            border-bottom-color: #8da2bd;
+            box-shadow: inset 3px 0 0 #8da2bd;
+            color: #ffffff;
+        }
+
+        .nav-tabs .user-count-card {
+            background: rgba(14, 24, 42, 0.94);
+            border-color: #8da2bd;
+            color: #a9b9cc;
+        }
+
+        .nav-tabs #contador-usuarios {
+            color: #d7e3f0;
+        }
+
+        .hub-welcome-panel,
+        .user-count-card,
+        .hub-block,
+        .tool-box,
+        .overlay-tool,
+        .hub-loyalty-card,
+        .feed-post,
+        .box,
+        .qr-section,
+        .card,
+        .modal-content {
+            background-color: rgba(37, 54, 83, 0.9);
+            border-color: #5d789b;
+        }
+
+        .hub-welcome-panel {
+            border-color: #8da2bd;
+            border-left-color: #a9b9cc;
+        }
+
+        .hub-founder-signature,
+        .hub-block-title,
+        .hub-welcome-panel h3,
+        .hub-block h3,
+        .tool-box h3,
+        .overlay-tool h3,
+        .card-title,
+        .hub-directory-entry strong {
+            color: #e5edf6;
+        }
+
+        .hub-directory-entry,
+        .grenade-command-panel,
+        input,
+        select,
+        textarea {
+            background-color: rgba(16, 26, 45, 0.9);
+            border-color: #5d789b;
+            color: #e5edf6;
+        }
+
+        .hub-directory-entry a,
+        .hub-plain-link,
+        .hub-copy-value,
+        .hub-founder-signature {
+            color: #c4d3e4;
+        }
+
+        .loss-bonus-button,
+        .grenade-button,
+        .copy-command-button {
+            background: #405a7b;
+            border-color: #8da2bd;
+            color: #f1f5f9;
+        }
+
+        .loss-bonus-button:hover,
+        .loss-bonus-button.active,
+        .grenade-button:hover,
+        .grenade-button.active,
+        .copy-command-button:hover {
+            background: #8da2bd;
+            color: #101a2d;
+        }
+
+        .btn,
+        .auth-zone button,
+        .modal-content button,
+        .box button {
+            background: #405a7b;
+            border-color: #8da2bd;
+        }
+
+        .btn:hover,
+        .auth-zone button:hover,
+        .modal-content button:hover,
+        .box button:hover {
+            background: #8da2bd;
+            color: #101a2d;
+        }
+
+        #foro > .feed-post:first-child {
+            position: sticky;
+            top: 12px;
+            z-index: 5;
+            background: #161f33;
+        }
+
+        #foro {
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        #foro > h2 {
+            order: 0;
+        }
+
+        .forum-message-feed {
+            order: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-height: 180px;
+            max-height: 58vh;
+            overflow-y: auto;
+            padding: 4px 8px 12px 0;
+            scroll-behavior: smooth;
+        }
+
+        .forum-composer {
+            order: 2;
+            position: sticky;
+            bottom: 0;
+            z-index: 5;
+            margin-top: 12px !important;
+            background: #161f33;
+        }
+
+        .forum-composer {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+            padding: 10px;
+            border-top: 1px solid #00b4d8;
+        }
+
+        .forum-composer h4 {
+            display: none;
+        }
+
+        .forum-composer .post-input {
+            flex: 1 1 auto;
+            min-width: 0;
+            height: 38px;
+            min-height: 38px;
+            margin: 0;
+            padding: 9px 12px;
+            resize: none;
+            overflow: hidden;
+        }
+
+        .forum-file-input {
+            display: none !important;
+        }
+
+        .forum-file-button {
+            flex: 0 0 38px;
+            width: 38px;
+            height: 38px;
+            box-sizing: border-box;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            border: 1px solid #00b4d8;
+            border-radius: 3px;
+            background: #253653;
+            color: #e5edf6;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .forum-file-button:hover {
+            background: #405a7b;
+        }
+
+        .forum-composer .btn {
+            flex: 0 0 auto;
+            width: auto;
+            min-width: 72px;
+            height: 38px;
+            min-height: 38px;
+            margin: 0;
+            padding: 0 12px;
+            border: 1px solid #00b4d8;
+            border-radius: 3px;
+        }
+
+        .profile-panel {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 28px;
+            background: #161f33;
+            border: 1px solid #00b4d8;
+            border-radius: 4px;
+        }
+
+        .profile-avatar-block {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding-bottom: 22px;
+            border-bottom: 1px solid #1e40af;
+        }
+
+        .profile-avatar {
+            width: 96px;
+            height: 96px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px solid #00b4d8;
+            border-radius: 50%;
+            background: #0f172a;
+            color: #94a3b8;
+            font-size: 42px;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-avatar-button {
+            display: inline-block;
+            padding: 8px 12px;
+            border: 1px solid #00b4d8;
+            border-radius: 3px;
+            color: #e5edf6;
+            background: #253653;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .profile-avatar-button:hover {
+            background: #405a7b;
+        }
+
+        .profile-file-input {
+            display: none;
+        }
+
+        .profile-xp-block {
+            margin-top: 24px;
+            padding: 18px;
+            background: #0f172a;
+            border: 1px solid #1e40af;
+            border-radius: 3px;
+        }
+
+        .profile-rank {
+            color: #f8fafc;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .profile-xp-track {
+            height: 14px;
+            margin-top: 12px;
+            overflow: hidden;
+            background: #253653;
+            border: 1px solid #5d789b;
+            border-radius: 2px;
+        }
+
+        .profile-xp-fill {
+            width: 0;
+            height: 100%;
+            background: #38bdf8;
+            transition: width 180ms ease;
+        }
+
+        .profile-xp-label {
+            display: block;
+            margin-top: 8px;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        .profile-medals {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .profile-medal {
+            min-height: 86px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: #253653;
+            border: 1px solid #00b4d8;
+            border-radius: 3px;
+            color: #e5edf6;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .profile-medal-icon {
+            font-size: 24px;
+        }
+
+        .feed-post .post-header .user-avatar {
+            width: 40px;
+            height: 40px;
+            max-height: 40px;
+            flex: 0 0 40px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        @media (max-width: 600px) {
+            .profile-panel {
+                padding: 18px;
+            }
+
+            .profile-medals {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .forum-message-feed {
+                max-height: 55vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KKC4M4ML"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <header>
+        <div class="logo-container">
+            <div class="logo-circle">
+                <!-- Casco espartano minimalista vectorizado -->
+                <svg class="helmet-svg" viewBox="0 0 100 100">
+                    <path d="M8,50 L41,42 L75,13 L85,17 L61,45 L91,55 L87,63 L55,54 L43,83 L35,78 L42,53 L10,60 Z"/>
+                </svg>
+            </div>
+            <div class="brand-title">WARTEX GAMES</div>
+        </div>
+        <div class="auth-zone">
+            <span id="uBadge" style="display: none; color: var(--accent-cyan); font-weight: bold;">¡Hola, <span id="uName"></span>!</span>
+            <button type="button" id="authBtn" onclick="document.getElementById('regMod').style.display='flex'">Registrarse / Entrar</button>
+        </div>
+    </header>
+
+    <div class="founder-box">
+        <div class="founder-name">Andres — Fundador de Strathub</div>
+        <div>"Bienvenidos a Strathub. Nos dedicamos a diseñar la próxima generación de mapas tácticos y competitivos para Halo y Counter Strike. Aquí encontrarás nuestros proyectos oficiales, herramientas de optimización y un espacio comunitario transparente para compartir tu pasión por el 'mapping'."</div>
+    </div>
+
+    <div id="regMod" style="display: flex;">
+        <div class="modal-content">
+            <h3>Unirse a Strathub</h3>
+            <p>Regístrate para formar parte de la comunidad oficial.</p>
+
+            <form id="registerForm">
+                <label for="rUser">GamerTag / Usuario:</label>
+                <input type="text" id="rUser" required placeholder="Ej. MasterChief">
+
+                <label for="rEmail">Correo Electrónico:</label>
+                <input type="email" id="rEmail" required placeholder="tu@correo.com">
+
+                <label for="rPass">Contraseña:</label>
+                <input type="password" id="rPass" required placeholder="••••••••">
+
+                <div style="margin-top: 15px; display: flex; gap: 10px;">
+                    <button type="submit">Completar Registro</button>
+                    <button type="button" onclick="document.getElementById('regMod').style.display='none'">Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <main class="contenedor-principal main-layout">
+    <nav class="nav-tabs" aria-label="Navegación principal">
+        <div class="tab active" onclick="switchTab('tienda')">🏠 Hub General</div>
+        <div class="tab" onclick="switchTab('mapas-desarrollo')">🗺️ Mapas en desarrollo</div>
+        <div class="tab" onclick="switchTab('herramientas')">🧮 Herramientas CS</div>
+        <div class="tab" data-notification-target="foro" onclick="switchTab('foro')">💬 Foro Comunidad <span class="notif-badge hidden" aria-label="Nueva notificación"></span></div>
+        <div class="tab" onclick="switchTab('mi-perfil')">👤 Mi Perfil</div>
+        <div class="tab" data-notification-target="blogs" onclick="switchTab('blogs')">📰 Blogs y Noticias <span class="notif-badge hidden" aria-label="Nueva notificación"></span></div>
+        <div class="tab" data-notification-target="tacticas" onclick="switchTab('tacticas')">📘 Manuales Tácticos <span class="notif-badge hidden" aria-label="Nueva notificación"></span></div>
+        <div class="tab" onclick="switchTab('diccionario')">🎮 Diccionario Gamer</div>
+        <div class="user-count-card" aria-live="polite">
+            👥 OPERATIVOS EN LA NUBE: <span id="contador-usuarios">Cargando...</span>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- HUB GENERAL -->
+        <div id="tienda" class="view-content active">
+            <section id="hub-general" aria-labelledby="hub-title">
+                <h2 id="hub-title">HUB GENERAL</h2>
+
+                <section class="hub-welcome-panel" data-hub-hub-only aria-labelledby="welcome-title">
+                    <strong class="hub-founder-signature">Andres — Fundador de Strathub</strong>
+                    <p id="welcome-title">Bienvenidos a Strathub, operadores. Nos dedicamos a diseñar la próxima generación de mapas tácticos y competitivos para Halo y Counter Strike. Aquí encontrarás nuestros proyectos oficiales, herramientas de optimización y un espacio comunitario totalmente gratuito para compartir tu pasión por el juego y tus archivos .cfg sin tener que abrir 400 pestañas en tu navegador. Reportense en los mandos.</p>
+                </section>
+
+                <section class="hub-block" data-hub-hub-only aria-labelledby="connectivity-title">
+                    <h3 id="connectivity-title" class="hub-block-title">ACCESO RÁPIDO Y CONECTIVIDAD · LATAM &amp; HALO</h3>
+                    <div class="hub-connectivity-grid">
+                        <section class="hub-server-panel" aria-labelledby="server-browser-title">
+                            <h3 id="server-browser-title">🌐 CROSS-GAME SERVER BROWSER / IPS DE LA COMUNIDAD</h3>
+                            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: start;">
+                                <section class="tool-box" aria-labelledby="halo-servers-title">
+                                    <h4 id="halo-servers-title" style="color: var(--accent-cyan);">🇺🇸 HALO / SALAS TÁCTICAS</h4>
+                                    <p><strong>🟢 [LATAM] Halo Hub Division - Custom Forge</strong></p>
+                                    <span class="hub-copy-value">Lobby ID: HALOLATAM-4412</span>
+                                    <a class="hub-plain-link" href="https://discord.com/servers?query=halo%20latam" target="_blank" rel="noopener noreferrer">Discord Halo LATAM</a>
+                                </section>
+                                <section class="tool-box" aria-labelledby="cs2-servers-title">
+                                    <h4 id="cs2-servers-title" style="color: var(--accent-cyan);">🌎 COUNTER-STRIKE 2 / LATAM</h4>
+                                    <p><strong>🟢 Comunidad competitiva LATAM</strong></p>
+                                    <span class="hub-copy-value">IP: 190.210.180.42:27015</span>
+                                    <a class="hub-plain-link" href="https://discord.com/servers?query=cs2%20latino" target="_blank" rel="noopener noreferrer">Discord CS2 Latino</a>
+                                </section>
+                            </div>
+                        </section>
+                        <aside class="hub-social-panel" aria-labelledby="social-title">
+                            <h3 id="social-title">📡 Directorio de Conectividad CS2 LATAM</h3>
+                            <div class="hub-directory">
+                                <div class="hub-directory-entry">
+                                    <strong>🌐 LATAM GENERAL (Hub de Reclutamiento Latino)</strong>
+                                    Facebook: <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">https://facebook.com</a><br>
+                                    Discord: <a href="https://discord.com" target="_blank" rel="noopener noreferrer">https://discord.com</a>
+                                </div>
+                                <div class="hub-directory-entry">
+                                    <strong>🇻🇪 VENEZUELA (Comunidad MRO / VnzlaGo)</strong>
+                                    Facebook: <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">https://facebook.com</a><br>
+                                    Discord: <a href="https://discord.gg" target="_blank" rel="noopener noreferrer">https://discord.gg</a>
+                                </div>
+                                <div class="hub-directory-entry">
+                                    <strong>🇲🇽 MÉXICO (Central CS2MX)</strong>
+                                    Facebook: <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">https://facebook.com</a><br>
+                                    Discord: <a href="https://discord.gg" target="_blank" rel="noopener noreferrer">https://discord.gg</a>
+                                </div>
+                                <div class="hub-directory-entry">
+                                    <strong>🇦🇷 ARGENTINA (Búnker Argentina CS)</strong>
+                                    Facebook: <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">https://facebook.com</a><br>
+                                    Discord: <a href="https://discord.com" target="_blank" rel="noopener noreferrer">https://discord.com</a>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                </section>
+
+                <section class="tool-box" data-hub-hub-only aria-labelledby="rank-title" style="margin-top: 16px;">
+                    <h3 id="rank-title">🎖️ Marcador de Rango y XP</h3>
+                    <div id="precision-status">🎖️ RANGO: [Cargando...] | 📊 XP: [Cargando...] | 💼 INVENTARIO EQUIPADO: [Cargando...]</div>
+                </section>
+            </section>
+        </div>
+
+        <!-- MAPAS EN DESARROLLO -->
+        <div id="mapas-desarrollo" class="view-content">
+            <h2>Mapas en desarrollo</h2>
+            <section class="hub-block" aria-labelledby="server-monitor-title">
+                <h3 id="server-monitor-title" class="hub-block-title">MONITOR TÁCTICO DE SERVIDORES DE LA COMUNIDAD · 100% GRATUITO</h3>
+                <div class="server-monitor-grid">
+                    <article class="server-monitor-card">
+                        <h4>Map: de_myrmidon_refinery</h4>
+                        <div class="server-mode">[ COMPACTO / COMPETITIVO ]</div>
+                        <span class="server-address">IP: 190.210.180.42:27015</span>
+                    </article>
+                    <article class="server-monitor-card">
+                        <h4>Map: Halo: Myrmidon Canyon</h4>
+                        <div class="server-mode">[ TEAM DEATHMATCH ]</div>
+                        <span class="server-address">Lobby ID: HALOLATAM-4412</span>
+                    </article>
+                    <section class="hub-loyalty-card" aria-labelledby="loyalty-title">
+                        <h3 id="loyalty-title">🎖️ Centro del Operativo</h3>
+                        <input type="text" id="gamertag-input" placeholder="Ingresa tu Nick común...">
+                        <button id="generate-gamertag" class="btn" type="button">Generar Tag Mirmidón</button>
+                        <div id="gamertag-result" style="margin-top: 12px; color: var(--accent-cyan); font-family: monospace;"></div>
+                        <button id="spin-reward" type="button" style="margin-top: 14px; background-color: #405a7b; color: #e5edf6; border: 1px solid #00b4d8; padding: 10px 20px; border-radius: 3px; cursor: pointer; font-weight: bold;">🎰 Girar Caja de Recompensas</button>
+                        <div id="reward-result" style="margin-top: 12px; color: var(--text-light);">[ Gira para reclamar tu Drop diario ]</div>
+                    </section>
+                </div>
+            </section>
+        </div>
+
+        <!-- HERRAMIENTAS -->
+        <div id="herramientas" class="view-content">
+            <h2>Herramientas de Configuración Counter Strike</h2>
+
+            <div class="overlay-tools-grid">
+                <section class="overlay-tool" aria-labelledby="bind-tool-title">
+                    <h3 id="bind-tool-title">🎛️ Generador de Binds Rápido</h3>
+                    <label>Selecciona la Tecla:</label>
+                    <select id="bind-key">
+                        <option value="f">F</option>
+                        <option value="q">Q</option>
+                        <option value="mouse4">MOUSE4</option>
+                        <option value="v">V</option>
+                    </select>
+                    <label>Acción / Comando:</label>
+                    <select id="bind-action">
+                        <option value="use weapon_flashbang">Lanzar Flashbang</option>
+                        <option value="+jump; -attack; -jump">Jumpthrow (Granadas)</option>
+                        <option value="drop">Tirar Arma Activa</option>
+                    </select>
+                    <button class="btn" onclick="generateBind()">Generar Comando</button>
+                    <div id="bind-result" style="margin-top: 15px; color: #a3cf06; font-family: monospace; font-size: 16px;"></div>
+                </section>
+
+                <section class="overlay-tool" aria-labelledby="edpi-tool-title">
+                    <h3 id="edpi-tool-title">📊 Analizador de eDPI (Sensibilidad Efectiva)</h3>
+                    <div style="display: flex; gap: 15px;">
+                        <div style="flex: 1;">
+                            <label>DPI de tu Mouse:</label>
+                            <input type="number" id="mouse-dpi" value="800">
+                        </div>
+                        <div style="flex: 1;">
+                            <label>Sensibilidad In-Game:</label>
+                            <input type="number" id="game-sens" value="1.5" step="0.1">
+                        </div>
+                    </div>
+                    <button class="btn" onclick="calculateEdpi()">Analizar Sensibilidad</button>
+                    <div id="edpi-result" style="margin-top: 15px; font-weight: bold;"></div>
+                </section>
+
+                <section class="overlay-tool" aria-labelledby="economy-tool-title">
+                    <h3 id="economy-tool-title">💰 Gestor de Economía de Ronda</h3>
+                    <p>Marca las rondas perdidas consecutivas para calcular el dinero garantizado.</p>
+                    <div class="loss-bonus-grid" role="group" aria-label="Bono de derrota">
+                        <button class="loss-bonus-button" type="button" data-losses="0">0</button>
+                        <button class="loss-bonus-button" type="button" data-losses="1">1</button>
+                        <button class="loss-bonus-button" type="button" data-losses="2">2</button>
+                        <button class="loss-bonus-button" type="button" data-losses="3">3</button>
+                        <button class="loss-bonus-button" type="button" data-losses="4">4+</button>
+                    </div>
+                    <div id="economy-result" class="economy-result" aria-live="polite">Selecciona el bono actual.</div>
+                </section>
+
+                <section class="overlay-tool" aria-labelledby="strategy-tool-title">
+                    <h3 id="strategy-tool-title">🧠 Almacén de Estrategias por Mapa</h3>
+                    <label for="strategy-map">Mapa competitivo:</label>
+                    <select id="strategy-map">
+                        <option value="de_mirage">de_mirage</option>
+                        <option value="de_inferno">de_inferno</option>
+                        <option value="de_dust2">de_dust2</option>
+                    </select>
+                    <div id="grenade-list" class="grenade-list" role="group" aria-label="Granadas esenciales"></div>
+                    <div id="grenade-command-panel" class="grenade-command-panel" hidden>
+                        <strong id="grenade-name"></strong>
+                        <div class="bind-command-row" style="margin-top: 10px;">
+                            <input id="grenade-command" type="text" readonly aria-label="Comando de bind">
+                            <button id="copy-command-button" class="copy-command-button" type="button">📋 Copiar comando</button>
+                        </div>
+                        <div id="copy-command-status" style="margin-top: 8px; color: var(--accent-cyan);" aria-live="polite"></div>
+                    </div>
+                </section>
+
+                <section class="overlay-tool crosshair-tool" aria-labelledby="crosshair-tool-title">
+                    <h3 id="crosshair-tool-title">🎯 Generador de Crosshairs Profesionales CS2</h3>
+                    <div class="crosshair-layout">
+                        <div>
+                            <div class="crosshair-player-list" role="group" aria-label=" profesionales">
+                                <button class="crosshair-player-button" type="button" data-crosshair-player="s1mple">s1mple</button>
+                                <button class="crosshair-player-button" type="button" data-crosshair-player="ZywOo">ZywOo</button>
+                                <button class="crosshair-player-button" type="button" data-crosshair-player="Donk">Donk</button>
+                                <button class="crosshair-player-button" type="button" data-crosshair-player="NiKo">NiKo</button>
+                            </div>
+                            <div class="crosshair-code-row">
+                                <input id="crosshair-code" type="text" readonly placeholder="Selecciona una mira profesional" aria-label="Código de mira CS2">
+                            </div>
+                            <button id="crosshair-copy-button" class="crosshair-copy-button" type="button">📋 Copiar Código de Mira</button>
+                            <div id="crosshair-copy-status" class="crosshair-copy-status" aria-live="polite"></div>
+                        </div>
+                        <div class="crosshair-preview" aria-label="Vista previa de la mira"></div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div id="seccion-foro" style="display: none; flex-direction: column; height: 100%;">
+        <!-- FORO -->
+        <div id="foro" class="view-content">
+            <h2>Foro de la Comunidad (Estilo Red Social)</h2>
+            <div id="forum-composer" class="feed-post forum-composer" style="margin-bottom: 25px;">
+                <h4>Comparte tu mapa, fotos o ideas</h4>
+                <textarea class="post-input" rows="1" placeholder="¿Qué estás mapeando hoy? Comparte tus ideas..." aria-label="Mensaje del foro"></textarea>
+                <label class="forum-file-button" for="forum-image" title="Adjuntar imagen" aria-label="Adjuntar imagen">📷</label>
+                <input id="forum-image" class="forum-file-input" type="file" accept="image/*" aria-label="Seleccionar imagen">
+                <label class="forum-file-button" for="forum-file" title="Adjuntar archivo" aria-label="Adjuntar archivo">📁</label>
+                <input id="forum-file" class="forum-file-input" type="file" aria-label="Seleccionar archivo">
+                <button class="btn" type="button">Enviar</button>
+            </div>
+
+            <div id="forum-message-feed" class="forum-message-feed" aria-live="polite"></div>
+        </div>
+        </div>
+
+        <div id="seccion-perfil" style="display: none; flex-direction: column; width: 100%;">
+        <!-- PERFIL -->
+        <div id="mi-perfil" class="view-content">
+            <section class="profile-panel" aria-labelledby="profile-title">
+                <h2 id="profile-title">👤 Mi Perfil</h2>
+
+                <div class="profile-avatar-block">
+                    <div id="profile-avatar" class="profile-avatar" aria-label="Avatar del usuario">👤</div>
+                    <div>
+                        <strong style="color: #f8fafc;">Identidad del operativo</strong>
+                        <div style="margin-top: 10px;">
+                            <label class="profile-avatar-button" for="profile-avatar-input">Cambiar Avatar</label>
+                            <input id="profile-avatar-input" class="profile-file-input" type="file" accept="image/*" aria-label="Seleccionar avatar">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-xp-block">
+                    <div id="profile-rank" class="profile-rank">RANGO MILITAR: RECLUTA ALPHA</div>
+                    <div class="profile-xp-track" aria-label="Progreso de experiencia">
+                        <div id="profile-xp-fill" class="profile-xp-fill"></div>
+                    </div>
+                    <span id="profile-xp-label" class="profile-xp-label">XP acumulada: 0</span>
+                </div>
+
+                <div class="profile-medals" aria-label="Medallas del operativo">
+                    <div class="profile-medal"><span class="profile-medal-icon">🥇</span><span>Fundador Alpha</span></div>
+                    <div class="profile-medal"><span class="profile-medal-icon">🎡</span><span>Suerte de Ruleta</span></div>
+                    <div class="profile-medal"><span class="profile-medal-icon">🎯</span><span>Tirador CS2</span></div>
+                </div>
+            </section>
+        </div>
+        </div>
+
+        <!-- BLOGS -->
+        <div id="blogs" class="view-content">
+            <h2 style="border-bottom: 2px solid var(--primary-blue); padding-bottom: 5px;">🛠️ Blog de Desarrollo (Solo Sebastián)</h2>
+            <div id="devblogFeed">
+                <p class="blog-loading-state">Cargando publicaciones desde la nube...</p>
+            </div>
+
+            <h2 style="border-bottom: 2px solid #de9b00; padding-bottom: 5px; margin-top: 40px;">📰 Blog de Noticias Oficiales (Solo Sebastián)</h2>
+            <div id="skinblogFeed">
+                <p class="blog-loading-state">Cargando noticias desde la nube...</p>
+            </div>
+        </div>
+
+        <!-- MANUALES -->
+        <div id="tacticas" class="view-content">
+            <h2>Manuales Tácticos y de Combate</h2>
+            <div id="manualesTacticosFeed">
+                <div class="tool-box">
+                    <h3 style="color: var(--accent-cyan);">Guía de Control de Mapa: de_myrmidon_refinery</h3>
+                    <p><strong>1. Posición de Humo Medio:</strong> Lanza la granada desde base T alineando la retícula con la antena del fondo para cegar por completo el nido del Sniper defensor.</p>
+                    <p><strong>2. Retoma de Bomba B:</strong> Es indispensable coordinar un flash elevado mientras los dos jugadores de apoyo entran en simultáneo por la rampa trasera.</p>
+                </div>
+                <div class="tool-box">
+                    <h3 style="color: var(--accent-cyan);">Guía de Enfrentamiento: Halo Canyon</h3>
+                    <p><strong>Control del Rifle de Precisión:</strong> El rifle aparece cada 2-3 minutos en la torre central. Domina las plataformas inferiores usando el propulsor para adelantarte al equipo enemigo.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- DICCIONARIO -->
+        <div id="diccionario" class="view-content">
+            <h2>Diccionario de Términos Gamer</h2>
+            
+            <h3>Counter Strike</h3>
+            <div class="dict-item"><span class="dict-term">Alta (Llamada de posición):</span> Se refiere a zonas elevadas del mapa o andamios (Ej: "Está en alta de A").</div>
+            <div class="dict-item"><span class="dict-term">Baja:</span> Sectores hundidos, túneles o fosas a nivel de suelo inferior.</div>
+            <div class="dict-item"><span class="dict-term">Medio:</span> El eje central del mapa que usualmente conecta ambos sitios de bomba y define el control del juego.</div>
+            <div class="dict-item"><span class="dict-term">eDPI:</span> Multiplicación del DPI físico del ratón por la sensibilidad dentro del juego para obtener el valor real comparable.</div>
+
+            <h3>Halo</h3>
+            <div class="dict-item"><span class="dict-term">Pre-fire:</span> Disparar a una esquina antes de ver al enemigo sabiendo de antemano su posición por el radar.</div>
+            <div class="dict-item"><span class="dict-term">Shield Pop:</span> Romper los escudos de energía del Spartan enemigo, indicando que está a un solo tiro limpio a la cabeza.</div>
+            <div class="dict-item"><span class="dict-term">Power Weapons:</span> Armas pesadas de reaparición cronometrada que controlan el flujo de la partida (Espada, Lanzacohetes, Sniper).</div>
+        </div>
+
+        <!-- PROPUESTAS -->
+        <div id="propuestas" class="view-content">
+            <section class="box">
+                <h3>Buzón Comercial (Propuestas a Sebastián)</h3>
+                <p>Envía tus ideas de diseño o alianzas directamente a mi correo corporativo.</p>
+
+                <form action="mailto:sramosebas2308@gmail.com" method="post" enctype="text/plain">
+                    <label for="pName">Nombre Completo:</label>
+                    <input type="text" id="pName" name="Nombre" required placeholder="Tu Nombre">
+
+                    <label for="pEmail">Tu Correo Electrónico:</label>
+                    <input type="email" id="pEmail" name="Correo_Contacto" required placeholder="nombre@correo.com">
+
+                    <label for="pMsg">Detalles de la propuesta:</label>
+                    <textarea id="pMsg" name="Mensaje" rows="4" required placeholder="Describe tu propuesta de mapa o negocio..."></textarea>
+
+                    <br><br>
+                    <button type="submit">Enviar Propuesta Directa</button>
+                </form>
+            </section>
+        </div>
+
+    </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://eggzhkawkagtktawqcam.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_iV7VzBtijDEv1NrC1WoPzA_4EL22M7j';
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+            auth: {
+                persistSession: true,
+                autoRefreshToken: true,
+                detectSessionInUrl: true
+            }
+        });
+
+        const registerForm = document.getElementById('registerForm');
+        const uBadge = document.getElementById('uBadge');
+        const uName = document.getElementById('uName');
+
+        const showAuthenticatedUser = (user) => {
+            const gamerTag = user?.user_metadata?.gamer_tag || user?.email || '';
+            uName.textContent = gamerTag;
+            uBadge.style.display = gamerTag ? 'inline' : 'none';
+        };
+
+        const obtenerTotalUsuarios = async () => {
+            const counterElement = document.getElementById('contador-usuarios');
+            if (!counterElement) {
+                return;
+            }
+
+            try {
+                const { data, error } = await supabaseClient.rpc('obtener_total_usuarios');
+
+                if (error) {
+                    throw error;
+                }
+
+                const totalUsuarios = Number(data);
+                if (!Number.isInteger(totalUsuarios) || totalUsuarios < 0) {
+                    throw new Error('La respuesta del contador no es válida.');
+                }
+
+                counterElement.textContent = totalUsuarios.toLocaleString('es-ES');
+            } catch (error) {
+                console.error('No se pudo obtener el total de usuarios:', error);
+                counterElement.textContent = 'No disponible';
+            }
+        };
+
+        window.addEventListener('DOMContentLoaded', obtenerTotalUsuarios, { once: true });
+
+        registerForm.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const user = document.getElementById('rUser').value.trim();
+            const email = document.getElementById('rEmail').value.trim();
+            const pass = document.getElementById('rPass').value;
+
+            if (!user || !email || !pass) {
+                alert('Completa todos los campos para registrarte.');
+                return;
+            }
+
+            const submitButton = registerForm.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Registrando...';
+
+            const { data, error } = await supabaseClient.auth.signUp({
+                email,
+                password: pass,
+                options: {
+                    data: {
+                        gamer_tag: user
+                    }
+                }
+            });
+
+            submitButton.disabled = false;
+            submitButton.textContent = 'Completar Registro';
+
+            if (error) {
+                alert(`No se pudo completar el registro: ${error.message}`);
+                return;
+            }
+
+            let activeSession = data.session;
+
+            if (!activeSession) {
+                const { data: loginData, error: loginError } = await supabaseClient.auth.signInWithPassword({
+                    email,
+                    password: pass
+                });
+
+                if (loginError) {
+                    alert(`Registro creado, pero debes confirmar tu correo antes de iniciar sesión: ${loginError.message}`);
+                    return;
+                }
+
+                activeSession = loginData.session;
+            }
+
+            if (!activeSession) {
+                alert('Registro creado, pero no se pudo iniciar la sesión automáticamente.');
+                return;
+            }
+
+            const { data: userData, error: userError } = await supabaseClient.auth.getUser();
+            if (userError || !userData.user) {
+                alert('La sesión se creó, pero no se pudo cargar el usuario. Recarga la página e inténtalo de nuevo.');
+                return;
+            }
+
+            showAuthenticatedUser(userData.user);
+            document.getElementById('regMod').style.display = 'none';
+            registerForm.reset();
+            alert('Registro completado y sesión iniciada correctamente.');
+        });
+
+        const restoreAuthenticatedUser = async () => {
+            try {
+                const { data: { session } } = await supabaseClient.auth.getSession();
+                if (!session) {
+                    showAuthenticatedUser(null);
+                    return;
+                }
+
+                const { data, error } = await supabaseClient.auth.getUser();
+                if (error) {
+                    throw error;
+                }
+
+                showAuthenticatedUser(data.user);
+            } catch (error) {
+                console.error('No se pudo restaurar la sesión:', error);
+                showAuthenticatedUser(null);
+            }
+        };
+
+        restoreAuthenticatedUser();
+
+        supabaseClient.auth.onAuthStateChange((_event, session) => {
+            showAuthenticatedUser(session?.user);
+        });
+
+        function switchTab(tabId) {
+            const contents = document.querySelectorAll('.view-content');
+            contents.forEach(c => c.classList.remove('active'));
+
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+
+            const forumContainer = document.getElementById('seccion-foro');
+            const profileContainer = document.getElementById('seccion-perfil');
+            forumContainer.style.display = 'none';
+            profileContainer.style.display = 'none';
+
+            if (tabId === 'foro') {
+                document.getElementById('seccion-foro').style.display = 'flex';
+                document.getElementById('seccion-perfil').style.display = 'none';
+            }
+
+            if (tabId === 'mi-perfil') {
+                document.getElementById('seccion-perfil').style.display = 'flex';
+                document.getElementById('seccion-foro').style.display = 'none';
+            }
+
+            const viewId = tabId === 'tienda-shop' ? 'tienda' : tabId;
+            document.getElementById(viewId).classList.add('active');
+
+            if (viewId === 'tienda') {
+                const isShopMode = tabId === 'tienda-shop';
+                document.querySelectorAll('[data-hub-hub-only]').forEach((element) => {
+                    element.classList.toggle('hub-mode-hidden', isShopMode);
+                });
+                document.querySelectorAll('[data-hub-shop-only]').forEach((element) => {
+                    element.classList.toggle('hub-mode-hidden', !isShopMode);
+                });
+            }
+
+            const matchingTab = Array.from(tabs).find(tab => tab.getAttribute('onclick') && tab.getAttribute('onclick').includes(`'${tabId}'`));
+            if (matchingTab) {
+                matchingTab.classList.add('active');
+            }
+
+            if (tabId === 'foro' && typeof loadForumPosts === 'function') {
+                loadForumPosts();
+            }
+
+            if (tabId === 'mi-perfil' && typeof renderProfile === 'function') {
+                renderProfile();
+            }
+        }
+
+        function generateBind() {
+            const key = document.getElementById('bind-key').value;
+            const action = document.getElementById('bind-action').value;
+            document.getElementById('bind-result').innerText = `bind "${key}" "${action}"`;
+        }
+
+        function calculateEdpi() {
+            const dpi = parseFloat(document.getElementById('mouse-dpi').value);
+            const sens = parseFloat(document.getElementById('game-sens').value);
+            if(isNaN(dpi) || isNaN(sens)) {
+                document.getElementById('edpi-result').innerText = "Por favor introduce valores válidos.";
+                document.getElementById('edpi-result').style.color = "red";
+                return;
+            }
+            const edpi = dpi * sens;
+            let feedback = "";
+            
+            if(edpi < 600) feedback = " (Sensibilidad Baja - Excelente para precisión a larga distancia)";
+            else if(edpi <= 1200) feedback = " (Sensibilidad Media - El estándar balanceado de los profesionales)";
+            else feedback = " (Sensibilidad Alta - Giros rápidos pero requiere excelente control de micromovimientos)";
+
+            document.getElementById('edpi-result').innerText = `Tu eDPI es: ${edpi}${feedback}`;
+            document.getElementById('edpi-result').style.color = "#66c0f4";
+        }
+
+        const lossBonusValues = [1400, 1900, 2400, 2900, 3400];
+        const strategyCatalog = {
+            de_mirage: [
+                { name: 'Humo Ventana desde Base T', command: 'bind "mouse5" "use weapon_smokegrenade"', image: 'https://placeholder.com/640x360?text=Mirage+Ventana' },
+                { name: 'Humo Conector', command: 'bind "x" "use weapon_smokegrenade"', image: 'https://placeholder.com/640x360?text=Mirage+Conector' },
+                { name: 'Flash para Sitio de A', command: 'bind "c" "use weapon_flashbang"', image: 'https://placeholder.com/640x360?text=Mirage+Flash+A' }
+            ],
+            de_inferno: [
+                { name: 'Humo CT desde Banana', command: 'bind "mouse5" "use weapon_smokegrenade"', image: 'https://placeholder.com/640x360?text=Inferno+CT' },
+                { name: 'Humo Coffins', command: 'bind "x" "use weapon_smokegrenade"', image: 'https://placeholder.com/640x360?text=Inferno+Coffins' },
+                { name: 'Flash para Entrada B', command: 'bind "c" "use weapon_flashbang"', image: 'https://placeholder.com/640x360?text=Inferno+Flash+B' }
+            ],
+            de_dust2: [
+                { name: 'Humo Xbox desde Medio', command: 'bind "mouse5" "use weapon_smokegrenade"', image: 'https://placeholder.com/640x360?text=Dust2+Xbox' },
+                { name: 'Humo CT desde Túnel', command: 'bind "x" "use weapon_smokegrenade"', image: 'https://placeholder.com/640x360?text=Dust2+CT' },
+                { name: 'Flash para Entrada B', command: 'bind "c" "use weapon_flashbang"', image: 'https://placeholder.com/640x360?text=Dust2+Flash+B' }
+            ]
+        };
+
+        const renderStrategyGrenades = (mapName) => {
+            const grenadeList = document.getElementById('grenade-list');
+            const grenadeCommandPanel = document.getElementById('grenade-command-panel');
+            if (!grenadeList || !grenadeCommandPanel) return;
+
+            grenadeList.replaceChildren();
+            grenadeCommandPanel.hidden = true;
+
+            strategyCatalog[mapName].forEach((grenade) => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'grenade-button';
+                button.textContent = grenade.name;
+                button.addEventListener('click', () => {
+                    document.getElementById('grenade-name').textContent = grenade.name;
+                    document.getElementById('grenade-command').value = grenade.command;
+                    document.getElementById('copy-command-status').textContent = '';
+                    grenadeCommandPanel.hidden = false;
+                });
+                grenadeList.appendChild(button);
+            });
+        };
+
+        document.querySelectorAll('.loss-bonus-button').forEach((button) => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.loss-bonus-button').forEach((item) => item.classList.remove('active'));
+                button.classList.add('active');
+                const losses = Number(button.dataset.losses);
+                const money = lossBonusValues[Math.min(losses, 4)];
+                const advice = losses < 2 ? 'Ronda de Ahorro (Eco)' : losses >= 3 ? 'Compra Completa (Full Buy)' : 'Compra ligera / Fuerza';
+                document.getElementById('economy-result').textContent = `Siguiente ronda: $${money.toLocaleString('en-US')} garantizados | ${advice}`;
+            });
+        });
+
+        const strategyMap = document.getElementById('strategy-map');
+        if (strategyMap) {
+            strategyMap.addEventListener('change', () => renderStrategyGrenades(strategyMap.value));
+            renderStrategyGrenades(strategyMap.value);
+        }
+
+        document.getElementById('copy-command-button')?.addEventListener('click', async () => {
+            const commandInput = document.getElementById('grenade-command');
+            const status = document.getElementById('copy-command-status');
+            try {
+                await navigator.clipboard.writeText(commandInput.value);
+                status.textContent = 'Comando copiado.';
+            } catch (error) {
+                commandInput.select();
+                document.execCommand('copy');
+                status.textContent = 'Comando copiado.';
+            }
+        });
+
+        const professionalCrosshairs = {
+            s1mple: 'CSGO-UseJt-3oTvn-47wPX-hEyER-WZfiK',
+             ZywOo: 'CSGO-CtrmB-erJwH-kJ3Jo-pRjZA-3yOtQ',
+              Donk: 'CSGO-kM6Tw-TY67b-6dF3W-Hutjm-Sr8rN',
+              NiKo: 'CSGO-HurWU-QvLHO-uJUkC-9DUU8-euzQN',
+            
+            
+            
+        };
+
+        const crosshairCodeInput = document.getElementById('crosshair-code');
+        const crosshairCopyButton = document.getElementById('crosshair-copy-button');
+        const crosshairCopyStatus = document.getElementById('crosshair-copy-status');
+
+        document.querySelectorAll('.crosshair-player-button').forEach((button) => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.crosshair-player-button').forEach((item) => item.classList.remove('active'));
+                button.classList.add('active');
+                crosshairCodeInput.value = professionalCrosshairs[button.dataset.crosshairPlayer];
+                crosshairCopyStatus.textContent = '';
+            });
+        });
+
+        crosshairCopyButton?.addEventListener('click', async () => {
+            if (!crosshairCodeInput.value) {
+                crosshairCopyStatus.textContent = 'Selecciona una mira primero.';
+                return;
+            }
+
+            try {
+                await navigator.clipboard.writeText(crosshairCodeInput.value);
+                crosshairCopyStatus.textContent = '¡Código copiado! Pégalo en los ajustes de CS2';
+            } catch (error) {
+                crosshairCodeInput.select();
+                document.execCommand('copy');
+                crosshairCopyStatus.textContent = '¡Código copiado! Pégalo en los ajustes de CS2';
+            }
+        });
+
+        const XP_STORAGE_KEY = 'mirmidonXP';
+        const RANK_STORAGE_KEY = 'mirmidonRango';
+        const INVENTORY_STORAGE_KEY = 'inventarioMirmidon';
+        const DAILY_SPINS_KEY = 'girosHoy';
+        const LAST_SPIN_DATE_KEY = 'fechaUltimoGiro';
+
+        const getRankForXp = (xp) => {
+            if (xp >= 500) return 'Spartan Tier-1';
+            if (xp >= 200) return 'Operador Táctico';
+            return 'Mirmidón Recluta';
+        };
+
+        const updatePrecisionStatus = () => {
+            const status = document.getElementById('precision-status');
+            const xp = Number(localStorage.getItem(XP_STORAGE_KEY)) || 0;
+            const rank = getRankForXp(xp);
+            let inventory = [];
+
+            try {
+                const storedInventory = JSON.parse(localStorage.getItem(INVENTORY_STORAGE_KEY));
+                inventory = Array.isArray(storedInventory) ? storedInventory : [];
+            } catch (error) {
+                inventory = [];
+            }
+
+            localStorage.setItem(XP_STORAGE_KEY, String(xp));
+            localStorage.setItem(RANK_STORAGE_KEY, rank);
+
+            if (status) {
+                const equippedItems = inventory.length ? inventory.join(', ') : 'Vacío';
+                status.textContent = `🎖️ RANGO: ${rank} | 📊 XP: ${xp} | 💼 INVENTARIO EQUIPADO: ${equippedItems}`;
+            }
+        };
+
+        const renderProfile = () => {
+            const xp = Number(localStorage.getItem(XP_STORAGE_KEY)) || 0;
+            const profileXpFill = document.getElementById('profile-xp-fill');
+            const profileXpLabel = document.getElementById('profile-xp-label');
+            const profileRank = document.getElementById('profile-rank');
+
+            if (!profileXpFill || !profileXpLabel || !profileRank) {
+                return;
+            }
+
+            const progress = Math.min((xp / 500) * 100, 100);
+            profileXpFill.style.width = `${progress}%`;
+            profileXpLabel.textContent = `XP acumulada: ${xp} / 500`;
+            profileRank.textContent = `RANGO MILITAR: ${xp >= 500 ? 'OPERADOR TIER-1' : 'RECLUTA ALPHA'}`;
+        };
+
+        const profileAvatarInput = document.getElementById('profile-avatar-input');
+        const profileAvatar = document.getElementById('profile-avatar');
+
+        const setProfileAvatar = (avatarUrl) => {
+            if (!profileAvatar || !avatarUrl) {
+                return;
+            }
+
+            profileAvatar.replaceChildren();
+            const avatarImage = document.createElement('img');
+            avatarImage.src = avatarUrl;
+            avatarImage.alt = 'Avatar del usuario';
+            profileAvatar.appendChild(avatarImage);
+        };
+
+        const loadProfileAvatar = async () => {
+            try {
+                const { data: { user }, error: userError } = await supabaseClient.auth.getUser();
+                if (userError || !user) {
+                    return;
+                }
+
+                const { data: profile, error: profileError } = await supabaseClient
+                    .from('perfiles')
+                    .select('avatar_url')
+                    .eq('id', user.id)
+                    .maybeSingle();
+
+                if (profileError) {
+                    throw profileError;
+                }
+
+                setProfileAvatar(profile?.avatar_url);
+            } catch (error) {
+                console.error('No se pudo cargar el avatar del perfil:', error);
+            }
+        };
+
+        loadProfileAvatar();
+
+        profileAvatarInput?.addEventListener('change', async () => {
+            const [avatarFile] = profileAvatarInput.files;
+            if (!avatarFile || !profileAvatar) {
+                return;
+            }
+
+            try {
+                const { data: { user }, error: userError } = await supabaseClient.auth.getUser();
+                if (userError || !user) {
+                    throw userError || new Error('Debes iniciar sesión para cambiar el avatar.');
+                }
+
+                const safeFileName = avatarFile.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+                const avatarPath = `avatars/${user.id}-${Date.now()}-${safeFileName}`;
+                const { error: uploadError } = await supabaseClient.storage
+                    .from('archivos_foro')
+                    .upload(avatarPath, avatarFile, { cacheControl: '3600', upsert: false });
+
+                if (uploadError) {
+                    throw uploadError;
+                }
+
+                const { data: publicUrlData } = supabaseClient.storage
+                    .from('archivos_foro')
+                    .getPublicUrl(avatarPath);
+                const avatarUrl = publicUrlData.publicUrl;
+                const { error: profileError } = await supabaseClient
+                    .from('perfiles')
+                    .upsert({
+                        id: user.id,
+                        avatar_url: avatarUrl
+                    }, { onConflict: 'id' });
+
+                if (profileError) {
+                    throw profileError;
+                }
+
+                setProfileAvatar(avatarUrl);
+            } catch (error) {
+                console.error('No se pudo actualizar el avatar:', error);
+                alert(`No se pudo actualizar el avatar: ${error.message || 'error de red'}`);
+            }
+        });
+
+        const addExperience = (amount) => {
+            const currentXp = Number(localStorage.getItem(XP_STORAGE_KEY)) || 0;
+            localStorage.setItem(XP_STORAGE_KEY, String(currentXp + amount));
+            updatePrecisionStatus();
+        };
+
+        const getToday = () => new Date().toISOString().slice(0, 10);
+
+        const getInventory = () => {
+            try {
+                const storedInventory = JSON.parse(localStorage.getItem(INVENTORY_STORAGE_KEY));
+                return Array.isArray(storedInventory) ? storedInventory : [];
+            } catch (error) {
+                return [];
+            }
+        };
+
+        const updateDailySpinState = (spinButton, rewardResult, showLimitMessage = true) => {
+            const today = getToday();
+            const lastSpinDate = localStorage.getItem(LAST_SPIN_DATE_KEY);
+            let spinsToday = Number(localStorage.getItem(DAILY_SPINS_KEY)) || 0;
+
+            if (lastSpinDate !== today) {
+                spinsToday = 0;
+                localStorage.setItem(DAILY_SPINS_KEY, '0');
+                localStorage.setItem(LAST_SPIN_DATE_KEY, today);
+            }
+
+            if (spinsToday >= 2) {
+                spinButton.disabled = true;
+                spinButton.style.backgroundColor = '#626366';
+                spinButton.style.color = '#c7d5e0';
+                if (showLimitMessage) {
+                    rewardResult.textContent = '⚠️ Límite diario alcanzado. Regresa mañana al búnker por más drops';
+                }
+                return false;
+            }
+
+            spinButton.disabled = false;
+            spinButton.style.backgroundColor = '#a3cf06';
+            spinButton.style.color = '#101822';
+            return true;
+        };
+
+        const initializePrecisionTools = () => {
+            if (localStorage.getItem(XP_STORAGE_KEY) === null) {
+                localStorage.setItem(XP_STORAGE_KEY, '0');
+            }
+            if (localStorage.getItem(RANK_STORAGE_KEY) === null) {
+                localStorage.setItem(RANK_STORAGE_KEY, 'Mirmidón Recluta');
+            }
+            if (localStorage.getItem(INVENTORY_STORAGE_KEY) === null) {
+                localStorage.setItem(INVENTORY_STORAGE_KEY, '[]');
+            }
+            if (localStorage.getItem(DAILY_SPINS_KEY) === null) {
+                localStorage.setItem(DAILY_SPINS_KEY, '0');
+            }
+            if (localStorage.getItem(LAST_SPIN_DATE_KEY) === null) {
+                localStorage.setItem(LAST_SPIN_DATE_KEY, getToday());
+            }
+            updatePrecisionStatus();
+
+            const spinButton = document.getElementById('spin-reward');
+            const rewardResult = document.getElementById('reward-result');
+            const rewards = [
+                { name: '💎 PASE VIP EXPRESS (Servidor Futuro)', weight: 5 },
+                { name: '🥇 Medalla de Oro Mirmidón', weight: 20 },
+                { name: '🥈 Medalla de Plata Elite', weight: 30 },
+                { name: '📊 Multiplicador de XP x2', weight: 45 }
+            ];
+
+            if (spinButton && rewardResult) {
+                updateDailySpinState(spinButton, rewardResult);
+                spinButton.addEventListener('click', () => {
+                    if (!updateDailySpinState(spinButton, rewardResult)) {
+                        return;
+                    }
+
+                    const roll = Math.random() * 100;
+                    let threshold = 0;
+                    let reward = rewards[rewards.length - 1].name;
+
+                    for (const rewardOption of rewards) {
+                        threshold += rewardOption.weight;
+                        if (roll < threshold) {
+                            reward = rewardOption.name;
+                            break;
+                        }
+                    }
+
+                    const spinsToday = (Number(localStorage.getItem(DAILY_SPINS_KEY)) || 0) + 1;
+                    localStorage.setItem(DAILY_SPINS_KEY, String(spinsToday));
+                    localStorage.setItem(LAST_SPIN_DATE_KEY, getToday());
+                    rewardResult.textContent = `🎁 Premio obtenido: ${reward}`;
+
+                    if (reward.includes('Medalla') || reward.includes('PASE VIP')) {
+                        const inventory = getInventory();
+                        if (!inventory.includes(reward)) {
+                            inventory.push(reward);
+                            localStorage.setItem(INVENTORY_STORAGE_KEY, JSON.stringify(inventory));
+                        }
+                    }
+
+                    addExperience(25);
+                    updateDailySpinState(spinButton, rewardResult, false);
+                });
+            }
+
+            const gamertagInput = document.getElementById('gamertag-input');
+            const gamertagButton = document.getElementById('generate-gamertag');
+            const gamertagResult = document.getElementById('gamertag-result');
+
+            if (gamertagInput && gamertagButton && gamertagResult) {
+                gamertagButton.addEventListener('click', () => {
+                    const nick = gamertagInput.value.trim();
+                    gamertagResult.textContent = nick
+                        ? `⚡ 𝖬𝖸𝖱 | 𝖪𝗂𝗅𝗅𝖾𝗋_${nick} ☠`
+                        : 'Ingresa un nick para generar tu Tag Mirmidón.';
+                });
+            }
+        };
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializePrecisionTools, { once: true });
+        } else {
+            initializePrecisionTools();
+        }
+
+        const showNotificationBadge = (tabId) => {
+            const badge = document.querySelector(`[data-notification-target="${tabId}"] .notif-badge`);
+            if (badge) {
+                badge.classList.remove('hidden');
+            }
+        };
+
+        const hideNotificationBadge = (tabId) => {
+            const badge = document.querySelector(`[data-notification-target="${tabId}"] .notif-badge`);
+            if (badge) {
+                badge.classList.add('hidden');
+            }
+        };
+
+        document.querySelectorAll('[data-notification-target]').forEach((tab) => {
+            tab.addEventListener('click', () => {
+                hideNotificationBadge(tab.dataset.notificationTarget);
+            });
+        });
+
+        let articulosBlogs = [];
+        const BLOG_STORAGE_KEY = 'articulosBlogs';
+        let manualesTacticosCEO = [];
+        const MANUALS_STORAGE_KEY = 'manualesTacticosCEO';
+
+        const getSavedBlogArticles = () => {
+            try {
+                const storedArticles = JSON.parse(localStorage.getItem(BLOG_STORAGE_KEY));
+                return Array.isArray(storedArticles) ? storedArticles : [];
+            } catch (error) {
+                return [];
+            }
+        };
+
+        const createBlogArticle = (article) => {
+            const articleElement = document.createElement('article');
+            articleElement.className = 'feed-post ceo-blog-article';
+
+            const publisher = document.createElement('span');
+            publisher.style.color = 'var(--accent-cyan)';
+            publisher.style.fontSize = '12px';
+            publisher.style.fontWeight = 'bold';
+            publisher.textContent = article.type === 'development' ? 'NUEVA BITÁCORA DEL CEO' : 'NOTICIA OFICIAL DEL CEO';
+
+            const title = document.createElement('h3');
+            title.textContent = article.type === 'development' ? 'Nueva Bitácora' : 'Nueva Noticia';
+
+            const content = document.createElement('p');
+            content.textContent = article.text;
+
+            articleElement.appendChild(publisher);
+            articleElement.appendChild(title);
+            articleElement.appendChild(content);
+
+            if (article.imageDataUrl) {
+                const image = document.createElement('img');
+                image.src = article.imageDataUrl;
+                image.alt = article.type === 'development' ? 'Imagen de la bitácora' : 'Imagen de la noticia';
+                articleElement.appendChild(image);
+            }
+
+            return articleElement;
+        };
+
+        const renderBlogArticles = () => {
+            const developmentFeed = document.getElementById('devblogFeed');
+            const newsFeed = document.getElementById('skinblogFeed');
+
+            articulosBlogs.slice().reverse().forEach((article) => {
+                const targetFeed = article.type === 'development' ? developmentFeed : newsFeed;
+                if (targetFeed) {
+                    targetFeed.appendChild(createBlogArticle(article));
+                }
+            });
+        };
+
+        const getSavedManuals = () => {
+            try {
+                const storedManuals = JSON.parse(localStorage.getItem(MANUALS_STORAGE_KEY));
+                return Array.isArray(storedManuals) ? storedManuals : [];
+            } catch (error) {
+                return [];
+            }
+        };
+
+        const createTacticalManual = (manual) => {
+            const manualElement = document.createElement('article');
+            manualElement.className = 'tool-box ceo-manual-article';
+
+            const title = document.createElement('h3');
+            title.style.color = 'var(--accent-cyan)';
+            title.textContent = manual.title;
+
+            const content = document.createElement('p');
+            content.textContent = manual.content;
+
+            manualElement.appendChild(title);
+            manualElement.appendChild(content);
+
+            if (manual.imageDataUrl) {
+                const image = document.createElement('img');
+                image.src = manual.imageDataUrl;
+                image.alt = `Plano táctico: ${manual.title}`;
+                image.style.display = 'block';
+                image.style.maxWidth = '100%';
+                image.style.height = 'auto';
+                image.style.marginTop = '10px';
+                manualElement.appendChild(image);
+            }
+
+            return manualElement;
+        };
+
+        const renderTacticalManuals = () => {
+            const manualsFeed = document.getElementById('manualesTacticosFeed');
+            if (!manualsFeed) return;
+
+            manualesTacticosCEO.slice().reverse().forEach((manual) => {
+                manualsFeed.appendChild(createTacticalManual(manual));
+            });
+        };
+
+        const initializeBlogAdministration = () => {
+            articulosBlogs = getSavedBlogArticles();
+            manualesTacticosCEO = getSavedManuals();
+            renderBlogArticles();
+            renderTacticalManuals();
+
+            const adminPanel = document.createElement('section');
+            adminPanel.id = 'ceo-blog-admin';
+            adminPanel.className = 'tool-box';
+            adminPanel.style.display = 'none';
+            adminPanel.style.position = 'fixed';
+            adminPanel.style.zIndex = '1000';
+            adminPanel.style.top = '50%';
+            adminPanel.style.left = '50%';
+            adminPanel.style.transform = 'translate(-50%, -50%)';
+            adminPanel.style.width = 'min(560px, calc(100% - 40px))';
+            adminPanel.innerHTML = `
+                <h3>Administración CEO de Blogs</h3>
+                <input id="ceo-blog-title" type="text" placeholder="Título de la noticia">
+                <textarea id="ceo-blog-content" rows="5" placeholder="Contenido de la noticia"></textarea>
+                <input id="ceo-blog-image-url" type="url" placeholder="URL de la imagen de portada">
+                <h3>Administración CEO de Manuales</h3>
+                <textarea id="ceo-manual-title" rows="2" placeholder="Título del Manual"></textarea>
+                <textarea id="ceo-manual-content" rows="4" placeholder="Contenido Táctico"></textarea>
+                <input id="ceo-manual-image" type="file" accept="image/*">
+                <div style="margin-top: 15px; display: flex; gap: 10px;">
+                    <button id="ceo-publish" class="btn" type="button">Publicar como CEO</button>
+                    <button id="ceo-publish-manual" class="btn" type="button">Publicar Manual como CEO</button>
+                    <button id="ceo-close" type="button">Cerrar</button>
+                </div>
+                <div id="ceo-admin-message" style="margin-top: 12px; color: var(--accent-cyan);"></div>
+            `;
+            document.body.appendChild(adminPanel);
+
+            const toggleAdminPanel = () => {
+                adminPanel.style.display = adminPanel.style.display === 'none' ? 'block' : 'none';
+            };
+
+            document.addEventListener('keydown', (event) => {
+                if (event.ctrlKey && event.shiftKey && event.key.toLowerCase() === 'a') {
+                    event.preventDefault();
+                    toggleAdminPanel();
+                }
+            });
+
+            document.getElementById('ceo-close').addEventListener('click', () => {
+                adminPanel.style.display = 'none';
+            });
+
+            document.getElementById('ceo-publish').addEventListener('click', async () => {
+                const valorTitulo = document.getElementById('ceo-blog-title').value.trim();
+                const valorContenido = document.getElementById('ceo-blog-content').value.trim();
+                const valorImagen = document.getElementById('ceo-blog-image-url').value.trim();
+                const message = document.getElementById('ceo-admin-message');
+                const publishButton = document.getElementById('ceo-publish');
+
+                if (!valorTitulo || !valorContenido) {
+                    message.textContent = 'Completa el título y el contenido antes de publicar.';
+                    return;
+                }
+
+                publishButton.disabled = true;
+                publishButton.textContent = 'Publicando...';
+
+                try {
+                    const { error } = await supabaseClient
+                        .from('blogs_noticias')
+                        .insert([{
+                            titulo: valorTitulo,
+                            contenido: valorContenido,
+                            autor: 'Andres',
+                            imagen_url: valorImagen
+                        }]);
+
+                    if (error) {
+                        throw error;
+                    }
+
+                    console.log('Supabase aceptó la noticia del Modo CEO.');
+                    alert('La noticia se guardó correctamente en la base de datos.');
+                    message.textContent = 'Noticia guardada correctamente en la nube.';
+                    document.getElementById('ceo-blog-title').value = '';
+                    document.getElementById('ceo-blog-content').value = '';
+                    document.getElementById('ceo-blog-image-url').value = '';
+                    showNotificationBadge('blogs');
+                    await cargarBlogsDesdeNube();
+                } catch (error) {
+                    console.error('Error de red o de base de datos al guardar la noticia:', error);
+                    alert(`No se pudo guardar la noticia en Supabase: ${error.message || 'error de red'}`);
+                    message.textContent = 'Error al guardar la noticia en la nube.';
+                } finally {
+                    publishButton.disabled = false;
+                    publishButton.textContent = 'Publicar como CEO';
+                }
+            });
+
+            document.getElementById('ceo-publish-manual').addEventListener('click', () => {
+                const title = document.getElementById('ceo-manual-title').value.trim();
+                const content = document.getElementById('ceo-manual-content').value.trim();
+                const imageFile = document.getElementById('ceo-manual-image').files[0];
+                const message = document.getElementById('ceo-admin-message');
+
+                if (!title || !content) {
+                    message.textContent = 'Completa el título y el contenido táctico antes de publicar.';
+                    return;
+                }
+
+                const saveManual = (imageDataUrl) => {
+                    const newManual = { title, content, imageDataUrl: imageDataUrl || '' };
+                    manualesTacticosCEO.push(newManual);
+                    localStorage.setItem(MANUALS_STORAGE_KEY, JSON.stringify(manualesTacticosCEO));
+                    document.querySelectorAll('.ceo-manual-article').forEach((element) => element.remove());
+                    renderTacticalManuals();
+                    document.getElementById('ceo-manual-title').value = '';
+                    document.getElementById('ceo-manual-content').value = '';
+                    document.getElementById('ceo-manual-image').value = '';
+                    message.textContent = 'Manual publicado correctamente como CEO.';
+                    showNotificationBadge('tacticas');
+                };
+
+                if (imageFile && imageFile.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => saveManual(event.target.result);
+                    reader.readAsDataURL(imageFile);
+                } else {
+                    saveManual('');
+                }
+            });
+        };
+
+        const createCloudBlogCard = (article) => {
+            const card = document.createElement('article');
+            card.className = 'cloud-blog-card';
+
+            if (article.imagen_url) {
+                const image = document.createElement('img');
+                image.src = article.imagen_url;
+                image.alt = `Imagen de portada: ${article.titulo || 'Artículo'}`;
+                image.loading = 'lazy';
+                card.appendChild(image);
+            }
+
+            const details = document.createElement('div');
+            const title = document.createElement('h3');
+            title.textContent = article.titulo || 'Artículo sin título';
+
+            const content = document.createElement('p');
+            content.textContent = article.contenido || '';
+
+            const author = document.createElement('span');
+            author.className = 'cloud-blog-author';
+            author.textContent = `Por ${article.autor || 'Wartex Games'}`;
+
+            details.appendChild(title);
+            details.appendChild(content);
+            details.appendChild(author);
+            card.appendChild(details);
+
+            return card;
+        };
+
+        const cargarBlogsDesdeNube = async () => {
+            const developmentFeed = document.getElementById('devblogFeed');
+            const newsFeed = document.getElementById('skinblogFeed');
+
+            if (!developmentFeed || !newsFeed) {
+                return;
+            }
+
+            try {
+                const { data: articles, error } = await supabaseClient
+                    .from('blogs_noticias')
+                    .select('id, titulo, contenido, imagen_url, autor')
+                    .order('id', { ascending: false });
+
+                if (error) {
+                    throw error;
+                }
+
+                developmentFeed.replaceChildren();
+                newsFeed.replaceChildren();
+
+                if (!articles || articles.length === 0) {
+                    const emptyState = document.createElement('p');
+                    emptyState.textContent = 'Todavía no hay publicaciones disponibles.';
+                    developmentFeed.appendChild(emptyState.cloneNode(true));
+                    newsFeed.appendChild(emptyState);
+                    return;
+                }
+
+                articles.forEach((article) => {
+                    newsFeed.appendChild(createCloudBlogCard(article));
+                });
+            } catch (error) {
+                console.error('Error al cargar blogs y noticias desde Supabase:', error);
+                developmentFeed.replaceChildren();
+                newsFeed.replaceChildren();
+
+                const errorState = document.createElement('p');
+                errorState.textContent = 'No se pudieron cargar las noticias. Inténtalo de nuevo más tarde.';
+                developmentFeed.appendChild(errorState.cloneNode(true));
+                newsFeed.appendChild(errorState);
+            }
+        };
+
+        const initializePublicBlogs = () => {
+            initializeBlogAdministration();
+            cargarBlogsDesdeNube();
+        };
+
+        window.addEventListener('DOMContentLoaded', initializePublicBlogs, { once: true });
+
+        const forumSection = document.getElementById('foro');
+
+        if (forumSection) {
+            const composer = forumSection.querySelector('.feed-post');
+            const messageFeed = document.getElementById('forum-message-feed');
+            const textarea = forumSection.querySelector('textarea');
+            const imageInput = document.getElementById('forum-image');
+            const fileInput = document.getElementById('forum-file');
+            const publishButton = forumSection.querySelector('.btn');
+            let isLoadingForum = false;
+
+            const createFeedPost = (userName, message, createdAt, imageUrl, fileUrl, avatarUrl) => {
+                const newPost = document.createElement('div');
+                newPost.className = 'feed-post';
+
+                const header = document.createElement('div');
+                header.className = 'post-header';
+
+                const avatar = avatarUrl ? document.createElement('img') : document.createElement('div');
+                avatar.className = 'user-avatar';
+                avatar.style.backgroundColor = '#66c0f4';
+                if (avatarUrl) {
+                    avatar.src = avatarUrl;
+                    avatar.alt = `Avatar de ${userName || 'Guest'}`;
+                }
+
+                const headerInfo = document.createElement('div');
+                const strong = document.createElement('strong');
+                strong.textContent = userName || 'Guest';
+
+                const time = document.createElement('span');
+                time.style.color = 'var(--text-muted)';
+                time.style.fontSize = '12px';
+                time.textContent = createdAt
+                    ? new Date(createdAt).toLocaleString('es-ES')
+                    : 'Fecha no disponible';
+
+                headerInfo.appendChild(strong);
+                headerInfo.appendChild(document.createTextNode(' '));
+                headerInfo.appendChild(time);
+                header.appendChild(avatar);
+                header.appendChild(headerInfo);
+
+                const paragraph = document.createElement('p');
+                paragraph.textContent = message;
+
+                newPost.appendChild(header);
+                newPost.appendChild(paragraph);
+
+                if (imageUrl) {
+                    const image = document.createElement('img');
+                    image.src = imageUrl;
+                    image.alt = 'Imagen adjunta por el usuario';
+                    image.loading = 'lazy';
+                    image.style.display = 'block';
+                    image.style.width = '100%';
+                    image.style.maxHeight = '420px';
+                    image.style.objectFit = 'contain';
+                    image.style.marginTop = '12px';
+                    image.style.borderRadius = '6px';
+                    newPost.appendChild(image);
+                }
+
+                if (fileUrl) {
+                    const fileLink = document.createElement('a');
+                    fileLink.href = fileUrl;
+                    fileLink.target = '_blank';
+                    fileLink.rel = 'noopener noreferrer';
+                    fileLink.textContent = 'Abrir archivo adjunto';
+                    fileLink.style.display = 'inline-block';
+                    fileLink.style.marginTop = '12px';
+                    fileLink.style.color = 'var(--accent-cyan)';
+                    newPost.appendChild(fileLink);
+                }
+
+                return newPost;
+            };
+
+            const scrollForumToLatest = () => {
+                if (!messageFeed) {
+                    return;
+                }
+
+                requestAnimationFrame(() => {
+                    messageFeed.scrollTop = messageFeed.scrollHeight;
+                });
+            };
+
+            const uploadForumFile = async (file, userId) => {
+                const safeFileName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+                const filePath = `${userId}/${Date.now()}-${crypto.randomUUID()}-${safeFileName}`;
+                const { error: uploadError } = await supabaseClient.storage
+                    .from('archivos_foro')
+                    .upload(filePath, file, {
+                        cacheControl: '3600',
+                        upsert: false
+                    });
+
+                if (uploadError) {
+                    throw uploadError;
+                }
+
+                const { data } = supabaseClient.storage
+                    .from('archivos_foro')
+                    .getPublicUrl(filePath);
+
+                return data.publicUrl;
+            };
+
+            const loadForumPosts = async () => {
+                if (isLoadingForum) {
+                    return;
+                }
+
+                isLoadingForum = true;
+                messageFeed?.querySelectorAll('.cloud-forum-post').forEach((post) => post.remove());
+
+                try {
+                    const { data: { user: activeUser } } = await supabaseClient.auth.getUser();
+                    const activeUserName = activeUser?.user_metadata?.gamer_tag || activeUser?.email || '';
+                    const activeAvatarUrl = activeUser?.user_metadata?.avatar_url || '';
+                    const { data: posts, error } = await supabaseClient
+                        .from('mensajes_foro')
+                        .select('id, created_at, usario, contenido, imagen_url, archivo_url')
+                        .order('created_at', { ascending: true });
+
+                    if (error) {
+                        throw error;
+                    }
+
+                    posts.forEach((post) => {
+                        const postElement = createFeedPost(
+                            post.usario,
+                            post.contenido,
+                            post.created_at,
+                            post.imagen_url,
+                            post.archivo_url,
+                            post.usario === activeUserName ? activeAvatarUrl : ''
+                        );
+                        postElement.classList.add('cloud-forum-post');
+                        messageFeed.appendChild(postElement);
+                    });
+
+                    scrollForumToLatest();
+                } catch (error) {
+                    console.error('Error al cargar las publicaciones del foro:', error);
+                    alert('No se pudieron cargar las publicaciones del foro. Inténtalo de nuevo.');
+                } finally {
+                    isLoadingForum = false;
+                }
+            };
+
+            publishButton.addEventListener('click', async () => {
+                const message = textarea.value.trim();
+                const imageFile = imageInput.files[0] || null;
+                const attachmentFile = fileInput.files[0] || null;
+
+                if ((!message && !imageFile && !attachmentFile) || publishButton.disabled) {
+                    return;
+                }
+
+                publishButton.disabled = true;
+                publishButton.textContent = 'Publicando...';
+
+                try {
+                    const { data: { user }, error: authError } = await supabaseClient.auth.getUser();
+
+                    if (authError || !user) {
+                        alert('Debes iniciar sesión para publicar en el foro.');
+                        return;
+                    }
+
+                    const usario = user.user_metadata?.gamer_tag || user.email;
+                    const imageUrl = imageFile
+                        ? await uploadForumFile(imageFile, user.id)
+                        : '';
+                    const fileUrl = attachmentFile
+                        ? await uploadForumFile(attachmentFile, user.id)
+                        : '';
+                    const { error: insertError } = await supabaseClient
+                        .from('mensajes_foro')
+                        .insert({
+                            usario,
+                            contenido: message,
+                            imagen_url: imageUrl,
+                            archivo_url: fileUrl
+                        });
+
+                    if (insertError) {
+                        throw insertError;
+                    }
+
+                    textarea.value = '';
+                    imageInput.value = '';
+                    fileInput.value = '';
+                    addExperience(50);
+                    showNotificationBadge('foro');
+                    await loadForumPosts();
+                    scrollForumToLatest();
+                } catch (error) {
+                    console.error('Error al publicar en el foro:', error);
+                    alert('No se pudo publicar el mensaje. Inténtalo de nuevo.');
+                } finally {
+                    publishButton.disabled = false;
+                    publishButton.textContent = 'Publicar en el Feed';
+                }
+            });
+
+            loadForumPosts();
+        }
+    </script>
+</body>
+</html>
+
